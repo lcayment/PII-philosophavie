@@ -1,10 +1,11 @@
-import logo from "./img/logo.jpeg";
 import "./App.css";
+import Header from "./Header.js";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <Header />
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Mêler la fiction à la philo et la philo à la fiction</p>
         <a
@@ -15,7 +16,7 @@ function App() {
         >
           Chaîne Youtube
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }

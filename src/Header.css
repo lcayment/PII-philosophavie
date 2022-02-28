@@ -1,0 +1,28 @@
+/*  src/Header.css  */
+.Header {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  padding: 1em;
+  background-color: #1f3e8b;
+  min-height: 5vh;
+  font-size: calc(8px + 1vmin);
+  color: white;
+}
+
+.Header-Title {
+  width: 90%;
+}
+.Header-Subtitle {
+  color: red;
+}
+
+.Header-logo {
+  height: 20vmin;
+  pointer-events: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
+}
