@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./component-const/Header.js";
 import Footer from "./component-const/Footer.js";
+import Sider from "./component-const/Sider";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           Chaîne Youtube
         </a>
       </header> */}
+      <Sider />
       <Footer />
     </div>
   );

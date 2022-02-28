@@ -1,0 +1,17 @@
+/*  src/Sider.css  */
+.Sider {
+  width: 25em;
+  display: flex;
+  margin-left: auto;
+  background-color: #e5e5e5;
+  flex-direction: column;
+  align-items: center;
+  min-height: 5vh;
+  max-height: 100%;
+  font-size: calc(8px + 1vmin);
+  color: #1e3e8b;
+}
+
+.Presentation {
+  text-align: center;
+}
