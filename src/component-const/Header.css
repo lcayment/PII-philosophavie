@@ -1,27 +1,47 @@
 /*  src/Header.css  */
 .Header {
   box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: left;
-  padding: 1em;
   background-color: #1f3e8b;
   min-height: 5vh;
   font-size: calc(8px + 1vmin);
   color: white;
 }
 
+.Up-Header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .Header-Title {
   width: 90%;
 }
-.Header-Subtitle {
+
+.Down-Header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.Menu {
+  width: 10%;
+  background-color: rgb(133, 133, 133);
+  color: black;
+}
+
+.Search {
+  width: 10%;
+  background-color: rgb(117, 117, 117);
+  color: black;
+  border-color: #598b1f;
 }
 
 .Header-logo {
-  height: 20vmin;
+  height: 15vmin;
   pointer-events: none;
   border-radius: 50%;
   display: flex;
-  justify-content: right;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
 }
