@@ -1,10 +1,12 @@
 import "./App.css";
-import Header from "./Header.js";
+import Header from "./component-const/Header.js";
+import Footer from "./component-const/Footer.js";
 
 function App() {
   return (
     <div className="App">
       <Header />
+
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Mêler la fiction à la philo et la philo à la fiction</p>
@@ -17,6 +19,7 @@ function App() {
           Chaîne Youtube
         </a>
       </header> */}
+      <Footer />
     </div>
   );
 }

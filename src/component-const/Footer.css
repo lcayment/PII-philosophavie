@@ -1,0 +1,19 @@
+.Footer {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  background-color: #1f3e8b;
+  min-height: 10vh;
+  font-size: calc(8px + 1vmin);
+  color: white;
+  position: absolute;
+  bottom: 0;
+}
+
+.Footer-Links {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
