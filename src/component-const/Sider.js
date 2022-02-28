@@ -8,7 +8,7 @@ function Sider() {
       <div>
         <img src={logo} className="Big-Logo" alt="logo" />
       </div>
-      <div className="Presentation">
+      <div className="Sider-Presentation">
         <h1>Qui suis-je ?</h1>
         <p>
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

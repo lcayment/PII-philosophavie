@@ -1,13 +1,17 @@
 import "./App.css";
 import Header from "./component-const/Header.js";
 import Footer from "./component-const/Footer.js";
-import Sider from "./component-const/Sider";
+import Sider from "./component-const/Sider.js";
+import Presentation from "./Presentation.js";
 
 function App() {
   return (
     <div className="App">
       <Header />
-
+      <div className="App-Main">
+        <Presentation />
+        <Sider />
+      </div>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Mêler la fiction à la philo et la philo à la fiction</p>
@@ -20,7 +24,6 @@ function App() {
           Chaîne Youtube
         </a>
       </header> */}
-      <Sider />
       <Footer />
     </div>
   );

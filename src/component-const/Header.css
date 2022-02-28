@@ -26,13 +26,13 @@
 
 .Menu {
   width: 10%;
-  background-color: rgb(133, 133, 133);
+  background-color: rgb(204, 204, 204);
   color: black;
 }
 
 .Search {
   width: 10%;
-  background-color: rgb(117, 117, 117);
+  background-color: rgb(206, 206, 206);
   color: black;
   border-color: #598b1f;
 }
