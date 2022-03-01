@@ -47,7 +47,7 @@
 }
 
 .menu-btn {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
@@ -59,8 +59,8 @@
 .app-menu {
   color: white;
   height: 100vh;
-  width: 20rem;
-  background-color: #292929;
+  width: 30rem;
+  background-color: #1f3e8b;
   z-index: 200;
 
   transform: translateX(-100%);
