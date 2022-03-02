@@ -10,6 +10,8 @@ import { useState } from "react";
 import { Menu } from "./Menu.js";
 import { ReactDimmer } from "react-dimmer";
 
+import { FaBars } from "react-icons/fa";
+
 function Header() {
   const [isMenuOpen, setMenu] = useState(false);
 
@@ -31,14 +33,12 @@ function Header() {
               <img src={logoyt} className="Logo" alt="logo-yt"></img>
             </div>
           </div>
-          <div>
-            <img src={logo} className="Header-logo" alt="logo" />
-          </div>
+          <img src={logo} className="Header-logo" alt="logo" />
         </div>
         <div className="Down-Header">
           <div className="Menu">
             <button className="menu-btn" onClick={handleMenu}>
-              Ouvrir menu
+              <FaBars />
             </button>
             <div className="nav"></div>
           </div>
@@ -46,15 +46,15 @@ function Header() {
             <p>search</p>
           </div>
         </div>
-      
-      <Menu isMenuOpen={isMenuOpen} />
 
-      <ReactDimmer
-        isOpen={isMenuOpen}
-        exitDimmer={setMenu}
-        zIndex={100}
-        blur={1.5}
-      />
+        <Menu isMenuOpen={isMenuOpen} />
+
+        <ReactDimmer
+          isOpen={isMenuOpen}
+          exitDimmer={setMenu}
+          zIndex={100}
+          blur={1.5}
+        />
       </div>
     </>
   );

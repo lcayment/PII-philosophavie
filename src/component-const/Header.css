@@ -14,7 +14,7 @@
 }
 
 .Header-Title {
-  width: 90%;
+  padding: 2%;
 }
 
 .Down-Header {
@@ -25,8 +25,7 @@
 }
 
 .Menu {
-  width: 10%;
-  background-color: rgb(204, 204, 204);
+  background-color: white;
   color: black;
 }
 
@@ -44,11 +43,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 3%
 }
 
 .menu-btn {
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
+  margin: 10px;
+  border-width: 0;
+  background-color: white;
 }
 
 .nav {

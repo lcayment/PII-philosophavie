@@ -28,7 +28,7 @@ function Presentation() {
           Ma vision
         </TabSelector>
       </nav>
-      <div className="p-4">
+      <div className="presentation-content">
         <TabPanel hidden={selectedTab !== "me"}>
           <h1>Qui suis-je ?</h1>
           <p>

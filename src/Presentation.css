@@ -8,11 +8,15 @@
   color: black;
 }
 
+.presentation-content {
+  padding: 3%;
+}
+
 .tabs {
   padding: 10px 30px;
   cursor: pointer;
-  opacity: 0.6;
-  background: white;
+  opacity: 1;
+  background-color: #e7eeff;
   border: 0;
   outline: 0;
   border-bottom: 2px solid transparent;

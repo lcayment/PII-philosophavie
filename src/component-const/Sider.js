@@ -5,9 +5,7 @@ import logo from "../img/logo.jpeg";
 function Sider() {
   return (
     <div className="Sider">
-      <div>
-        <img src={logo} className="Big-Logo" alt="logo" />
-      </div>
+      <img src={logo} className="Big-Logo" alt="logo" />
       <div className="Sider-Presentation">
         <h1>Qui suis-je ?</h1>
         <p>
