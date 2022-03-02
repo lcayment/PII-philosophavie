@@ -8,7 +8,7 @@ function Presentation() {
   const [selectedTab, setSelectedTab] = useTabs(["me", "parcours", "vision"]);
   return (
     <div className="Presentation">
-      <nav className="flex border-b border-gray-500">
+      <nav className="tabs">
         <TabSelector
           isActive={selectedTab === "me"}
           onClick={() => setSelectedTab("me")}

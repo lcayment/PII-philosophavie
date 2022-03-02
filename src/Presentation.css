@@ -7,3 +7,28 @@
   font-size: calc(8px + 1vmin);
   color: black;
 }
+
+.tabs {
+  padding: 10px 30px;
+  cursor: pointer;
+  opacity: 0.6;
+  background: white;
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid transparent;
+  transition: ease border-bottom 250ms;
+  color: black;
+  font-size: calc(6px + 1vmin);
+}
+
+.tabs-active {
+  color: black;
+  border-bottom: 2px solid black;
+  opacity: 1;
+}
+
+.tabs-not-active {
+  color: rgb(68, 68, 68);
+  border-bottom: 2px solid transparent;
+  opacity: 1;
+}
