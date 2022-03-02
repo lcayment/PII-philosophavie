@@ -36,7 +36,7 @@ function Header() {
           <img src={logo} className="Header-logo" alt="logo" />
         </div>
         <div className="Down-Header">
-          <div className="Menu">
+          <div className="Menu-Header">
             <button className="menu-btn" onClick={handleMenu}>
               <FaBars />
             </button>

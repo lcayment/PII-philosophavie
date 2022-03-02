@@ -24,7 +24,7 @@
   background-color: white;
 }
 
-.Menu {
+.Menu-Header {
   background-color: white;
   color: black;
 }
@@ -59,24 +59,4 @@
   gap: 1rem;
 }
 
-.app-menu {
-  color: white;
-  height: 100vh;
-  width: 30rem;
-  background-color: #1f3e8b;
-  z-index: 200;
 
-  transform: translateX(-100%);
-  transition: 0.3s;
-
-  position: fixed;
-  left: 0;
-  top: 0;
-
-  display: flex;
-  justify-content: center;
-}
-
-.menu-open {
-  transform: translateX(0%);
-}
