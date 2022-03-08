@@ -3,29 +3,25 @@ import Header from "./component-const/Header.js";
 import Footer from "./component-const/Footer.js";
 import Sider from "./component-const/Sider.js";
 import Presentation from "./Presentation.js";
+import Projets from "./Projets.js";
+import Home from "./Home.js";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <div className="App-Main">
-        <Presentation />
-        <Sider />
-      </div>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Mêler la fiction à la philo et la philo à la fiction</p>
-        <a
-          className="App-link"
-          href="https://www.youtube.com/channel/UCX7Q-2LU8HFJYngYhArrg0Q"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Chaîne Youtube
-        </a>
-      </header> */}
-      <Footer />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/presentation">
+          <Presentation />
+        </Route>
+        <Route path="/projets">
+          <Projets />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
