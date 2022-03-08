@@ -11,6 +11,7 @@ import { Menu } from "./Menu.js";
 import { ReactDimmer } from "react-dimmer";
 
 import { FaBars } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [isMenuOpen, setMenu] = useState(false);
@@ -24,7 +25,9 @@ function Header() {
       <div className="Header">
         <div className="Up-Header">
           <div className="Header-Title">
-            <h1>Philosophavie</h1>
+            <h1>
+              <Link to="/home">Philosophavie</Link>
+            </h1>
             <p className="Header-Subtitle">Gabrielle Pozzo di Borgo</p>
             <div className="Links">
               <img src={logotw} className="Logo" alt="logo-tw"></img>
