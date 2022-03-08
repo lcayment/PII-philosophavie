@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../Presentation.css";
+import "../Presentation/Presentation.css";
 
 export const TabSelector = ({
   isActive,
@@ -11,11 +11,7 @@ export const TabSelector = ({
   onClick: () => void;
 }) => (
   <button
-    className={`tabs ${
-      isActive
-        ? "tabs-active"
-        : "tabs-not-active"
-    }`}
+    className={`tabs ${isActive ? "tabs-active" : "tabs-not-active"}`}
     onClick={onClick}
   >
     {children}

@@ -1,8 +1,8 @@
 import React from "react";
 import "./Presentation.css";
-import { TabPanel } from "./lib/index-navbar.tsx";
-import { useTabs } from "./lib/index-navbar.tsx";
-import { TabSelector } from "./lib/TabSelector.tsx";
+import { TabPanel } from "../lib/index-navbar.tsx";
+import { useTabs } from "../lib/index-navbar.tsx";
+import { TabSelector } from "../lib/TabSelector.tsx";
 
 function Presentation() {
   const [selectedTab, setSelectedTab] = useTabs(["me", "parcours", "vision"]);

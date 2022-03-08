@@ -1,0 +1,38 @@
+/*  src/Contact.css  */
+.Contact {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #e7eeff;
+  min-height: 5vh;
+  font-size: calc(8px + 1vmin);
+  color: black;
+}
+
+.contact-content {
+  padding: 3%;
+}
+
+.tabs {
+  padding: 10px 30px;
+  cursor: pointer;
+  opacity: 1;
+  background-color: #e7eeff;
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid transparent;
+  transition: ease border-bottom 250ms;
+  color: black;
+  font-size: calc(6px + 1vmin);
+}
+
+.tabs-active {
+  color: black;
+  border-bottom: 2px solid black;
+  opacity: 1;
+}
+
+.tabs-not-active {
+  color: rgb(68, 68, 68);
+  border-bottom: 2px solid transparent;
+  opacity: 1;
+}
