@@ -26,7 +26,9 @@ function Header() {
         <div className="Up-Header">
           <div className="Header-Title">
             <h1>
-              <Link to="/home">Philosophavie</Link>
+              <Link to="/home" className="Link">
+                Philosophavie
+              </Link>
             </h1>
             <p className="Header-Subtitle">Gabrielle Pozzo di Borgo</p>
             <div className="Links">

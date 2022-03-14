@@ -11,19 +11,19 @@ export const Menu = ({ isMenuOpen }: IMenuProps) => {
     <div className={`app-menu ${isMenuOpen ? "menu-open" : ""}`}>
       <div className="Menu">
         <h2>
-          <Link to="/presentation">Présentation</Link>
+          <Link to="/presentation" className="Link">Présentation</Link>
         </h2>
         <h2>
-          <Link to="/projets">Mes projets</Link>
+          <Link to="/projets" className="Link">Mes projets</Link>
         </h2>
         <h2>
-          <Link to="/actualites">Actualités</Link>
+          <Link to="/actualites" className="Link">Actualités</Link>
         </h2>
         <h2>
-          <Link to="/boutique">Boutique</Link>
+          <Link to="/boutique" className="Link">Boutique</Link>
         </h2>
         <h2>
-          <Link to="/contact">Contact</Link>
+          <Link to="/contact" className="Link">Contact</Link>
         </h2>
       </div>
     </div>
