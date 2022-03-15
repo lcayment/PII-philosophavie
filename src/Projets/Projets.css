@@ -19,6 +19,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  flex-direction: column;
   padding: 3%;
 }
 
@@ -27,8 +28,19 @@
   height: 100px;
 }
 
+.logo-qrcode {
+  width: 200px;
+  height: 200px;
+}
+
+
 .logo-display {
   display: flex;
   justify-content: space-evenly;
   padding-top: 3%;
+}
+
+.imgvideotmp {
+  padding: 3%;
+  width: 75%;
 }
