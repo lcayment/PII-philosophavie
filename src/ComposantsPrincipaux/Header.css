@@ -53,11 +53,6 @@
   background-color: white;
 }
 
-.nav {
-  display: flex;
-  gap: 1rem;
-}
-
 .Link {
   color: white;
   text-decoration: none;

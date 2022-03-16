@@ -1,8 +1,5 @@
 import React from "react";
 import "./Presentation.css";
-//import { TabPanel } from "../lib/index-navbar.tsx";
-// import { useTabs } from "../lib/index-navbar.tsx";
-// import { TabSelector } from "../lib/TabSelector.tsx";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';

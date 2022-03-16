@@ -45,7 +45,6 @@ function Header() {
             <button className="menu-btn" onClick={handleMenu}>
               <FaBars />
             </button>
-            <div className="nav"></div>
           </div>
           <div className="Search">
             <p>search</p>
