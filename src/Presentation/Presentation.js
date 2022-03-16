@@ -1,14 +1,14 @@
 import React from "react";
 import "./Presentation.css";
-import { TabPanel } from "../lib/index-navbar.tsx";
-import { useTabs } from "../lib/index-navbar.tsx";
-import { TabSelector } from "../lib/TabSelector.tsx";
+// import { TabPanel } from "../lib/index-navbar.tsx";
+// import { useTabs } from "../lib/index-navbar.tsx";
+// import { TabSelector } from "../lib/TabSelector.tsx";
 
 function Presentation() {
-  const [selectedTab, setSelectedTab] = useTabs(["me", "parcours", "vision"]);
+  // const [selectedTab, setSelectedTab] = useTabs(["me", "parcours", "vision"]);
   return (
     <div className="Presentation">
-      <nav className="tabs">
+      {/* <nav className="tabs">
         <TabSelector
           isActive={selectedTab === "me"}
           onClick={() => setSelectedTab("me")}
@@ -27,9 +27,9 @@ function Presentation() {
         >
           Ma vision
         </TabSelector>
-      </nav>
+      </nav> */}
       <div className="presentation-content">
-        <TabPanel hidden={selectedTab !== "me"}>
+        {/* <TabPanel hidden={selectedTab !== "me"}> */}
           <h1>Qui suis-je ?</h1>
           <p>
             Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
@@ -46,8 +46,8 @@ function Presentation() {
             cillum dolor. Voluptate exercitation incididunt aliquip deserunt
             reprehenderit elit laborum.
           </p>
-        </TabPanel>
-        <TabPanel hidden={selectedTab !== "parcours"}>
+        {/* </TabPanel>
+        <TabPanel hidden={selectedTab !== "parcours"}> */}
           <h1>Mon parcours</h1>
           <p>
             Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
@@ -64,8 +64,8 @@ function Presentation() {
             cillum dolor. Voluptate exercitation incididunt aliquip deserunt
             reprehenderit elit laborum.
           </p>
-        </TabPanel>
-        <TabPanel hidden={selectedTab !== "vision"}>
+        {/* </TabPanel>
+        <TabPanel hidden={selectedTab !== "vision"}> */}
           <h1>Ma vision</h1>
           <p>
             Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
@@ -82,7 +82,7 @@ function Presentation() {
             cillum dolor. Voluptate exercitation incididunt aliquip deserunt
             reprehenderit elit laborum.
           </p>
-        </TabPanel>
+        {/* </TabPanel> */}
       </div>
     </div>
   );
