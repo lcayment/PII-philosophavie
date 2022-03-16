@@ -15,7 +15,7 @@ function Projets() {
       <h1 className="title">Youtube</h1>
       <div className="logo-display-little">
         <Link to="/youtube">
-          <img src={logoytcolor} className="logo" alt="logo-yt"></img>{" "}
+          <img src={logoytcolor} className="logo" alt="logo-yt"></img>
         </Link>
         <Link to="/instagram">
           <img src={logoinstacolor} className="logo" alt="logo-insta"></img>
@@ -38,11 +38,7 @@ function Projets() {
             <p>Flash moi pour te rendre sur la chaîne !</p>
           </div>
           <div className="video">
-            <img
-              src={imgvideo}
-              className="imgvideotmp"
-              alt="image-video-tmp"
-            ></img>
+            <img src={imgvideo} className="imgvideotmp" alt="video-tmp"></img>
           </div>
         </div>
         <div>
