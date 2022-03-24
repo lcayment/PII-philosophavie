@@ -67,14 +67,18 @@ function Admin() {
         <button onClick={register}>Register</button>
       </div> */}
       <div className="form-auth-admin">
-        <h3>Se connecter</h3>
+        <h3>Connexion</h3>
         <input
+          className="input-form"
+          type="email"
           placeholder="Email"
           onChange={(event) => {
             setLoginEmail(event.target.value);
           }}
         />
         <input
+          className="input-form"
+          type="password"
           placeholder="Mot de passe"
           onChange={(event) => {
             setLoginPassword(event.target.value);
@@ -85,11 +89,11 @@ function Admin() {
         </button>
       </div>
       <div className="form-auth-admin">
-        <h4>Utilisateur connecté :</h4>
-        Email : {user?.email}
-      </div>
-      <div>
-        <button onClick={logout}>Se déconnecter</button>
+        <h4>Utilisateur connecté</h4>
+        {user?.email}
+        <button className="btn" onClick={logout}>
+          Se déconnecter
+        </button>
       </div>
     </div>
   );

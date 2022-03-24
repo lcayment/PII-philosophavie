@@ -29,11 +29,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .btn {
-  padding: 3%;
-  margin: 7%;
-  background-color: white;
-  color: #1f3e8b;
+  padding: 1%;
+  margin: 3%;
+  background-color: #1f3e8b;
+  color: white;
+  font-size: medium;
+  width: 10%;
+}
+
+.input-form {
+  width: 25%;
+  font-size: medium;
+  margin: 1%;
 }
