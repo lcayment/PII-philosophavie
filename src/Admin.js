@@ -2,6 +2,7 @@ import "./Admin.css";
 import { useState } from "react";
 import {
   signInWithEmailAndPassword,
+  onAuthStateChanged,
   signOut,
 } from "firebase/auth";
 import { auth } from "./firebase/firebaseConfig";
@@ -9,7 +10,11 @@ import { auth } from "./firebase/firebaseConfig";
 function Admin() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [user] = useState({});
+  const [user, setUser] = useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
 
   const login = async () => {
     try {
@@ -54,7 +59,7 @@ function Admin() {
       </div>
       <div className="form-auth-admin">
         <h4>Utilisateur connecté</h4>
-        {user?.email}
+        Email : {user?.email}
         <button className="btn" onClick={logout}>
           Se déconnecter
         </button>
