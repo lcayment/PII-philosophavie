@@ -1,4 +1,3 @@
-import firebase from "firebase/app"; // doing import firebase from 'firebase' or import * as firebase from firebase is not good practice.
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
