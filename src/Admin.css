@@ -1,0 +1,39 @@
+.Admin {
+  text-align: left;
+}
+
+.Admin-link {
+  color: #ffffff;
+}
+
+.Logo {
+  width: 30px;
+  height: 30px;
+}
+
+.Big-Logo {
+  height: 15vmin;
+  border-radius: 50%;
+  padding-top: 7%;
+}
+
+.Admin-Main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form-auth-admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  padding: 3%;
+  margin: 7%;
+  background-color: white;
+  color: #1f3e8b;
+}

@@ -5,11 +5,17 @@ import logotw from "../img/icon-twitter.svg";
 import logofb from "../img/icon-fb.svg";
 import logolinkedin from "../img/icon-linkedin.svg";
 import logoyt from "../img/icon-yt.svg";
+import { Link } from "react-router-dom";
+
 
 function Header() {
   return (
     <div className="Footer">
-      <div className="Footer-Links">Admin</div>
+      <div className="Footer-Links">
+        <Link to="/admin" className="Link">
+          Admin
+        </Link>
+      </div>
       <div className="Footer-Links">Crédits</div>
       <div className="Footer-Links">Contact</div>
       <div className="Links">
