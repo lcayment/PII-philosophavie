@@ -24,12 +24,12 @@ function Header() {
     <>
       <div className="Header">
         <div className="Up-Header">
-          <div className="Header-Title">
-            <h1>
+          <div>
+            <span className="Header-Title">
               <Link to="/home" className="Link">
                 Philosophavie
               </Link>
-            </h1>
+            </span>
             <p className="Header-Subtitle">Gabrielle Pozzo di Borgo</p>
             <div className="Links">
               <img src={logotw} className="Logo" alt="logo-tw"></img>

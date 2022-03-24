@@ -2,11 +2,10 @@ import React from "react";
 import "./Contact.css";
 
 function Contact() {
-
-    return (
+  return (
     <div className="Contact">
       <h1>Contact</h1>
-      <p> Voici les moyens de me contacter :</p>
+      N’hésitez pas à m’envoyer un email à philosophavie@gmail.com
     </div>
   );
 }

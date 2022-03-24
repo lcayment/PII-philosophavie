@@ -4,7 +4,7 @@ import "./Actualites.css";
 function Actualites() {
   return (
     <div className="Actualites">
-      <h1>Actualites</h1>
+      <h1>Actualités</h1>
     </div>
   );
 }

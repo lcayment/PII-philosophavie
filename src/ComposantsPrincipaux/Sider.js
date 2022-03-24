@@ -9,13 +9,13 @@ function Sider() {
       <div className="Sider-Presentation">
         <h1>Qui suis-je ?</h1>
         <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum
+          Je m’appelle Gabrielle et je suis passionnée de philosophie. J’ai
+          découvert cette matière lors de mon année de Terminale, durant
+          laquelle j’ai été primée au concours général de philo, série L. Après
+          l’obtention de mon master (toujours en philosophie) en 2021, j’ai
+          lancé ma page Instagram puis ma chaîne Youtube dans le but de rendre
+          cette matière accessible au plus grand nombre, ados comme adultes.
+          Bienvenue chez philosophavie
         </p>
       </div>
       <div>

@@ -11,18 +11,8 @@ function Projets() {
     <div className="Projets">
       <h1 className="title">Projets</h1>
       <div className="article">
-        Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
-        cillum dolor. Voluptate exercitation incididunt aliquip deserunt
-        reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure. Laborum
-        magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt
-        aliquip deserunt reprehenderit elit laborum. Nulla Lorem mollit
-        cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-        Voluptate exercitation incididunt aliquip deserunt reprehenderit elit
-        laborum. Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis
-        ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt
-        reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure. Laborum
-        magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt
-        aliquip deserunt reprehenderit elit laborum.
+        Vous pouvez retrouver ici tous les projets que je mène en ligne.
+        J’espère vous retrouver dans les commentaires !
       </div>
       <div className="logo-display">
         <Link to="/youtube">
