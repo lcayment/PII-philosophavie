@@ -50,22 +50,6 @@ function Admin() {
 
   return (
     <div className="Admin-Main">
-      {/* <div>
-        <h3>Register</h3>
-        <input
-          placeholder="Email..."
-          onChange={(event) => {
-            setRegisterEmail(event.target.value);
-          }}
-        />
-        <input
-          placeholder="Password..."
-          onChange={(event) => {
-            setRegisterPassword(event.target.value);
-          }}
-        />
-        <button onClick={register}>Register</button>
-      </div> */}
       <div className="form-auth-admin">
         <h3>Connexion</h3>
         <input
