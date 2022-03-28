@@ -1,10 +1,36 @@
 import React from "react";
 import "./Presentation.css";
+import { useState, useEffect } from "react";
+import db from "../firebase/firebaseConfig"
 
 export default function Presentation() {
+  const [presentation, setPresentation] = useState([]);
+
+  const fetchPresentation = async () => {
+    const response = db.collection("Presentation");
+
+    const data = await response.get();
+
+    data.docs.forEach((item) => {
+      setPresentation([...presentation, item.data()]);
+    });
+  };
+
+  useEffect(() => {
+    fetchPresentation();
+  }, []);
   return (
     <div className="Presentation">
-      <div className="presentation-content">
+      <div>
+        {" "}
+        {presentation &&
+          presentation.map((presentation) => {
+            return (
+              <div>
+                <p>{presentation.parcours}</p>
+              </div>
+            );
+          })}
         <h1>Qui suis-je ?</h1>
         <p>
           Je m’appelle Gabrielle Pozzo di Borgo, j’ai 24 ans et j’ai grandi à
