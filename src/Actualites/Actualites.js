@@ -9,6 +9,9 @@ import {
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase/firebaseConfig";
 import "./Actualites.css";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 
 function Actualites() {
   const [newActuTitle, setNewActuTitle] = useState("");
@@ -28,10 +31,14 @@ function Actualites() {
   };
 
   const createActu = async () => {
-    await addDoc(actualitesCollectionRef, {
-      title: newActuTitle,
-      content: newActuContent,
-    }, [actualitesCollectionRef]);
+    await addDoc(
+      actualitesCollectionRef,
+      {
+        title: newActuTitle,
+        content: newActuContent,
+      },
+      [actualitesCollectionRef]
+    );
   };
 
   // render each time the page is called
@@ -46,38 +53,50 @@ function Actualites() {
 
   return (
     <div className="Actualites">
-      <input
-        placeholder={"Ajoutez le titre de l'actualité"}
-        onChange={(event) => {
-          setNewActuTitle(event.target.value);
-        }}
-      />
-      <input
-        placeholder={"Ajoutez le contenu de l'actualité"}
-        onChange={(event) => {
-          setNewActuContent(event.target.value);
-        }}
-      />
-      <button onClick={createActu}>Ajouter l'actualité</button>
+      <h1>Actualités</h1>
+      <div className="add-actu">
+        <div>
+          <input
+            placeholder={"Ajoutez le titre de l'actualité"}
+            onChange={(event) => {
+              setNewActuTitle(event.target.value);
+            }}
+          />
+        </div>
+        <div>
+          <textarea
+            placeholder={"Ajoutez le contenu de l'actualité"}
+            onChange={(event) => {
+              setNewActuContent(event.target.value);
+            }}
+          />
+        </div>
+        <div className="div-btn">
+          <button className="CRUD-btn" onClick={createActu}>
+            <FaPlus />
+          </button>
+        </div>
+      </div>
       {actualites.map((actu) => {
         return (
           <div>
-            <h1>Actualités</h1>
             <h2> {actu.title}</h2>
             <p>{actu.content}</p>
             <button
+              className="CRUD-btn"
               onClick={() => {
                 updateActu(actu.id, actu.content);
               }}
             >
-              Modifier l'actualité
+              <FaPencilAlt />
             </button>
             <button
+              className="CRUD-btn"
               onClick={() => {
                 deleteActu(actu.id);
               }}
             >
-              Supprimer l'actualité
+              <FaRegTrashAlt />
             </button>
           </div>
         );
