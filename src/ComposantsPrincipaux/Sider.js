@@ -1,8 +1,9 @@
 import { collection, getDocs } from "@firebase/firestore";
 import React, { useState, useEffect } from "react";
+import { db } from "../firebase/firebaseConfig";
 import "./Sider.css";
 import logo from "../img/logo.jpeg";
-import { db } from "../firebase/firebaseConfig";
+
 
 function Sider() {
   const [sider, setSider] = useState([]);
