@@ -1,4 +1,11 @@
-import { collection, getDocs, addDoc } from "@firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  doc,
+} from "@firebase/firestore";
+import { async } from "@firebase/util";
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase/firebaseConfig";
 import "./Actualites.css";
@@ -8,6 +15,12 @@ function Actualites() {
   const [newActuContent, setNewActuContent] = useState("");
   const [actualites, setActualites] = useState([]);
   const actualitesCollectionRef = collection(db, "actualites");
+
+  const updateActu = async (id, content) => {
+    const actuDoc = doc(db, "actualites", id);
+    const newFields = { content: "" }; // ajouter le field a modifier
+    await updateDoc(actuDoc, newFields);
+  };
 
   const createActu = async () => {
     await addDoc(actualitesCollectionRef, {
@@ -44,7 +57,16 @@ function Actualites() {
       {actualites.map((actu) => {
         return (
           <div>
-            <h1>Actualités</h1> <h2> {actu.title}</h2> <p>{actu.content}</p>
+            <h1>Actualités</h1>
+            <h2> {actu.title}</h2>
+            <p>{actu.content}</p>
+            <button
+              onClick={() => {
+                updateActu(actu.id, actu.content);
+              }}
+            >
+              Modifier l'actualité
+            </button>
           </div>
         );
       })}
