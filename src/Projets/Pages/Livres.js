@@ -1,31 +1,31 @@
 import React from "react";
 import "../Projets.css";
 import { Link } from "react-router-dom";
-import logoytcolor from "../../img/icon-yt-color.svg";
-import logoinstacolor from "../../img/icon-insta-color.svg";
-import logobookscolor from "../../img/icon-books-color.svg";
-import logointerventions from "../../img/icon-intervention-color.svg";
+import { FaYoutube } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaBook } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
+import { HiOutlineSpeakerphone } from "react-icons/hi";
 
 function Projets() {
   return (
     <div className="Projets">
       <h1 className="title">Livres</h1>
       <div className="logo-display-little">
-        <Link to="/youtube">
-          <img src={logoytcolor} className="logo" alt="logo-yt"></img>
+        <Link className="logo" to="/youtube">
+          <FaYoutube />
         </Link>
-        <Link to="/instagram">
-          <img src={logoinstacolor} className="logo" alt="logo-insta"></img>
+        <Link className="logo" to="/instagram">
+          <FaInstagram />
         </Link>
-        <Link to="/livres">
-          <img src={logobookscolor} className="logo" alt="logo-books"></img>
+        <Link className="logo" to="/livres">
+          <FaBook />
         </Link>
-        <Link to="/interventions">
-          <img
-            src={logointerventions}
-            className="logo"
-            alt="logo-intervention"
-          ></img>
+        <Link className="logo" to="/interventions">
+          <HiOutlineSpeakerphone />
+        </Link>
+        <Link className="logo" to="/tiktok">
+          <FaTiktok />
         </Link>
       </div>
       <div className="article">

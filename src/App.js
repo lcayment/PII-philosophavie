@@ -12,6 +12,7 @@ import Instagram from "./Projets/Pages/Instagram";
 import Livres from "./Projets/Pages/Livres";
 import Interventions from "./Projets/Pages/Interventions";
 import Admin from "./Admin";
+import TikTok from "./Projets/Pages/TikTok";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path="/interventions">
             <Interventions />
+          </Route>
+          <Route path="/tiktok">
+            <TikTok />
           </Route>
           <Route path="/admin">
             <Admin />

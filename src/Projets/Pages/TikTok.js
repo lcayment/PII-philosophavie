@@ -1,21 +1,20 @@
 import React from "react";
-import "./Projets.css";
-import { Link } from "react-router-dom";
+import "../Projets.css";
+import qrcodeyt from "../../img/qrcode-youtube.svg";
+import imgvideo from "../../img/imgvideo.png";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 
+import { Link } from "react-router-dom";
+
 function Projets() {
   return (
     <div className="Projets">
-      <h1 className="title">Projets</h1>
-      <div className="article">
-        Vous pouvez retrouver ici tous les projets que je mène en ligne.
-        J’espère vous retrouver dans les commentaires !
-      </div>
-      <div className="logo-display">
+      <h1 className="title">Tiktok</h1>
+      <div className="logo-display-little">
         <Link className="logo" to="/youtube">
           <FaYoutube />
         </Link>
@@ -31,6 +30,9 @@ function Projets() {
         <Link className="logo" to="/tiktok">
           <FaTiktok />
         </Link>
+      </div>
+      <div className="article">
+        <div className="article-one"></div>
       </div>
     </div>
   );
