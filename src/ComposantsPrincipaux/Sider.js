@@ -4,7 +4,6 @@ import { db } from "../firebase/firebaseConfig";
 import "./Sider.css";
 import logo from "../img/logo.jpeg";
 
-
 function Sider() {
   const [sider, setSider] = useState([]);
   const siderCollectionRef = collection(db, "sider");
@@ -16,7 +15,8 @@ function Sider() {
     };
 
     getSider();
-  }, []);
+  }, [siderCollectionRef]);
+
   return (
     <div className="Sider">
       <img src={logo} className="Big-Logo" alt="logo" />

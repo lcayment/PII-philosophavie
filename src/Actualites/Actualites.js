@@ -6,7 +6,6 @@ import {
   doc,
   deleteDoc,
 } from "@firebase/firestore";
-import { async } from "@firebase/util";
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase/firebaseConfig";
 import "./Actualites.css";
@@ -32,7 +31,7 @@ function Actualites() {
     await addDoc(actualitesCollectionRef, {
       title: newActuTitle,
       content: newActuContent,
-    });
+    }, [actualitesCollectionRef]);
   };
 
   // render each time the page is called
@@ -43,7 +42,7 @@ function Actualites() {
     };
 
     getActualites();
-  }, []);
+  }, [actualitesCollectionRef]);
 
   return (
     <div className="Actualites">

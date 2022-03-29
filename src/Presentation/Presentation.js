@@ -14,7 +14,7 @@ export default function Presentation() {
     };
 
     getPresentation();
-  }, []);
+  }, [presentationCollectionRef]);
 
   return (
     <div className="Presentation">
