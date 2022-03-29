@@ -4,6 +4,7 @@ import {
   addDoc,
   updateDoc,
   doc,
+  deleteDoc,
 } from "@firebase/firestore";
 import { async } from "@firebase/util";
 import React, { useState, useEffect } from "react";
@@ -15,6 +16,11 @@ function Actualites() {
   const [newActuContent, setNewActuContent] = useState("");
   const [actualites, setActualites] = useState([]);
   const actualitesCollectionRef = collection(db, "actualites");
+
+  const deleteActu = async (id) => {
+    const actuDoc = doc(db, "actualites", id);
+    await deleteDoc(actuDoc);
+  };
 
   const updateActu = async (id, content) => {
     const actuDoc = doc(db, "actualites", id);
@@ -66,6 +72,13 @@ function Actualites() {
               }}
             >
               Modifier l'actualité
+            </button>
+            <button
+              onClick={() => {
+                deleteActu(actu.id);
+              }}
+            >
+              Supprimer l'actualité
             </button>
           </div>
         );
