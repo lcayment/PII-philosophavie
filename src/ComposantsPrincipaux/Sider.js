@@ -1,22 +1,32 @@
-import React from "react";
+import { collection, getDocs } from "@firebase/firestore";
+import React, { useState, useEffect } from "react";
 import "./Sider.css";
 import logo from "../img/logo.jpeg";
+import { db } from "../firebase/firebaseConfig";
 
 function Sider() {
+  const [sider, setSider] = useState([]);
+  const siderCollectionRef = collection(db, "sider");
+  // render each time the page is called
+  useEffect(() => {
+    const getSider = async () => {
+      const data = await getDocs(siderCollectionRef);
+      setSider(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getSider();
+  }, []);
   return (
     <div className="Sider">
       <img src={logo} className="Big-Logo" alt="logo" />
       <div className="Sider-Presentation">
-        <h1>Qui suis-je ?</h1>
-        <p>
-          Je m’appelle Gabrielle et je suis passionnée de philosophie. J’ai
-          découvert cette matière lors de mon année de Terminale, durant
-          laquelle j’ai été primée au concours général de philo, série L. Après
-          l’obtention de mon master (toujours en philosophie) en 2021, j’ai
-          lancé ma page Instagram puis ma chaîne Youtube dans le but de rendre
-          cette matière accessible au plus grand nombre, ados comme adultes.
-          Bienvenue chez philosophavie
-        </p>
+        {sider.map((side) => {
+          return (
+            <div>
+              <h1>Qui suis-je ?</h1> <p> {side.qui}</p>
+            </div>
+          );
+        })}
       </div>
       <div>
         <h1>Agenda</h1>
