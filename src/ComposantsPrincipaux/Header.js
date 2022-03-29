@@ -35,6 +35,7 @@ function Header() {
                 href="https://www.youtube.com/channel/UCX7Q-2LU8HFJYngYhArrg0Q"
                 target="_blank"
                 className="Links"
+                rel="noreferrer"
               >
                 <FaYoutube />
               </a>
@@ -42,6 +43,7 @@ function Header() {
                 href="https://www.instagram.com/philosophavie/?hl=fr"
                 target="_blank"
                 className="Links"
+                rel="noreferrer"
               >
                 <FaInstagram />
               </a>
@@ -49,6 +51,7 @@ function Header() {
                 href="https://www.tiktok.com/@philosophavie"
                 target="_blank"
                 className="Links"
+                rel="noreferrer"
               >
                 <FaTiktok />
               </a>

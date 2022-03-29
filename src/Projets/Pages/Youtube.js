@@ -1,7 +1,6 @@
 import React from "react";
 import "../Projets.css";
 import qrcodeyt from "../../img/qrcode-youtube.svg";
-import imgvideo from "../../img/imgvideo.png";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
