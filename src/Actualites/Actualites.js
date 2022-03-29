@@ -14,8 +14,8 @@ import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 
 function Actualites() {
-  const [newActuTitle, setNewActuTitle] = useState("");
-  const [newActuContent, setNewActuContent] = useState("");
+  const [newActuTitle, setNewActuTitle] = useState("Title");
+  const [newActuContent, setNewActuContent] = useState("Content");
   const [actualites, setActualites] = useState([]);
   const actualitesCollectionRef = collection(db, "actualites");
 
@@ -79,25 +79,31 @@ function Actualites() {
       </div>
       {actualites.map((actu) => {
         return (
-          <div>
-            <h2> {actu.title}</h2>
-            <p>{actu.content}</p>
-            <button
-              className="CRUD-btn"
-              onClick={() => {
-                updateActu(actu.id, actu.content);
-              }}
-            >
-              <FaPencilAlt />
-            </button>
-            <button
-              className="CRUD-btn"
-              onClick={() => {
-                deleteActu(actu.id);
-              }}
-            >
-              <FaRegTrashAlt />
-            </button>
+          <div className="actualite-content">
+            <div>
+              <h2> {actu.title}</h2>
+            </div>
+            <div>
+              <p>{actu.content}</p>
+            </div>
+            <div className="div-btn">
+              <button
+                className="CRUD-btn"
+                onClick={() => {
+                  updateActu(actu.id, actu.content);
+                }}
+              >
+                <FaPencilAlt />
+              </button>
+              <button
+                className="CRUD-btn"
+                onClick={() => {
+                  deleteActu(actu.id);
+                }}
+              >
+                <FaRegTrashAlt />
+              </button>
+            </div>
           </div>
         );
       })}
