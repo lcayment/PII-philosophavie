@@ -1,10 +1,9 @@
 import React from "react";
 import "./Header.css";
 import logo from "../img/logo.jpeg";
-import logotw from "../img/icon-twitter.svg";
-import logofb from "../img/icon-fb.svg";
-import logolk from "../img/icon-linkedin.svg";
-import logoyt from "../img/icon-yt.svg";
+import { FaYoutube } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
 
 import { useState } from "react";
 import { Menu } from "./Menu.js";
@@ -31,11 +30,28 @@ function Header() {
               </Link>
             </span>
             <p className="Header-Subtitle">Gabrielle Pozzo di Borgo</p>
-            <div className="Links">
-              <img src={logotw} className="Logo" alt="logo-tw"></img>
-              <img src={logofb} className="Logo" alt="logo-fb"></img>
-              <img src={logolk} className="Logo" alt="logo-linkedin"></img>
-              <img src={logoyt} className="Logo" alt="logo-yt"></img>
+            <div className="Header-Links">
+              <a
+                href="https://www.youtube.com/channel/UCX7Q-2LU8HFJYngYhArrg0Q"
+                target="_blank"
+                className="Links"
+              >
+                <FaYoutube />
+              </a>
+              <a
+                href="https://www.instagram.com/philosophavie/?hl=fr"
+                target="_blank"
+                className="Links"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://www.tiktok.com/@philosophavie"
+                target="_blank"
+                className="Links"
+              >
+                <FaTiktok />
+              </a>
             </div>
           </div>
           <img src={logo} className="Header-logo" alt="logo" />

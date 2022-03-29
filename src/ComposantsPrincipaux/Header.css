@@ -63,4 +63,19 @@
 .Link {
   color: white;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+
+.Links {
+  display: flex;
+  color: white;
+  text-decoration: none;
+  justify-content: space-around;
+}
+
+.Header-Links {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
 }

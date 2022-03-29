@@ -1,12 +1,10 @@
 import React from "react";
 import "./Footer.css";
 import "../App.css";
-import logotw from "../img/icon-twitter.svg";
-import logofb from "../img/icon-fb.svg";
-import logolinkedin from "../img/icon-linkedin.svg";
-import logoyt from "../img/icon-yt.svg";
 import { Link } from "react-router-dom";
-
+import { FaYoutube } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
 
 function Header() {
   return (
@@ -16,13 +14,33 @@ function Header() {
           Admin
         </Link>
       </div>
-      <div className="Footer-Links">Crédits</div>
-      <div className="Footer-Links">Contact</div>
-      <div className="Links">
-        <img src={logotw} className="Logo" alt="logo-tw"></img>
-        <img src={logofb} className="Logo" alt="logo-fb"></img>
-        <img src={logolinkedin} className="Logo" alt="logo-linkedin"></img>
-        <img src={logoyt} className="Logo" alt="logo-yt"></img>
+      <div className="Footer-Links">
+        <Link to="/contact" className="Link">
+          Contact
+        </Link>
+      </div>
+      <div className="Footer-Links">
+        <a
+          href="https://www.youtube.com/channel/UCX7Q-2LU8HFJYngYhArrg0Q"
+          target="_blank"
+          className="Links"
+        >
+          <FaYoutube />
+        </a>
+        <a
+          href="https://www.instagram.com/philosophavie/?hl=fr"
+          target="_blank"
+          className="Links"
+        >
+          <FaInstagram />
+        </a>
+        <a
+          href="https://www.tiktok.com/@philosophavie"
+          target="_blank"
+          className="Links"
+        >
+          <FaTiktok />
+        </a>
       </div>
     </div>
   );

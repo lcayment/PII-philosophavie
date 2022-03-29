@@ -15,5 +15,13 @@
 .Footer-Links {
   width: 10%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Links {
+  display: flex;
+  color: white;
+  text-decoration: none;
+  justify-content: space-around;
 }
