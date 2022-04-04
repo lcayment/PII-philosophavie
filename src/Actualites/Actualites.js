@@ -14,7 +14,6 @@ import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { auth } from "../firebase/firebaseConfig";
 import Collapsible from "react-collapsible";
-import { MdOutlineArrowDropDownCircle } from "react-icons/md";
 
 function Actualites() {
   const [newActuTitle, setNewActuTitle] = useState("Title");
