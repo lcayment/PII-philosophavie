@@ -20,7 +20,7 @@
 }
 
 .Header-Subtitle {
-  font-size: 1.25em;
+  font-size: 1.4em;
 }
 
 .Down-Header {
@@ -70,12 +70,13 @@
 .Links {
   display: flex;
   color: white;
+  font-size: 25px;
   text-decoration: none;
   justify-content: space-around;
 }
 
 .Header-Links {
-  width: 30%;
+  width: 45%;
   display: flex;
   justify-content: space-between;
 }

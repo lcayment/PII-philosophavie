@@ -4,7 +4,7 @@ import logo from "../img/logo.jpeg";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
-
+import { FaTwitter } from "react-icons/fa";
 import { useState } from "react";
 import { Menu } from "./Menu.js";
 import { ReactDimmer } from "react-dimmer";
@@ -54,6 +54,14 @@ function Header() {
                 rel="noreferrer"
               >
                 <FaTiktok />
+              </a>
+              <a
+                href="https://mobile.twitter.com/philosophavie"
+                target="_blank"
+                className="Links"
+                rel="noreferrer"
+              >
+                <FaTwitter />
               </a>
             </div>
           </div>

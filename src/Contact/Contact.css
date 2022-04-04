@@ -11,3 +11,26 @@
 .contact-content {
   padding: 3%;
 }
+
+.Contact-Links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5%;
+}
+
+.article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 3%;
+}
+
+.C-Links {
+  color: #1f3e8b;
+  font-size: 3em;
+  padding: 0.5%;
+}

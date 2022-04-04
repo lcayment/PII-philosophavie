@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
 
 function Header() {
   return (
@@ -13,8 +14,6 @@ function Header() {
         <Link to="/admin" className="Link">
           Admin
         </Link>
-      </div>
-      <div className="Footer-Links">
         <Link to="/contact" className="Link">
           Contact
         </Link>
@@ -43,6 +42,14 @@ function Header() {
           rel="noreferrer"
         >
           <FaTiktok />
+        </a>
+        <a
+          href="https://mobile.twitter.com/philosophavie"
+          target="_blank"
+          className="Links"
+          rel="noreferrer"
+        >
+          <FaTwitter />
         </a>
       </div>
     </div>
