@@ -25,9 +25,15 @@ function Actualites() {
     await deleteDoc(actuDoc);
   };
 
-  const updateActu = async (id, content) => {
+  const updateActuTitle = async (id, title) => {
     const actuDoc = doc(db, "actualites", id);
-    const newFields = { content: "" }; // ajouter le field a modifier
+    const newFields = { title: newActuTitle }; // ajouter le field a modifier
+    await updateDoc(actuDoc, newFields);
+  };
+
+  const updateActuContent = async (id, content) => {
+    const actuDoc = doc(db, "actualites", id);
+    const newFields = { content: newActuContent }; // ajouter le field a modifier
     await updateDoc(actuDoc, newFields);
   };
 
@@ -88,34 +94,60 @@ function Actualites() {
       {actualites.map((actu) => {
         return (
           <div className="actualite-content">
+            <h2> {actu.title}</h2>
+            <p>{actu.content}</p>
             <div>
-              <h2> {actu.title}</h2>
+              {user ? (
+                <div className="change-actu">
+                  <div>
+                    <input
+                      placeholder="Modification du titre de l'actualité"
+                      onChange={(event) => {
+                        setNewActuTitle(event.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="div-btn">
+                    <button
+                      className="CRUD-btn"
+                      onClick={() => {
+                        updateActuTitle(actu.id, actu.title);
+                      }}
+                    >
+                      <FaPencilAlt />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
             <div>
-              <p>{actu.content}</p>
+              {user ? (
+                <div className="change-actu">
+                  <div>
+                    <textarea
+                      placeholder="Modification du contenu de l'actualité"
+                      onChange={(event) => {
+                        setNewActuContent(event.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="div-btn">
+                    <button
+                      className="CRUD-btn"
+                      onClick={() => {
+                        updateActuContent(actu.id, actu.content);
+                      }}
+                    >
+                      <FaPencilAlt />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
-            {user ? (
-              <div className="div-btn">
-                <button
-                  className="CRUD-btn"
-                  onClick={() => {
-                    updateActu(actu.id, actu.content);
-                  }}
-                >
-                  <FaPencilAlt />
-                </button>
-                <button
-                  className="CRUD-btn"
-                  onClick={() => {
-                    deleteActu(actu.id);
-                  }}
-                >
-                  <FaRegTrashAlt />
-                </button>
-              </div>
-            ) : (
-              ""
-            )}
           </div>
         );
       })}
