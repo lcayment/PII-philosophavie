@@ -12,6 +12,7 @@ import "./Actualites.css";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import { auth } from "../firebase/firebaseConfig";
 
 function Actualites() {
   const [newActuTitle, setNewActuTitle] = useState("Title");
@@ -51,32 +52,39 @@ function Actualites() {
     getActualites();
   }, [actualitesCollectionRef]);
 
+  const user = auth.currentUser;
+
   return (
     <div className="Actualites">
       <h1>Actualités</h1>
-      <div className="add-actu">
-        <div>
-          <input
-            placeholder={"Ajoutez le titre de l'actualité"}
-            onChange={(event) => {
-              setNewActuTitle(event.target.value);
-            }}
-          />
+      {user ? (
+        <div className="add-actu">
+          <div>
+            <input
+              placeholder={"Ajoutez le titre de l'actualité"}
+              onChange={(event) => {
+                setNewActuTitle(event.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <textarea
+              placeholder={"Ajoutez le contenu de l'actualité"}
+              onChange={(event) => {
+                setNewActuContent(event.target.value);
+              }}
+            />
+          </div>
+          <div className="div-btn">
+            <button className="CRUD-btn" onClick={createActu}>
+              <FaPlus />
+            </button>
+          </div>
         </div>
-        <div>
-          <textarea
-            placeholder={"Ajoutez le contenu de l'actualité"}
-            onChange={(event) => {
-              setNewActuContent(event.target.value);
-            }}
-          />
-        </div>
-        <div className="div-btn">
-          <button className="CRUD-btn" onClick={createActu}>
-            <FaPlus />
-          </button>
-        </div>
-      </div>
+      ) : (
+        ""
+      )}
+
       {actualites.map((actu) => {
         return (
           <div className="actualite-content">
@@ -86,24 +94,28 @@ function Actualites() {
             <div>
               <p>{actu.content}</p>
             </div>
-            <div className="div-btn">
-              <button
-                className="CRUD-btn"
-                onClick={() => {
-                  updateActu(actu.id, actu.content);
-                }}
-              >
-                <FaPencilAlt />
-              </button>
-              <button
-                className="CRUD-btn"
-                onClick={() => {
-                  deleteActu(actu.id);
-                }}
-              >
-                <FaRegTrashAlt />
-              </button>
-            </div>
+            {user ? (
+              <div className="div-btn">
+                <button
+                  className="CRUD-btn"
+                  onClick={() => {
+                    updateActu(actu.id, actu.content);
+                  }}
+                >
+                  <FaPencilAlt />
+                </button>
+                <button
+                  className="CRUD-btn"
+                  onClick={() => {
+                    deleteActu(actu.id);
+                  }}
+                >
+                  <FaRegTrashAlt />
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         );
       })}
