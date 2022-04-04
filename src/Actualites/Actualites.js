@@ -13,6 +13,8 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { auth } from "../firebase/firebaseConfig";
+import Collapsible from "react-collapsible";
+import { MdOutlineArrowDropDownCircle } from "react-icons/md";
 
 function Actualites() {
   const [newActuTitle, setNewActuTitle] = useState("Title");
@@ -98,52 +100,57 @@ function Actualites() {
             <p>{actu.content}</p>
             <div>
               {user ? (
-                <div className="change-actu">
-                  <div>
-                    <input
-                      placeholder="Modification du titre de l'actualité"
-                      onChange={(event) => {
-                        setNewActuTitle(event.target.value);
-                      }}
-                    />
+                <Collapsible
+                  className="collapse"
+                  trigger="Modifier l'actualité"
+                >
+                  <div className="change-actu">
+                    <div>
+                      <input
+                        placeholder="Modification du titre de l'actualité"
+                        onChange={(event) => {
+                          setNewActuTitle(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          updateActuTitle(actu.id, actu.title);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                    </div>
+                    <div>
+                      <textarea
+                        placeholder="Modification du contenu de l'actualité"
+                        onChange={(event) => {
+                          setNewActuContent(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          updateActuContent(actu.id, actu.content);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          deleteActu(actu.id);
+                        }}
+                      >
+                        <FaRegTrashAlt />
+                      </button>
+                    </div>
                   </div>
-                  <div className="div-btn">
-                    <button
-                      className="CRUD-btn"
-                      onClick={() => {
-                        updateActuTitle(actu.id, actu.title);
-                      }}
-                    >
-                      <FaPencilAlt />
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                ""
-              )}
-            </div>
-            <div>
-              {user ? (
-                <div className="change-actu">
-                  <div>
-                    <textarea
-                      placeholder="Modification du contenu de l'actualité"
-                      onChange={(event) => {
-                        setNewActuContent(event.target.value);
-                      }}
-                    />
-                  </div>
-                  <div className="div-btn">
-                    <button
-                      className="CRUD-btn"
-                      onClick={() => {
-                        updateActuContent(actu.id, actu.content);
-                      }}
-                    >
-                      <FaPencilAlt />
-                    </button>
-                  </div>
-                </div>
+                </Collapsible>
               ) : (
                 ""
               )}

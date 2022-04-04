@@ -58,3 +58,9 @@ input {
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
 }
+
+.collapse {
+  color: #1f3e8b;
+  font-weight: bold;
+  cursor: pointer;
+}

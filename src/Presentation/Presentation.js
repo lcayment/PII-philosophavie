@@ -1,17 +1,13 @@
 import {
   collection,
   getDocs,
-  addDoc,
   updateDoc,
   doc,
-  deleteDoc,
 } from "@firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase/firebaseConfig";
 import "./Presentation.css";
-import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
 import { auth } from "../firebase/firebaseConfig";
 
 export default function Presentation() {
@@ -22,11 +18,6 @@ export default function Presentation() {
     useState("Vision Content");
   const [presentation, setPresentation] = useState([]);
   const presentationCollectionRef = collection(db, "presentation");
-
-  const deletePresentation = async (id) => {
-    const presentationDoc = doc(db, "presentation", id);
-    await deleteDoc(presentationDoc);
-  };
 
   const updatePresentationQui = async (id, qui) => {
     const presentationDoc = doc(db, "presentation", id);
