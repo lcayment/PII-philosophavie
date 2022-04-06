@@ -1,14 +1,10 @@
-import {
-  collection,
-  getDocs,
-  updateDoc,
-  doc,
-} from "@firebase/firestore";
+import { collection, getDocs, updateDoc, doc } from "@firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase/firebaseConfig";
 import "./Presentation.css";
 import { FaPencilAlt } from "react-icons/fa";
 import { auth } from "../firebase/firebaseConfig";
+import Collapsible from "react-collapsible";
 
 export default function Presentation() {
   const [newPresQuiContent, setNewPresQuiContent] = useState("Qui Content");
@@ -57,76 +53,91 @@ export default function Presentation() {
               <h1>Qui suis-je ?</h1>
               <p> {pres.qui}</p>
               {user ? (
-                <div className="change-pres">
-                  <div>
-                    <textarea
-                      placeholder="Modification du contenu du qui suis-je"
-                      onChange={(event) => {
-                        setNewPresQuiContent(event.target.value);
-                      }}
-                    />
+                <Collapsible
+                  className="collapse"
+                  trigger="Modifier la partie Qui suis-je ?"
+                >
+                  <div className="change-pres">
+                    <div>
+                      <textarea
+                        placeholder="Modification du contenu du qui suis-je"
+                        onChange={(event) => {
+                          setNewPresQuiContent(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          updatePresentationQui(pres.id, pres.qui);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                    </div>
                   </div>
-                  <div className="div-btn">
-                    <button
-                      className="CRUD-btn"
-                      onClick={() => {
-                        updatePresentationQui(pres.id, pres.qui);
-                      }}
-                    >
-                      <FaPencilAlt />
-                    </button>
-                  </div>
-                </div>
+                </Collapsible>
               ) : (
                 ""
               )}
               <h1>Mon parcours</h1> <p>{pres.parcours}</p>
               {user ? (
-                <div className="change-pres">
-                  <div>
-                    <textarea
-                      placeholder="Modification du contenu du parcours"
-                      onChange={(event) => {
-                        setNewPresParcoursContent(event.target.value);
-                      }}
-                    />
+                <Collapsible
+                  className="collapse"
+                  trigger="Modifier la partie Mon Parcours"
+                >
+                  <div className="change-pres">
+                    <div>
+                      <textarea
+                        placeholder="Modification du contenu du parcours"
+                        onChange={(event) => {
+                          setNewPresParcoursContent(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          updatePresentationParcours(pres.id, pres.parcours);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                    </div>
                   </div>
-                  <div className="div-btn">
-                    <button
-                      className="CRUD-btn"
-                      onClick={() => {
-                        updatePresentationParcours(pres.id, pres.parcours);
-                      }}
-                    >
-                      <FaPencilAlt />
-                    </button>
-                  </div>
-                </div>
+                </Collapsible>
               ) : (
                 ""
               )}
               <h1>Ma vision</h1> <p>{pres.vision}</p>
               {user ? (
-                <div className="change-pres">
-                  <div>
-                    <textarea
-                      placeholder="Modification du contenu de la vision"
-                      onChange={(event) => {
-                        setNewPresVisionContent(event.target.value);
-                      }}
-                    />
+                <Collapsible
+                  className="collapse"
+                  trigger="Modifier la partie Ma vision"
+                >
+                  <div className="change-pres">
+                    <div>
+                      <textarea
+                        placeholder="Modification du contenu de la vision"
+                        onChange={(event) => {
+                          setNewPresVisionContent(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          updatePresentationVision(pres.id, pres.vision);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                    </div>
                   </div>
-                  <div className="div-btn">
-                    <button
-                      className="CRUD-btn"
-                      onClick={() => {
-                        updatePresentationVision(pres.id, pres.vision);
-                      }}
-                    >
-                      <FaPencilAlt />
-                    </button>
-                  </div>
-                </div>
+                </Collapsible>
               ) : (
                 ""
               )}
