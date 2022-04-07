@@ -28,19 +28,44 @@ function Projets() {
           <FaTiktok />
         </Link>
       </div>
-      <div className="article">
-        Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
-        cillum dolor. Voluptate exercitation incididunt aliquip deserunt
-        reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure. Laborum
-        magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt
-        aliquip deserunt reprehenderit elit laborum. Nulla Lorem mollit
-        cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-        Voluptate exercitation incididunt aliquip deserunt reprehenderit elit
-        laborum. Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis
-        ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt
-        reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure. Laborum
-        magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt
-        aliquip deserunt reprehenderit elit laborum.
+      <div className="article interventions">
+        <h3> Intervention du jour</h3>
+        <p>
+          Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
+          cillum dolor. Voluptate exercitation incididunt aliquip deserunt
+          reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure.
+          Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation
+          incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem
+          mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
+          Voluptate exercitation incididunt aliquip deserunt reprehenderit elit
+          laborum. Nulla Lorem mollit cupidatat irure.
+        </p>
+      </div>
+      <div className="article interventions">
+        <h3> Intervention d'hier</h3>
+        <p>
+          Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
+          cillum dolor. Voluptate exercitation incididunt aliquip deserunt
+          reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure.
+          Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation
+          incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem
+          mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
+          Voluptate exercitation incididunt aliquip deserunt reprehenderit elit
+          laborum. Nulla Lorem mollit cupidatat irure.
+        </p>
+      </div>
+      <div className="article interventions">
+        <h3> Intervention de demain</h3>
+        <p>
+          Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
+          cillum dolor. Voluptate exercitation incididunt aliquip deserunt
+          reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure.
+          Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation
+          incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem
+          mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
+          Voluptate exercitation incididunt aliquip deserunt reprehenderit elit
+          laborum. Nulla Lorem mollit cupidatat irure.
+        </p>
       </div>
     </div>
   );
