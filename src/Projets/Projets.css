@@ -23,15 +23,24 @@
   padding: 3%;
 }
 
+.article-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
+  padding: 3%;
+}
+
 .logo {
   color: black;
   padding-left: 3%;
   padding-right: 3%;
 }
 
-.logo-qrcode {
-  width: 200px;
-  height: 200px;
+.petit-logo {
+  width: 250px;
+  height: 250px;
 }
 
 .logo-display {
@@ -62,7 +71,51 @@
 
 .article-one {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 2%;
+}
+
+.article-two {
+  width: 50%;
+  margin: 3%;
+}
+
+.margin {
+  margin: 3em;
+}
+
+.book {
+  height: fit-content;
+  background-color: white;
+  padding: 2%;
+  margin: 1%;
+}
+
+.petit-livre {
+  height: 12em;
+}
+
+.content-book {
+  width: 70%;
+}
+
+.content-img-book {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  padding: 1%;
+  margin: 3%;
+  background-color: #1f3e8b;
+  color: white;
+  font-size: medium;
+  width: 10%;
+}
+
+.right {
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
 }

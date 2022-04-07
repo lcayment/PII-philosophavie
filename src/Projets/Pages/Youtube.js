@@ -45,14 +45,14 @@ function Projets() {
       <div className="article">
         <div className="article-one">
           <div className="flashcode">
-            <img src={qrcodeyt} className="logo-qrcode" alt="qrcode-yt"></img>
+            <img src={qrcodeyt} className="petit-logo" alt="qrcode-yt"></img>
             <p>Flash moi pour te rendre sur la chaîne !</p>
           </div>
           <div className="video">
             <YouTube videoId="8vpXdiAI8E0" opts={videoOptions} />
           </div>
         </div>
-        <div>
+        <div className="article-one">
           Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
           cillum dolor. Voluptate exercitation incididunt aliquip deserunt
           reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure.

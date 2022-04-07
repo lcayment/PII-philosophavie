@@ -33,12 +33,15 @@
 }
 
 .btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   padding: 1%;
+  width: fit-content;
   margin: 3%;
   background-color: #1f3e8b;
   color: white;
   font-size: medium;
-  width: 10%;
 }
 
 .input-form {
