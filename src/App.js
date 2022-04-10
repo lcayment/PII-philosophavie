@@ -21,6 +21,9 @@ function App() {
       <Header />
       <div className="App-Main">
         <Switch>
+          <Route path="/home">
+            <Projets />
+          </Route>
           <Route path="/presentation">
             <Presentation />
           </Route>
