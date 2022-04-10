@@ -40,8 +40,9 @@ function Sider() {
               <h1>Qui suis-je ?</h1> <p> {side.qui}</p>
               {user ? (
                 <Collapsible
-                  className="collapse"
                   trigger="Modifier la partie Qui suis-je ?"
+                  triggerClassName="collapse-sider"
+                  triggerOpenedClassName="collapse-sider"
                 >
                   <div className="change-pres">
                     <div>

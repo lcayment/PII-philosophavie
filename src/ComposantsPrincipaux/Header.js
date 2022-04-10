@@ -6,7 +6,6 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { useState } from "react";
-import { Menu } from "./Menu.js";
 import { ReactDimmer } from "react-dimmer";
 
 import { FaBars } from "react-icons/fa";
@@ -18,7 +17,6 @@ function Header() {
   const handleMenu = () => {
     setMenu((prevState) => !prevState);
   };
-
   return (
     <>
       <div className="Header">
@@ -78,8 +76,35 @@ function Header() {
           </div>
         </div>
 
-        <Menu isMenuOpen={isMenuOpen} />
-
+        <div className={`app-menu ${isMenuOpen ? "menu-open" : ""}`}>
+          <div className="Menu">
+            <h2>
+              <Link to="/presentation" className="Link" onClick={handleMenu}>
+                Présentation
+              </Link>
+            </h2>
+            <h2>
+              <Link to="/projets" className="Link" onClick={handleMenu}>
+                Mes projets
+              </Link>
+            </h2>
+            <h2>
+              <Link to="/actualites" className="Link" onClick={handleMenu}>
+                Actualités
+              </Link>
+            </h2>
+            <h2>
+              <Link to="/boutique" className="Link" onClick={handleMenu}>
+                Boutique
+              </Link>
+            </h2>
+            <h2>
+              <Link to="/contact" className="Link" onClick={handleMenu}>
+                Contact
+              </Link>
+            </h2>
+          </div>
+        </div>
         <ReactDimmer
           isOpen={isMenuOpen}
           exitDimmer={setMenu}

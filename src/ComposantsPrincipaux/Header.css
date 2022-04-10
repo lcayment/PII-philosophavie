@@ -6,6 +6,7 @@
   color: white;
 }
 
+/****** Partie haute du header (bandeau bleu) ******/
 .Up-Header {
   width: 100%;
   margin-left: 2em;
@@ -23,25 +24,6 @@
   font-size: 1.4em;
 }
 
-.Down-Header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  background-color: white;
-}
-
-.Menu-Header {
-  background-color: white;
-  color: black;
-}
-
-.Search {
-  width: 10%;
-  background-color: rgb(206, 206, 206);
-  color: black;
-  border-color: #598b1f;
-}
-
 .Header-logo {
   height: 10em;
   pointer-events: none;
@@ -50,6 +32,26 @@
   justify-content: center;
   align-items: center;
   margin: 2em;
+}
+
+.Header-Links {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/****** Partie basse du header (bandeau blanc avec le menu) ******/
+.Down-Header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+/* Partie du menu hamburger */
+.Menu-Header {
+  background-color: white;
+  color: black;
 }
 
 .menu-btn {
@@ -75,8 +77,40 @@
   justify-content: space-around;
 }
 
-.Header-Links {
-  width: 45%;
+.app-menu {
+  color: white;
+  height: 100vh;
+  width: 20rem;
+  background-color: #1f3e8b;
+  z-index: 200;
+
+  transform: translateX(-100%);
+  transition: 0.3s;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.menu-open {
+  transform: translateX(0%);
+}
+
+.Menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  color: white;
+}
+
+/* Partie de la recherche */
+.Search {
+  width: 10%;
+  background-color: rgb(206, 206, 206);
+  color: black;
+  border-color: #598b1f;
 }

@@ -100,8 +100,9 @@ function Actualites() {
             <div>
               {user ? (
                 <Collapsible
-                  className="collapse"
                   trigger="Modifier l'actualité"
+                  triggerClassName="collapse-actu"
+                  triggerOpenedClassName="collapse-actu"
                 >
                   <div className="change-actu">
                     <div>

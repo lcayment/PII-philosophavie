@@ -54,8 +54,9 @@ export default function Presentation() {
               <p> {pres.qui}</p>
               {user ? (
                 <Collapsible
-                  className="collapse"
                   trigger="Modifier la partie Qui suis-je ?"
+                  triggerClassName="collapse"
+                  triggerOpenedClassName="collapse"
                 >
                   <div className="change-pres">
                     <div>
@@ -84,8 +85,9 @@ export default function Presentation() {
               <h1>Mon parcours</h1> <p>{pres.parcours}</p>
               {user ? (
                 <Collapsible
-                  className="collapse"
                   trigger="Modifier la partie Mon Parcours"
+                  triggerClassName="collapse"
+                  triggerOpenedClassName="collapse"
                 >
                   <div className="change-pres">
                     <div>
@@ -114,8 +116,9 @@ export default function Presentation() {
               <h1>Ma vision</h1> <p>{pres.vision}</p>
               {user ? (
                 <Collapsible
-                  className="collapse"
                   trigger="Modifier la partie Ma vision"
+                  triggerClassName="collapse"
+                  triggerOpenedClassName="collapse"
                 >
                   <div className="change-pres">
                     <div>
