@@ -1,0 +1,14 @@
+/*  src/Agenda.css  */
+.Agenda {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #e7eeff;
+  min-height: 5vh;
+  font-size: calc(8px + 1vmin);
+  color: black;
+}
+
+.agenda-content {
+  padding: 3%;
+}
+

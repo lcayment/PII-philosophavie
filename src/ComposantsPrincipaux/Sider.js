@@ -6,6 +6,7 @@ import logo from "../img/logo.jpeg";
 import Collapsible from "react-collapsible";
 import { FaPencilAlt } from "react-icons/fa";
 import { auth } from "../firebase/firebaseConfig";
+import { Link } from "react-router-dom";
 
 function Sider() {
   const [sider, setSider] = useState([]);
@@ -73,7 +74,9 @@ function Sider() {
         })}
       </div>
       <div>
-        <h1>Agenda</h1>
+        <Link to="/agenda" className="Link-sider">
+          <h1>Agenda </h1>
+        </Link>
       </div>
     </div>
   );

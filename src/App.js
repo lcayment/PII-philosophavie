@@ -13,6 +13,8 @@ import Livres from "./Projets/Pages/Livres";
 import Interventions from "./Projets/Pages/Interventions";
 import Admin from "./Admin";
 import TikTok from "./Projets/Pages/TikTok";
+import Agenda from "./Agenda/Agenda";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -56,6 +58,9 @@ function App() {
           </Route>
           <Route path="/admin">
             <Admin />
+          </Route>
+          <Route path="/agenda">
+            <Agenda />
           </Route>
         </Switch>
         <Sider />
