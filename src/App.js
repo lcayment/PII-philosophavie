@@ -1,4 +1,9 @@
 import "./App.css";
+
+// navigation
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+// componentns
 import Header from "./ComposantsPrincipaux/Header.js";
 import Footer from "./ComposantsPrincipaux/Footer.js";
 import Sider from "./ComposantsPrincipaux/Sider.js";
@@ -14,8 +19,6 @@ import Interventions from "./Projets/Pages/Interventions";
 import Admin from "./Admin";
 import TikTok from "./Projets/Pages/TikTok";
 import Agenda from "./Agenda/Agenda";
-
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (

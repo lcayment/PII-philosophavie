@@ -18,15 +18,16 @@
   padding-right: 10%;
 }
 
+.Link-sider {
+  color: #1f3e8b;
+  text-decoration: none;
+}
+
+/* modification */
 .collapse-sider {
   color: #1f3e8b;
   font-weight: bold;
   cursor: pointer;
   background: white;
   padding: 10px;
-}
-
-.Link-sider {
-  color: #1f3e8b;
-  text-decoration: none;
 }

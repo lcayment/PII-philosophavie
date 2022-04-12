@@ -1,11 +1,13 @@
 import React from "react";
 import "./Contact.css";
+
+// icônes
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 
-function Contact() {
+export default function Contact() {
   return (
     <div className="Contact">
       <h1 className="title">Contact</h1>
@@ -50,5 +52,3 @@ function Contact() {
     </div>
   );
 }
-
-export default Contact;

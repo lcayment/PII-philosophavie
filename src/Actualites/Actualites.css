@@ -8,34 +8,11 @@
   color: black;
 }
 
-.add-actu {
-  background-color: white;
-  padding: 10px;
-}
-
 .actualite-content {
   padding: 3%;
 }
 
-.div-btn {
-  display: flex;
-  justify-content: right;
-  align-items: flex-end;
-  padding-right: 3%;
-}
-
-.CRUD-btn {
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin: 10px;
-  border-width: 1;
-  background-color: #e7eeff;
-  border-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* custom */
 h1 {
   display: flex;
   justify-content: center;
@@ -57,6 +34,31 @@ input {
 ::placeholder {
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
+}
+
+/* modification */
+.add-actu {
+  background-color: white;
+  padding: 10px;
+}
+
+.div-btn {
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
+  padding-right: 3%;
+}
+
+.CRUD-btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 10px;
+  border-width: 1;
+  background-color: #e7eeff;
+  border-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .collapse-actu {

@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Agenda.css";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import { FaPlus } from "react-icons/fa";
+
+// firestore
 import { collection, addDoc } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
+
+// icônes
+import { FaPlus } from "react-icons/fa";
+
+// rbc
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
-import { useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 require("moment/locale/fr.js");
+
 const localizer = momentLocalizer(moment);
 
 const events = [

@@ -1,19 +1,26 @@
-import { collection, getDocs, updateDoc, doc } from "@firebase/firestore";
 import React, { useState, useEffect } from "react";
-import { db } from "../firebase/firebaseConfig";
-
 import "./Projets.css";
+
+// firestore
+import { collection, getDocs, updateDoc, doc } from "@firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
+
+// navigation
 import { Link } from "react-router-dom";
+
+// icônes
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
-import { auth } from "../firebase/firebaseConfig";
-import Collapsible from "react-collapsible";
 import { FaPencilAlt } from "react-icons/fa";
 
-function Projets() {
+// components
+import Collapsible from "react-collapsible";
+
+export default function Projets() {
   const [newProjet, setNewProjet] = useState("Projets");
   const [projet, setProjet] = useState([]);
   const projetCollectionRef = collection(db, "projet");
@@ -96,5 +103,3 @@ function Projets() {
     </div>
   );
 }
-
-export default Projets;

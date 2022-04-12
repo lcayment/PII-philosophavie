@@ -1,11 +1,15 @@
 import React from "react";
 import "../Projets.css";
+
+// navigation
+import { Link } from "react-router-dom";
+
+// icônes et img
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
-import { Link } from "react-router-dom";
 import tiktok from "../../img/tiktok.png";
 
 function Projets() {

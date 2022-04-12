@@ -1,12 +1,20 @@
-import { collection, getDocs, updateDoc, doc } from "@firebase/firestore";
 import React, { useState, useEffect } from "react";
-import { db } from "../firebase/firebaseConfig";
 import "./Sider.css";
-import logo from "../img/logo.jpeg";
-import Collapsible from "react-collapsible";
-import { FaPencilAlt } from "react-icons/fa";
+
+// firestore
+import { collection, getDocs, updateDoc, doc } from "@firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
+
+// navigation
 import { Link } from "react-router-dom";
+
+// icônes et img
+import { FaPencilAlt } from "react-icons/fa";
+import logo from "../img/logo.jpeg";
+
+// components
+import Collapsible from "react-collapsible";
 
 function Sider() {
   const [sider, setSider] = useState([]);

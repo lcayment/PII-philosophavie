@@ -1,13 +1,16 @@
 import React from "react";
 import "./Footer.css";
-import "../App.css";
+
+// navigation
 import { Link } from "react-router-dom";
+
+// icônes
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 
-function Header() {
+export default function Footer() {
   return (
     <div className="Footer">
       <div className="Footer-Links">
@@ -55,5 +58,3 @@ function Header() {
     </div>
   );
 }
-
-export default Header;

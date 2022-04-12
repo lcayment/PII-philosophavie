@@ -1,5 +1,7 @@
+import React, { useState } from "react";
 import "./Admin.css";
-import { useState } from "react";
+
+// authentification
 import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
@@ -7,7 +9,8 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase/firebaseConfig";
 
-function Admin() {
+
+export default function Admin() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [user, setUser] = useState({});
@@ -68,4 +71,3 @@ function Admin() {
   );
 }
 
-export default Admin;

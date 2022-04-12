@@ -1,12 +1,19 @@
-import { collection, getDocs, updateDoc, doc } from "@firebase/firestore";
 import React, { useState, useEffect } from "react";
-import { db } from "../firebase/firebaseConfig";
 import "./Presentation.css";
-import { FaPencilAlt } from "react-icons/fa";
+
+// firestore
+import { collection, getDocs, updateDoc, doc } from "@firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
+
+// icônes et img
+import { FaPencilAlt } from "react-icons/fa";
+import photo from "../img/gabrielle.jpeg";
+
+// components
 import Collapsible from "react-collapsible";
 import ImageUploading from "react-images-uploading";
-import photo from "../img/gabrielle.jpeg";
+
 
 export default function Presentation() {
   const [newPresQuiContent, setNewPresQuiContent] = useState("Qui Content");

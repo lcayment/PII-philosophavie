@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
-import logo from "../img/logo.jpeg";
+
+// navigation
+import { Link } from "react-router-dom";
+
+// icônes et img
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
-import { useState } from "react";
+import { FaBars } from "react-icons/fa";
+import logo from "../img/logo.jpeg";
+
+// menu
 import { ReactDimmer } from "react-dimmer";
 
-import { FaBars } from "react-icons/fa";
-import { Link } from "react-router-dom";
-
-function Header() {
+export default function Header() {
   const [isMenuOpen, setMenu] = useState(false);
 
   const handleMenu = () => {
@@ -115,5 +119,3 @@ function Header() {
     </>
   );
 }
-
-export default Header;

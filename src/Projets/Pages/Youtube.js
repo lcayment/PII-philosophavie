@@ -1,14 +1,19 @@
 import React from "react";
 import "../Projets.css";
-import qrcodeyt from "../../img/qrcode-youtube.svg";
+
+// navigation
+import { Link } from "react-router-dom";
+
+// icônes et img
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
-import YouTube from "react-youtube";
+import qrcodeyt from "../../img/qrcode-youtube.svg";
 
-import { Link } from "react-router-dom";
+// components
+import YouTube from "react-youtube";
 
 function Projets() {
   const videoOptions = {

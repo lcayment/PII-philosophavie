@@ -1,3 +1,7 @@
+import React, { useState, useEffect } from "react";
+import "./Actualites.css";
+
+// firestore
 import {
   collection,
   getDocs,
@@ -6,16 +10,20 @@ import {
   doc,
   deleteDoc,
 } from "@firebase/firestore";
-import React, { useState, useEffect } from "react";
 import { db } from "../firebase/firebaseConfig";
-import "./Actualites.css";
+import { auth } from "../firebase/firebaseConfig";
+
+// icônes
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
-import { auth } from "../firebase/firebaseConfig";
+
+// components
 import Collapsible from "react-collapsible";
 
-function Actualites() {
+// --------------------------------
+
+export default function Actualites() {
   const [newActuTitle, setNewActuTitle] = useState("Title");
   const [newActuContent, setNewActuContent] = useState("Content");
   const [actualites, setActualites] = useState([]);
@@ -95,8 +103,8 @@ function Actualites() {
       {actualites.map((actu) => {
         return (
           <div className="actualite-content">
-            <h2> {actu.title}</h2>
-            <p>{actu.content}</p>
+            <h2> {actu.title} </h2>
+            <p> {actu.content} </p>
             <div>
               {user ? (
                 <Collapsible
@@ -161,5 +169,3 @@ function Actualites() {
     </div>
   );
 }
-
-export default Actualites;
