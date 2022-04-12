@@ -6,6 +6,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { auth } from "../firebase/firebaseConfig";
 import Collapsible from "react-collapsible";
 import ImageUploading from "react-images-uploading";
+import photo from "../img/gabrielle.jpeg";
 
 export default function Presentation() {
   const [newPresQuiContent, setNewPresQuiContent] = useState("Qui Content");
@@ -56,12 +57,15 @@ export default function Presentation() {
 
   return (
     <div className="Presentation">
-      <div className="actualite-content">
+      <div className="presentation-content">
         {presentation.map((pres) => {
           return (
             <div>
               <h1>Qui suis-je ?</h1>
               <p> {pres.qui}</p>
+              <div className="photo-pres">
+                <img src={photo} className="photo" alt="photo Gabrielle" />
+              </div>
               {user ? (
                 <Collapsible
                   trigger="Modifier la partie Qui suis-je ?"

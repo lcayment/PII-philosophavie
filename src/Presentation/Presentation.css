@@ -10,6 +10,9 @@
 
 .presentation-content {
   padding: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .change-pres {
@@ -23,4 +26,15 @@
   cursor: pointer;
   padding: 10px;
   background: white;
+}
+
+.photo-pres {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo {
+  width: 30%;
+  padding: 3%;
 }

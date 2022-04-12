@@ -8,7 +8,6 @@
 
 /****** Partie haute du header (bandeau bleu) ******/
 .Up-Header {
-  width: 100%;
   margin-left: 2em;
   display: flex;
   justify-content: space-between;
