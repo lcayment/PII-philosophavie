@@ -62,6 +62,7 @@ function Agenda() {
 
   function handleAddEvent() {
     setAllEvents([...allEvents, newEvent]);
+    createEvent();
   }
 
   const createEvent = async () => {
@@ -80,30 +81,30 @@ function Agenda() {
     <div className="Agenda">
       <h1>Agenda</h1>
       <div>
-        <h2>Add New Event</h2>
+        <h2>Ajouter un nouvel évènement</h2>
         <div>
           <input
             type="text"
-            placeholder="Add Title"
-            style={{ width: "20%", marginRight: "10px" }}
+            placeholder="Ajouter le titre de l'évènement"
+            style={{ width: "40%", marginRight: "10px" }}
             value={newEvent.title}
             onChange={(e) =>
               setNewEvent({ ...newEvent, title: e.target.value })
             }
           />
           <DatePicker
-            placeholderText="Start Date"
+            placeholderText="Date de début de l'évènement"
             style={{ marginRight: "10px" }}
             selected={newEvent.start}
             onChange={(start) => setNewEvent({ ...newEvent, start })}
           />
           <DatePicker
-            placeholderText="End Date"
+            placeholderText="Date de fin de l'évènement"
             selected={newEvent.end}
             onChange={(end) => setNewEvent({ ...newEvent, end })}
           />
           <button stlye={{ marginTop: "10px" }} onClick={handleAddEvent}>
-            Add Event
+            Ajouter l'évènement
           </button>
         </div>
       </div>
