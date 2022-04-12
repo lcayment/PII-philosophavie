@@ -12,3 +12,26 @@
   padding: 3%;
 }
 
+.add-event {
+  background-color: white;
+  padding: 10px;
+}
+
+.div-btn {
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
+  padding-right: 3%;
+}
+
+.CRUD-btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 10px;
+  border-width: 1;
+  background-color: #e7eeff;
+  border-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
