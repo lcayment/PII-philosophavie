@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Agenda.css";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useState } from "react";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+require("moment/locale/fr.js");
 
 const localizer = momentLocalizer(moment);
 
@@ -36,12 +37,21 @@ function Agenda() {
 
   return (
     <div className="Agenda">
+      <h1>Agenda</h1>
       <Calendar
         localizer={localizer}
         events={allEvents}
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500, margin: "50px" }}
+        messages={{
+          next: "Suivant",
+          previous: "Précédent",
+          today: "Aujourd'hui",
+          month: "Mois",
+          week: "Semaine",
+          day: "Jour",
+        }}
       />
     </div>
   );
