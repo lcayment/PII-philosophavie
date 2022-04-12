@@ -6,38 +6,28 @@ import { collection, addDoc } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import DatePicker from "react-datepicker";
 import { useState } from "react";
-import {
-  Calendar,
-  momentLocalizer,
-  dateFnsLocalizer,
-} from "react-big-calendar";
-import format from "date-fns/format";
-import getDay from "date-fns/getDay";
-import parse from "date-fns/parse";
-import startOfWeek from "date-fns/startOfWeek";
+import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-datepicker/dist/react-datepicker.css";
-
 import moment from "moment";
 require("moment/locale/fr.js");
-
 const localizer = momentLocalizer(moment);
 
 const events = [
   {
     title: "Big Meeting",
     allDay: true,
-    start: new Date(2021, 6, 0),
-    end: new Date(2021, 6, 0),
+    start: new Date(2022, 6, 0),
+    end: new Date(2022, 6, 0),
   },
   {
     title: "Vacation",
-    start: new Date(2021, 6, 7),
-    end: new Date(2021, 6, 10),
+    start: new Date(2022, 4, 7),
+    end: new Date(2022, 4, 10),
   },
   {
     title: "Conference",
-    start: new Date(2021, 6, 20),
-    end: new Date(2021, 6, 23),
+    start: new Date(2022, 6, 20),
+    end: new Date(2022, 6, 23),
   },
 ];
 
