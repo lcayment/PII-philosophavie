@@ -2,14 +2,7 @@ import React from "react";
 import "./Agenda.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { FaPlus } from "react-icons/fa";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  doc,
-  deleteDoc,
-} from "@firebase/firestore";
+import { collection, addDoc } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import DatePicker from "react-datepicker";
 import { useState } from "react";
@@ -24,17 +17,10 @@ import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
 import "react-datepicker/dist/react-datepicker.css";
 
-const locales = {
-  "fr-FR": require("moment/locale/fr.js"),
-};
+import moment from "moment";
+require("moment/locale/fr.js");
 
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek,
-  getDay,
-  locales,
-});
+const localizer = momentLocalizer(moment);
 
 const events = [
   {
