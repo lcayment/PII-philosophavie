@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./Projets.css";
 
 // firestore
-import { collection, getDocs, updateDoc, doc } from "@firebase/firestore";
+import {
+  collection,
+  getDocs,
+  updateDoc,
+  doc,
+  onSnapshot,
+} from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -32,14 +38,22 @@ export default function Projets() {
   };
 
   // render each time the page is called
-  useEffect(() => {
-    const getProjet = async () => {
-      const data = await getDocs(projetCollectionRef);
-      setProjet(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
+  // useEffect(() => {
+  //   const getProjet = async () => {
+  //     const data = await getDocs(projetCollectionRef);
+  //     setProjet(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  //   };
 
-    getProjet();
-  }, [projetCollectionRef]);
+  //   getProjet();
+  // }, [projetCollectionRef]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "projet"), (document) => {
+      setProjet(document.docs.map((doc) => doc.data()));
+      console.log(document.docs.map((doc) => doc.data()))
+    });
+    return unsubscribe;
+  },[]);
 
   const user = auth.currentUser;
 

@@ -14,7 +14,6 @@ import photo from "../img/gabrielle.jpeg";
 import Collapsible from "react-collapsible";
 import ImageUploading from "react-images-uploading";
 
-
 export default function Presentation() {
   const [newPresQuiContent, setNewPresQuiContent] = useState("Qui Content");
   const [newPresParcoursContent, setNewPresParcoursContent] =
