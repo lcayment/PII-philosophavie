@@ -2,13 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Projets.css";
 
 // firestore
-import {
-  collection,
-  getDocs,
-  updateDoc,
-  doc,
-  onSnapshot,
-} from "@firebase/firestore";
+import { collection, updateDoc, getDocs, doc } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -31,29 +25,28 @@ export default function Projets() {
   const [projet, setProjet] = useState([]);
   const projetCollectionRef = collection(db, "projet");
 
-  const updateProjet = async (id, proj) => {
+  const updateProjet = async (id, projetpres) => {
     const projetDoc = doc(db, "projet", id);
-    const newFields = { proj: newProjet }; // ajouter le field a modifier
+    const newFields = { projetpres: newProjet }; // ajouter le field a modifier
     await updateDoc(projetDoc, newFields);
   };
 
-  // render each time the page is called
-  // useEffect(() => {
-  //   const getProjet = async () => {
-  //     const data = await getDocs(projetCollectionRef);
-  //     setProjet(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //   };
-
-  //   getProjet();
-  // }, [projetCollectionRef]);
-
+  //render each time the page is called
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "projet"), (document) => {
-      setProjet(document.docs.map((doc) => doc.data()));
-      console.log(document.docs.map((doc) => doc.data()))
-    });
-    return unsubscribe;
-  },[]);
+    const getProjet = async () => {
+      const data = await getDocs(projetCollectionRef);
+      setProjet(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getProjet();
+  }, [projetCollectionRef]);
+
+  // useEffect(() => {
+  //   const unsubscribe = onSnapshot(collection(db, "projet"), (document) => {
+  //     setProjet(document.docs.map((doc) => doc.data()));
+  //     console.log(document.docs.map((doc) => doc.data()));
+  //   });
+  //   return unsubscribe;
+  // }, []);
 
   const user = auth.currentUser;
 
@@ -63,17 +56,17 @@ export default function Projets() {
         return (
           <div>
             <h1 className="title">Projets</h1>
-            <div className="article">{proj.proj}</div>
+            <div className="article">{proj.projetpres}</div>
             {user ? (
               <Collapsible
-                trigger="Modifier la partie Qui suis-je ?"
+                trigger="Modifier la présentation des projets"
                 triggerClassName="collapse"
                 triggerOpenedClassName="collapse"
               >
                 <div className="change-pres">
                   <div>
                     <textarea
-                      placeholder="Modification du contenu du qui suis-je"
+                      placeholder="Modification du contenu de la présentation des projets"
                       onChange={(event) => {
                         setNewProjet(event.target.value);
                       }}
@@ -83,7 +76,7 @@ export default function Projets() {
                     <button
                       className="CRUD-btn"
                       onClick={() => {
-                        updateProjet(proj.id, proj.proj);
+                        updateProjet(proj.id, proj.projetpres);
                       }}
                     >
                       <FaPencilAlt />
