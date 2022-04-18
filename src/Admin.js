@@ -9,7 +9,6 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase/firebaseConfig";
 
-
 export default function Admin() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -21,13 +20,13 @@ export default function Admin() {
 
   const login = async () => {
     try {
+      // eslint-disable-next-line
       const user = await signInWithEmailAndPassword(
         auth,
         loginEmail,
         loginPassword
       );
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   const logout = async () => {
@@ -68,4 +67,3 @@ export default function Admin() {
     </div>
   );
 }
-
