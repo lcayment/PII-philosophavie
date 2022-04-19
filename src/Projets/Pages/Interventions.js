@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Projets.css";
 
 // firestore
@@ -26,7 +26,12 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 
-function Projets() {
+// components
+import Collapsible from "react-collapsible";
+
+// --------------------------------
+
+export default function Projets() {
   const [newInterTitle, setNewInterTitle] = useState("Title");
   const [newInterContent, setNewInterContent] = useState("Content");
   const [interventions, setInterventions] = useState([]);
@@ -44,14 +49,14 @@ function Projets() {
   };
 
   const updateInterContent = async (id, content) => {
-    const actuDoc = doc(db, "interventions", id);
+    const interDoc = doc(db, "interventions", id);
     const newFields = { content: newInterContent }; // ajouter le field a modifier
     await updateDoc(interDoc, newFields);
   };
 
-  const createActu = async () => {
+  const createInter = async () => {
     await addDoc(
-      interventionCollectionRef,
+      interventionsCollectionRef,
       {
         title: newInterTitle,
         content: newInterContent,
@@ -59,6 +64,18 @@ function Projets() {
       [interventionsCollectionRef]
     );
   };
+
+  // render each time the page is called
+  useEffect(() => {
+    const getInterventions = async () => {
+      const data = await getDocs(interventionsCollectionRef);
+      setInterventions(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getInterventions();
+  }, [interventionsCollectionRef]);
+
+  const user = auth.currentUser;
 
   return (
     <div className="Projets">
@@ -80,47 +97,101 @@ function Projets() {
           <FaTiktok />
         </Link>
       </div>
-      <div className="article interventions">
-        <h3> Intervention du jour</h3>
-        <p>
-          Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
-          cillum dolor. Voluptate exercitation incididunt aliquip deserunt
-          reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure.
-          Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation
-          incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem
-          mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-          Voluptate exercitation incididunt aliquip deserunt reprehenderit elit
-          laborum. Nulla Lorem mollit cupidatat irure.
-        </p>
-      </div>
-      <div className="article interventions">
-        <h3> Intervention d'hier</h3>
-        <p>
-          Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
-          cillum dolor. Voluptate exercitation incididunt aliquip deserunt
-          reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure.
-          Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation
-          incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem
-          mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-          Voluptate exercitation incididunt aliquip deserunt reprehenderit elit
-          laborum. Nulla Lorem mollit cupidatat irure.
-        </p>
-      </div>
-      <div className="article interventions">
-        <h3> Intervention de demain</h3>
-        <p>
-          Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
-          cillum dolor. Voluptate exercitation incididunt aliquip deserunt
-          reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure.
-          Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation
-          incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem
-          mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-          Voluptate exercitation incididunt aliquip deserunt reprehenderit elit
-          laborum. Nulla Lorem mollit cupidatat irure.
-        </p>
-      </div>
+
+      {user ? (
+        <div className="add-actu">
+          <div>
+            <input
+              placeholder={"Ajoutez le titre de l'intervention"}
+              onChange={(event) => {
+                setNewInterTitle(event.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <textarea
+              placeholder={"Ajoutez le contenu de l'intervention"}
+              onChange={(event) => {
+                setNewInterContent(event.target.value);
+              }}
+            />
+          </div>
+          <div className="div-btn">
+            <button className="CRUD-btn" onClick={createInter}>
+              <FaPlus />
+            </button>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+
+      {interventions.map((inter) => {
+        return (
+          <div className="article interventions">
+            <div>
+              <h3> {inter.title}</h3>
+              <p>{inter.content}</p>
+              {user ? (
+                <Collapsible
+                  trigger="Modifier l'intervention"
+                  triggerClassName="collapse-inter"
+                  triggerOpenedClassName="collapse-inter"
+                >
+                  <div className="change-inter">
+                    <div>
+                      <input
+                        placeholder="Modification du titre de l'intervention"
+                        onChange={(event) => {
+                          setNewInterTitle(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          updateInterTitle(inter.id, inter.title);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                    </div>
+                    <div>
+                      <textarea
+                        placeholder="Modification du contenu de l'intervention"
+                        onChange={(event) => {
+                          setNewInterContent(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          updateInterContent(inter.id, inter.content);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          deleteIntervention(inter.id);
+                        }}
+                      >
+                        <FaRegTrashAlt />
+                      </button>
+                    </div>
+                  </div>
+                </Collapsible>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
-
-export default Projets;

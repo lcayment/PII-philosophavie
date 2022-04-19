@@ -126,3 +126,16 @@
   margin: 1%;
   height: fit-content;
 }
+
+.change-inter {
+  background-color: white;
+  padding: 10px;
+}
+
+.collapse-inter {
+  color: #1f3e8b;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+  background: white;
+}
