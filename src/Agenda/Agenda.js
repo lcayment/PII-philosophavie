@@ -4,6 +4,7 @@ import "./Agenda.css";
 // firestore
 import { collection, addDoc } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 
 // icônes
 import { FaPlus } from "react-icons/fa";
@@ -18,6 +19,7 @@ require("moment/locale/fr.js");
 
 const localizer = momentLocalizer(moment);
 
+// tmp
 const events = [
   {
     title: "Big Meeting",
@@ -59,43 +61,49 @@ function Agenda() {
     );
   };
 
+  const user = auth.currentUser;
+
   return (
     <div className="Agenda">
       <h1>Agenda</h1>
-      <div className="add-event">
-        <h2>Ajouter un nouvel évènement</h2>
-        <div>
-          <input
-            type="text"
-            placeholder="Ajouter le titre de l'évènement"
-            style={{ marginRight: "10px" }}
-            value={newEvent.title}
-            onChange={(e) =>
-              setNewEvent({ ...newEvent, title: e.target.value })
-            }
-          />
+      {user ? (
+        <div className="add-event">
+          <h2>Ajouter un nouvel évènement</h2>
+          <div>
+            <input
+              type="text"
+              placeholder="Ajouter le titre de l'évènement"
+              style={{ marginRight: "10px" }}
+              value={newEvent.title}
+              onChange={(e) =>
+                setNewEvent({ ...newEvent, title: e.target.value })
+              }
+            />
+          </div>
+          <div>
+            <DatePicker
+              placeholderText="Date de début de l'évènement"
+              style={{ marginRight: "10px" }}
+              selected={newEvent.start}
+              onChange={(start) => setNewEvent({ ...newEvent, start })}
+            />
+          </div>
+          <div>
+            <DatePicker
+              placeholderText="Date de fin de l'évènement"
+              selected={newEvent.end}
+              onChange={(end) => setNewEvent({ ...newEvent, end })}
+            />
+          </div>
+          <div className="div-btn">
+            <button className="CRUD-btn" onClick={handleAddEvent}>
+              <FaPlus />
+            </button>
+          </div>
         </div>
-        <div>
-          <DatePicker
-            placeholderText="Date de début de l'évènement"
-            style={{ marginRight: "10px" }}
-            selected={newEvent.start}
-            onChange={(start) => setNewEvent({ ...newEvent, start })}
-          />
-        </div>
-        <div>
-          <DatePicker
-            placeholderText="Date de fin de l'évènement"
-            selected={newEvent.end}
-            onChange={(end) => setNewEvent({ ...newEvent, end })}
-          />
-        </div>
-        <div className="div-btn">
-          <button className="CRUD-btn" onClick={handleAddEvent}>
-            <FaPlus />
-          </button>
-        </div>
-      </div>
+      ) : (
+        ""
+      )}
       <Calendar
         localizer={localizer}
         events={allEvents}
