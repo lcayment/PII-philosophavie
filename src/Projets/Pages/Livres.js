@@ -141,7 +141,7 @@ export default function Projets() {
               </div>
               {user ? (
                 <Collapsible
-                  trigger="Modifier l'intervention"
+                  trigger="Modifier le livre"
                   triggerClassName="collapse-inter"
                   triggerOpenedClassName="collapse-inter"
                 >
