@@ -1,6 +1,18 @@
 import React from "react";
 import "../Projets.css";
 
+// firestore
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  doc,
+  deleteDoc,
+} from "@firebase/firestore";
+import { db } from "../../firebase/firebaseConfig";
+import { auth } from "../../firebase/firebaseConfig";
+
 // navigation
 import { Link } from "react-router-dom";
 
@@ -10,8 +22,44 @@ import { FaInstagram } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 
 function Projets() {
+  const [newInterTitle, setNewInterTitle] = useState("Title");
+  const [newInterContent, setNewInterContent] = useState("Content");
+  const [interventions, setInterventions] = useState([]);
+  const interventionsCollectionRef = collection(db, "interventions");
+
+  const deleteIntervention = async (id) => {
+    const interDoc = doc(db, "interventions", id);
+    await deleteDoc(interDoc);
+  };
+
+  const updateInterTitle = async (id, title) => {
+    const interDoc = doc(db, "interventions", id);
+    const newFields = { title: newInterTitle }; // ajouter le field a modifier
+    await updateDoc(interDoc, newFields);
+  };
+
+  const updateInterContent = async (id, content) => {
+    const actuDoc = doc(db, "interventions", id);
+    const newFields = { content: newInterContent }; // ajouter le field a modifier
+    await updateDoc(interDoc, newFields);
+  };
+
+  const createActu = async () => {
+    await addDoc(
+      interventionCollectionRef,
+      {
+        title: newInterTitle,
+        content: newInterContent,
+      },
+      [interventionsCollectionRef]
+    );
+  };
+
   return (
     <div className="Projets">
       <h1 className="title">Interventions</h1>
