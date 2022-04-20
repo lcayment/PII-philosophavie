@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Agenda.css";
+import { onSnapshot } from "@firebase/firestore";
 
 // firestore
-import { collection, addDoc } from "@firebase/firestore";
+import { collection, addDoc, getDocs } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -41,12 +42,13 @@ const events = [
 
 function Agenda() {
   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
-  const [allEvents, setAllEvents] = useState(events);
+  const [allEvents, setAllEvents] = useState([]);
   const eventCollectionRef = collection(db, "agenda");
 
   function handleAddEvent() {
-    setAllEvents([...allEvents, newEvent]);
+    //setAllEvents([...allEvents, newEvent]);
     createEvent();
+    console.log(allEvents);
   }
 
   const createEvent = async () => {
@@ -61,11 +63,22 @@ function Agenda() {
     );
   };
 
+  // render each time the page is called
+  useEffect(() => {
+    const getAllEvents = async () => {
+      const data = await getDocs(eventCollectionRef);
+      setAllEvents(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getAllEvents();
+  }, [eventCollectionRef]);
+
   const user = auth.currentUser;
 
   return (
     <div className="Agenda">
       <h1>Agenda</h1>
+
       {user ? (
         <div className="add-event">
           <h2>Ajouter un nouvel évènement</h2>
@@ -104,6 +117,21 @@ function Agenda() {
       ) : (
         ""
       )}
+      {allEvents.map((ev) => {
+        return (
+          <div>
+            <p>EVENT : {ev.event}</p>
+            <p>
+              Date debut :
+              {moment(ev.dateDebut.seconds * 1000).format("YYYY-MMM-DD")}
+            </p>
+            <p>
+              Date debut :{" "}
+              {moment(ev.dateFin.seconds * 1000).format("YYYY-MMM-DD")}
+            </p>
+          </div>
+        );
+      })}
       <Calendar
         localizer={localizer}
         events={allEvents}
