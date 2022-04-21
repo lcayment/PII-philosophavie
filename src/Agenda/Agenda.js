@@ -42,15 +42,16 @@ const events = [
 
 function Agenda() {
   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
-  const [allEvents, setAllEvents] = useState(events);
+  const [allEvents, setAllEvents] = useState([]);
   const eventCollectionRef = collection(db, "agenda");
 
   function handleAddEvent() {
     //setAllEvents([...allEvents, newEvent]);
     createEvent();
-    console.log(allEvents);
+    //console.log(allEvents);
   }
 
+  // add event on firebase
   const createEvent = async () => {
     await addDoc(
       eventCollectionRef,
@@ -116,16 +117,18 @@ function Agenda() {
         ""
       )}
       {allEvents.map((ev) => {
+        //console.log(allEvents);
         return (
           <div>
-            <p>EVENT : {ev.event}</p>
+            <p>Nom de l'évènement : {ev.event}</p>
             <p>
-              Date debut :
-              {moment(ev.dateDebut.seconds * 1000).format("YYYY-MMM-DD")}
+              Date de début :{" "}
+              {moment(ev.dateDebut.seconds * 1000).format("DD-MMM-YYYY")}{" "}
             </p>
+            {/* {ev.dateDebut.toDate().toString()} */}
             <p>
-              Date debut :{" "}
-              {moment(ev.dateFin.seconds * 1000).format("YYYY-MMM-DD")}
+              Date de fin :{" "}
+              {moment(ev.dateFin.seconds * 1000).format("DD-MMM-YYYY")}
             </p>
           </div>
         );
