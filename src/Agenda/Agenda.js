@@ -3,7 +3,7 @@ import "./Agenda.css";
 import { onSnapshot } from "@firebase/firestore";
 
 // firestore
-import { collection, addDoc, getDocs } from "@firebase/firestore";
+import { collection, addDoc } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -42,7 +42,7 @@ const events = [
 
 function Agenda() {
   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
-  const [allEvents, setAllEvents] = useState([]);
+  const [allEvents, setAllEvents] = useState(events);
   const eventCollectionRef = collection(db, "agenda");
 
   function handleAddEvent() {
@@ -65,13 +65,11 @@ function Agenda() {
 
   // render each time the page is called
   useEffect(() => {
-    const getAllEvents = async () => {
-      const data = await getDocs(eventCollectionRef);
-      setAllEvents(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getAllEvents();
-  }, [eventCollectionRef]);
+    const update = onSnapshot(collection(db, "agenda"), (document) => {
+      setAllEvents(document.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+    return update;
+  }, []);
 
   const user = auth.currentUser;
 

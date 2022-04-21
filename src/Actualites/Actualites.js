@@ -4,11 +4,11 @@ import "./Actualites.css";
 // firestore
 import {
   collection,
-  getDocs,
   addDoc,
   updateDoc,
   doc,
   deleteDoc,
+  onSnapshot,
 } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
@@ -57,15 +57,13 @@ export default function Actualites() {
     );
   };
 
-  // render each time the page is called
+  // // render each time the page is called
   useEffect(() => {
-    const getActualites = async () => {
-      const data = await getDocs(actualitesCollectionRef);
-      setActualites(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getActualites();
-  }, [actualitesCollectionRef]);
+    const update = onSnapshot(collection(db, "actualites"), (document) => {
+      setActualites(document.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+    return update;
+  }, []);
 
   const user = auth.currentUser;
 

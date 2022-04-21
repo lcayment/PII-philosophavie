@@ -4,11 +4,11 @@ import "../Projets.css";
 // firestore
 import {
   collection,
-  getDocs,
   addDoc,
   updateDoc,
   doc,
   deleteDoc,
+  onSnapshot,
 } from "@firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import { auth } from "../../firebase/firebaseConfig";
@@ -67,13 +67,11 @@ export default function Projets() {
 
   // render each time the page is called
   useEffect(() => {
-    const getInterventions = async () => {
-      const data = await getDocs(interventionsCollectionRef);
-      setInterventions(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getInterventions();
-  }, [interventionsCollectionRef]);
+    const update = onSnapshot(collection(db, "interventions"), (document) => {
+      setInterventions(document.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+    return update;
+  }, []);
 
   const user = auth.currentUser;
 

@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import "../Projets.css";
 
 // firestore
-import { collection, updateDoc, getDocs, doc } from "@firebase/firestore";
+import {
+  collection,
+  updateDoc,
+  doc,
+  onSnapshot,
+} from "@firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import { auth } from "../../firebase/firebaseConfig";
 
@@ -26,7 +31,6 @@ import Collapsible from "react-collapsible";
 export default function Projets() {
   const [newProjet, setNewProjet] = useState("Youtube");
   const [projet, setProjet] = useState([]);
-  const projetCollectionRef = collection(db, "projet");
 
   const updateProjet = async (id, instagram) => {
     const projetDoc = doc(db, "projet", id);
@@ -36,12 +40,11 @@ export default function Projets() {
 
   //render each time the page is called
   useEffect(() => {
-    const getProjet = async () => {
-      const data = await getDocs(projetCollectionRef);
-      setProjet(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getProjet();
-  }, [projetCollectionRef]);
+    const update = onSnapshot(collection(db, "projet"), (document) => {
+      setProjet(document.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+    return update;
+  }, []);
 
   const user = auth.currentUser;
 

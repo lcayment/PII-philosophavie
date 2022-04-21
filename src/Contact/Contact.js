@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Contact.css";
 
 // firestore
-import { collection, updateDoc, getDocs, doc } from "@firebase/firestore";
+import { collection, updateDoc, doc,onSnapshot } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -19,7 +19,6 @@ import Collapsible from "react-collapsible";
 export default function Contact() {
   const [newContact, setNewContact] = useState("Contact");
   const [contact, setContact] = useState([]);
-  const contactCollectionRef = collection(db, "contact");
 
   const updateContact = async (id, contactpres) => {
     const contactDoc = doc(db, "contact", id);
@@ -29,12 +28,11 @@ export default function Contact() {
 
   //render each time the page is called
   useEffect(() => {
-    const getContact = async () => {
-      const data = await getDocs(contactCollectionRef);
-      setContact(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getContact();
-  }, [contactCollectionRef]);
+    const update = onSnapshot(collection(db, "contact"), (document) => {
+      setContact(document.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+    return update;
+  }, []);
 
   const user = auth.currentUser;
 

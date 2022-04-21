@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./Presentation.css";
 
 // firestore
-import { collection, getDocs, updateDoc, doc } from "@firebase/firestore";
+import {
+  collection,
+  updateDoc,
+  doc,
+  onSnapshot,
+} from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -20,7 +25,6 @@ export default function Presentation() {
   const [newPresVisionContent, setNewPresVisionContent] =
     useState("Vision Content");
   const [presentation, setPresentation] = useState([]);
-  const presentationCollectionRef = collection(db, "presentation");
 
   const updatePresentationQui = async (id, qui) => {
     const presentationDoc = doc(db, "presentation", id);
@@ -41,13 +45,13 @@ export default function Presentation() {
   };
   // render each time the page is called
   useEffect(() => {
-    const getPresentation = async () => {
-      const data = await getDocs(presentationCollectionRef);
-      setPresentation(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getPresentation();
-  }, [presentationCollectionRef]);
+    const update = onSnapshot(collection(db, "presentation"), (document) => {
+      setPresentation(
+        document.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
+    });
+    return update;
+  }, []);
 
   const user = auth.currentUser;
 

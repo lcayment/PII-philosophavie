@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Sider.css";
 
 // firestore
-import { collection, getDocs, updateDoc, doc } from "@firebase/firestore";
+import { collection, updateDoc, doc, onSnapshot } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -19,7 +19,6 @@ import Collapsible from "react-collapsible";
 function Sider() {
   const [sider, setSider] = useState([]);
   const [newSider, setNewSider] = useState("Sider");
-  const siderCollectionRef = collection(db, "sider");
 
   const updateSider = async (id, qui) => {
     const siderDoc = doc(db, "sider", id);
@@ -29,13 +28,11 @@ function Sider() {
 
   // render each time the page is called
   useEffect(() => {
-    const getSider = async () => {
-      const data = await getDocs(siderCollectionRef);
-      setSider(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getSider();
-  }, [siderCollectionRef]);
+    const update = onSnapshot(collection(db, "sider"), (document) => {
+      setSider(document.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+    return update;
+  }, []);
 
   const user = auth.currentUser;
 
