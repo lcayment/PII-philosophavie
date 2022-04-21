@@ -21,24 +21,24 @@ require("moment/locale/fr.js");
 const localizer = momentLocalizer(moment);
 
 // tmp
-const events = [
-  {
-    title: "Big Meeting",
-    allDay: true,
-    start: new Date(2022, 6, 0),
-    end: new Date(2022, 6, 0),
-  },
-  {
-    title: "Vacation",
-    start: new Date(2022, 4, 7),
-    end: new Date(2022, 4, 10),
-  },
-  {
-    title: "Conference",
-    start: new Date(2022, 6, 20),
-    end: new Date(2022, 6, 23),
-  },
-];
+// const events = [
+//   {
+//     title: "Big Meeting",
+//     allDay: true,
+//     start: new Date(2022, 6, 0),
+//     end: new Date(2022, 6, 0),
+//   },
+//   {
+//     title: "Vacation",
+//     start: new Date(2022, 4, 7),
+//     end: new Date(2022, 4, 10),
+//   },
+//   {
+//     title: "Conference",
+//     start: new Date(2022, 6, 20),
+//     end: new Date(2022, 6, 23),
+//   },
+// ];
 
 function Agenda() {
   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
