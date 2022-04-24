@@ -16,7 +16,7 @@ import Youtube from "./Projets/Pages/Youtube";
 import Instagram from "./Projets/Pages/Instagram";
 import Livres from "./Projets/Pages/Livres";
 import Interventions from "./Projets/Pages/Interventions";
-import Admin from "./Admin";
+import Admin from "./Admin/Admin";
 import TikTok from "./Projets/Pages/TikTok";
 import Agenda from "./Agenda/Agenda";
 
