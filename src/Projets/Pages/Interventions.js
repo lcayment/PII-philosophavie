@@ -68,7 +68,9 @@ export default function Projets() {
   // render each time the page is called
   useEffect(() => {
     const update = onSnapshot(collection(db, "interventions"), (document) => {
-      setInterventions(document.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setInterventions(
+        document.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
     });
     return update;
   }, []);
@@ -85,14 +87,14 @@ export default function Projets() {
         <Link className="logo" to="/instagram">
           <FaInstagram />
         </Link>
+        <Link className="logo" to="/tiktok">
+          <FaTiktok />
+        </Link>
         <Link className="logo" to="/livres">
           <FaBook />
         </Link>
         <Link className="logo" to="/interventions">
           <HiOutlineSpeakerphone />
-        </Link>
-        <Link className="logo" to="/tiktok">
-          <FaTiktok />
         </Link>
       </div>
 

@@ -89,7 +89,7 @@ export default function Header() {
             </h2>
             <h2>
               <Link to="/projets" className="Link" onClick={handleMenu}>
-                Mes projets
+                Projets
               </Link>
             </h2>
             <h2>

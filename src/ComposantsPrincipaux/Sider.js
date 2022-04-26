@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 
 // icônes et img
 import { FaPencilAlt } from "react-icons/fa";
+import { BsCalendar3, BsBoxArrowRight } from "react-icons/bs";
+import { IoIosArrowDropright } from "react-icons/io";
 import logo from "../img/logo.jpeg";
 
 // components
@@ -38,6 +40,14 @@ function Sider() {
 
   return (
     <div className="Sider">
+      <div className="link-agenda">
+        <Link to="/agenda" className="Link-sider">
+          <h1 className="click-agenda">Agenda</h1>
+          <h1>
+            <IoIosArrowDropright />
+          </h1>
+        </Link>
+      </div>
       <img src={logo} className="Big-Logo" alt="logo" />
       <div className="Sider-Presentation">
         {sider.map((side) => {
@@ -77,11 +87,6 @@ function Sider() {
             </div>
           );
         })}
-      </div>
-      <div>
-        <Link to="/agenda" className="Link-sider">
-          <h1>Agenda </h1>
-        </Link>
       </div>
     </div>
   );

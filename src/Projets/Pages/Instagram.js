@@ -58,14 +58,14 @@ export default function Projets() {
         <Link className="logo" to="/instagram">
           <FaInstagram />
         </Link>
+        <Link className="logo" to="/tiktok">
+          <FaTiktok />
+        </Link>
         <Link className="logo" to="/livres">
           <FaBook />
         </Link>
         <Link className="logo" to="/interventions">
           <HiOutlineSpeakerphone />
-        </Link>
-        <Link className="logo" to="/tiktok">
-          <FaTiktok />
         </Link>
       </div>
       {projet.map((proj) => {

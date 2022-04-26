@@ -7,7 +7,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { auth } from "./firebase/firebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 
 export default function Admin() {
   const [loginEmail, setLoginEmail] = useState("");

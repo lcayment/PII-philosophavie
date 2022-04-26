@@ -9,6 +9,7 @@ import { auth } from "../firebase/firebaseConfig";
 
 // icônes
 import { FaPlus } from "react-icons/fa";
+import { BsCalendar2Plus } from "react-icons/bs";
 
 // rbc
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -18,29 +19,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 require("moment/locale/fr.js");
 
+
 const localizer = momentLocalizer(moment);
 
-// tmp
-// const events = [
-//   {
-//     title: "Big Meeting",
-//     allDay: true,
-//     start: new Date(2022, 6, 0),
-//     end: new Date(2022, 6, 0),
-//   },
-//   {
-//     title: "Vacation",
-//     start: new Date(2022, 4, 7),
-//     end: new Date(2022, 4, 10),
-//   },
-//   {
-//     title: "Conference",
-//     start: new Date(2022, 6, 20),
-//     end: new Date(2022, 6, 23),
-//   },
-// ];
 
 function Agenda() {
+  
   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState([]);
   const eventCollectionRef = collection(db, "agenda");
@@ -109,7 +93,7 @@ function Agenda() {
           </div>
           <div className="div-btn">
             <button className="CRUD-btn" onClick={handleAddEvent}>
-              <FaPlus />
+              <BsCalendar2Plus />
             </button>
           </div>
         </div>

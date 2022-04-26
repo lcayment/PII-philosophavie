@@ -20,7 +20,9 @@
 
 .Link-sider {
   color: #1f3e8b;
-  text-decoration: none;  
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
 }
 
 /* modification */
@@ -30,4 +32,9 @@
   cursor: pointer;
   background: white;
   padding: 10px;
+}
+
+.click-agenda {
+  cursor: pointer;
+  padding-right: 0.5em;
 }
