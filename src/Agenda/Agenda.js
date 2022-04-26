@@ -3,13 +3,18 @@ import "./Agenda.css";
 import { onSnapshot } from "@firebase/firestore";
 
 // firestore
-import { collection, addDoc } from "@firebase/firestore";
+import { collection, addDoc, deleteDoc, doc } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
 // icônes
-import { FaPlus } from "react-icons/fa";
 import { BsCalendar2Plus } from "react-icons/bs";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
+
+// components
+import Collapsible from "react-collapsible";
 
 // rbc
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -19,21 +24,27 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 require("moment/locale/fr.js");
 
-
 const localizer = momentLocalizer(moment);
 
-
 function Agenda() {
-  
-  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+  const [newEvent, setNewEvent] = useState({
+    title: "",
+    description: "",
+    start: "",
+    end: "",
+  });
   const [allEvents, setAllEvents] = useState([]);
   const eventCollectionRef = collection(db, "agenda");
 
   function handleAddEvent() {
     //setAllEvents([...allEvents, newEvent]);
     createEvent();
-    //console.log(allEvents);
   }
+
+  const deleteEvent = async (id) => {
+    const eventDoc = doc(db, "agenda", id);
+    await deleteDoc(eventDoc);
+  };
 
   // add event on firebase
   const createEvent = async () => {
@@ -41,6 +52,7 @@ function Agenda() {
       eventCollectionRef,
       {
         event: newEvent.title,
+        description: newEvent.description,
         dateDebut: newEvent.start,
         dateFin: newEvent.end,
       },
@@ -77,6 +89,17 @@ function Agenda() {
             />
           </div>
           <div>
+            <textarea
+              type="text"
+              placeholder="Ajouter la descritpion de l'évènement"
+              style={{ marginRight: "10px" }}
+              value={newEvent.description}
+              onChange={(e) =>
+                setNewEvent({ ...newEvent, description: e.target.value })
+              }
+            />
+          </div>
+          <div>
             <DatePicker
               placeholderText="Date de début de l'évènement"
               style={{ marginRight: "10px" }}
@@ -102,22 +125,86 @@ function Agenda() {
       )}
       {allEvents.map((ev) => {
         //console.log(allEvents);
+
         return (
-          <div>
-            <p>Nom de l'évènement : {ev.event}</p>
-            <p>
-              Date de début :{" "}
-              {moment(ev.dateDebut.seconds * 1000).format("DD-MMM-YYYY")}{" "}
-            </p>
-            {/* {ev.dateDebut.toDate().toString()} */}
-            <p>
-              Date de fin :{" "}
-              {moment(ev.dateFin.seconds * 1000).format("DD-MMM-YYYY")}
-            </p>
+          <div className="agenda-day-by-day">
+            {/* date */}
+            <h2>
+              {" du  "}
+              {moment(ev.dateDebut.seconds * 1000).format("Do MMMM YYYY")}
+              {" au "}
+              {moment(ev.dateFin.seconds * 1000).format("Do MMMM YYYY")}
+            </h2>
+            <p>{ev.event}</p>
+            <p>{ev.description}</p>
+            <div>
+              {user ? (
+                <Collapsible
+                  trigger="Modifier l'évènement"
+                  triggerClassName="collapse-actu"
+                  triggerOpenedClassName="collapse-actu"
+                >
+                  <div className="change-actu">
+                    <div>
+                      <input
+                        placeholder="Modification du titre de l'évènement"
+                        onChange={(event) => {
+                          setNewEvent({
+                            ...newEvent,
+                            title: event.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          //updateEventTitle(ev.id, ev.title);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                    </div>
+                    <div>
+                      <textarea
+                        placeholder="Modification du contenu de l'évènement"
+                        onChange={(event) => {
+                          setNewEvent({
+                            ...newEvent,
+                            description: event.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          //updateEventDescription(ev.id, ev.content);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          deleteEvent(ev.id);
+                        }}
+                      >
+                        <FaRegTrashAlt />
+                      </button>
+                    </div>
+                  </div>
+                </Collapsible>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         );
       })}
-      <Calendar
+      {/* <Calendar
         localizer={localizer}
         events={allEvents}
         startAccessor="start"
@@ -131,7 +218,7 @@ function Agenda() {
           week: "Semaine",
           day: "Jour",
         }}
-      />
+      /> */}
     </div>
   );
 }
