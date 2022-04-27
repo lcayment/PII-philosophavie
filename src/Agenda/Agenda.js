@@ -3,7 +3,13 @@ import "./Agenda.css";
 import { onSnapshot } from "@firebase/firestore";
 
 // firestore
-import { collection, addDoc, deleteDoc, doc } from "@firebase/firestore";
+import {
+  collection,
+  addDoc,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -43,6 +49,18 @@ function Agenda() {
   const deleteEvent = async (id) => {
     const eventDoc = doc(db, "agenda", id);
     await deleteDoc(eventDoc);
+  };
+
+  const updateEventTitle = async (id, event) => {
+    const eventDoc = doc(db, "agenda", id);
+    const newFields = { event: newEvent.title }; // ajouter le field a modifier
+    await updateDoc(eventDoc, newFields);
+  };
+
+  const updateEventDescription = async (id, description) => {
+    const eventDoc = doc(db, "agenda", id);
+    const newFields = { description: newEvent.description }; // ajouter le field a modifier
+    await updateDoc(eventDoc, newFields);
   };
 
   // add event on firebase
@@ -123,7 +141,6 @@ function Agenda() {
         ""
       )}
       {allEvents.map((ev) => {
-        console.log(ev.dateFin);
         let empty;
         if (ev.dateFin === "") {
           empty = true;
@@ -172,7 +189,7 @@ function Agenda() {
                       <button
                         className="CRUD-btn"
                         onClick={() => {
-                          //updateEventTitle(ev.id, ev.title);
+                          updateEventTitle(ev.id, ev.title);
                         }}
                       >
                         <FaPencilAlt />
@@ -180,7 +197,7 @@ function Agenda() {
                     </div>
                     <div>
                       <textarea
-                        placeholder="Modification du contenu de l'évènement"
+                        placeholder="Modification de la description de l'évènement"
                         onChange={(event) => {
                           setNewEvent({
                             ...newEvent,
@@ -193,7 +210,7 @@ function Agenda() {
                       <button
                         className="CRUD-btn"
                         onClick={() => {
-                          //updateEventDescription(ev.id, ev.content);
+                          updateEventDescription(ev.id, ev.description);
                         }}
                       >
                         <FaPencilAlt />
