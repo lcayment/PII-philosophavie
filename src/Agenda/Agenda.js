@@ -5,12 +5,10 @@ import { onSnapshot } from "@firebase/firestore";
 // firestore
 import {
   collection,
-  addDoc,
   deleteDoc,
   doc,
   updateDoc,
   setDoc,
-  Timestamp,
 } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
@@ -41,7 +39,6 @@ function Agenda() {
     end: "",
   });
   const [allEvents, setAllEvents] = useState([]);
-  const eventCollectionRef = collection(db, "agenda");
 
   function handleAddEvent() {
     //setAllEvents([...allEvents, newEvent]);
@@ -80,6 +77,8 @@ function Agenda() {
   // add event on firebase
   const createEvent = async () => {
     let id = newEvent.start.getTime().toString();
+    let counter = allEvents.length;
+    id = id + counter;
     await setDoc(doc(db, "agenda", id), {
       event: newEvent.title,
       description: newEvent.description,
