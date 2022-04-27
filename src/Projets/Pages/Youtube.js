@@ -76,22 +76,6 @@ export default function Projets() {
       {projet.map((proj) => {
         return (
           <div>
-            <div className="article">
-              <div className="article-one">
-                <div className="flashcode">
-                  <img
-                    src={qrcodeyt}
-                    className="petit-logo"
-                    alt="qrcode-yt"
-                  ></img>
-                  <p>Flash moi pour te rendre sur la chaîne !</p>
-                </div>
-                <div className="video">
-                  <YouTube videoId="8vpXdiAI8E0" opts={videoOptions} />
-                </div>
-              </div>
-              <div className="article-one">{proj.youtube}</div>
-            </div>
             {user ? (
               <Collapsible
                 trigger="Modifier la présentation de youtube"
@@ -122,6 +106,24 @@ export default function Projets() {
             ) : (
               ""
             )}
+            <div>
+              <div className="article">
+                <div className="article-one">
+                  <div className="flashcode">
+                    <img
+                      src={qrcodeyt}
+                      className="petit-logo"
+                      alt="qrcode-yt"
+                    ></img>
+                    <p>Flash moi pour te rendre sur la chaîne !</p>
+                  </div>
+                  <div className="video">
+                    <YouTube videoId="8vpXdiAI8E0" opts={videoOptions} />
+                  </div>
+                </div>
+                <div className="article-one">{proj.youtube}</div>
+              </div>
+            </div>
           </div>
         );
       })}

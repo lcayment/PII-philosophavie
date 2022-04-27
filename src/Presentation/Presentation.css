@@ -20,13 +20,6 @@
   padding: 10px;
 }
 
-.collapse {
-  color: #1f3e8b;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 10px;
-  background: white;
-}
 
 .photo-pres {
   display: flex;

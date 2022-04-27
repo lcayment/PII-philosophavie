@@ -60,7 +60,9 @@ export default function Actualites() {
   // // render each time the page is called
   useEffect(() => {
     const update = onSnapshot(collection(db, "actualites"), (document) => {
-      setActualites(document.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setActualites(
+        document.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
     });
     return update;
   }, []);
@@ -107,8 +109,8 @@ export default function Actualites() {
               {user ? (
                 <Collapsible
                   trigger="Modifier l'actualité"
-                  triggerClassName="collapse-actu"
-                  triggerOpenedClassName="collapse-actu"
+                  triggerClassName="collapse"
+                  triggerOpenedClassName="collapse"
                 >
                   <div className="change-actu">
                     <div>

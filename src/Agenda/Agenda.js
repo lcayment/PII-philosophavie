@@ -188,8 +188,8 @@ function Agenda() {
                 {user ? (
                   <Collapsible
                     trigger="Modifier l'évènement"
-                    triggerClassName="collapse-actu"
-                    triggerOpenedClassName="collapse-actu"
+                    triggerClassName="collapse"
+                    triggerOpenedClassName="collapse"
                   >
                     <div className="change-actu">
                       <div>

@@ -21,4 +21,11 @@
   display: flex;
 }
 
-
+.collapse {
+  color: #1f3e8b;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  background: white;
+}

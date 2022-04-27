@@ -2,12 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../Projets.css";
 
 // firestore
-import {
-  collection,
-  updateDoc,
-  doc,
-  onSnapshot,
-} from "@firebase/firestore";
+import { collection, updateDoc, doc, onSnapshot } from "@firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import { auth } from "../../firebase/firebaseConfig";
 
@@ -71,67 +66,78 @@ export default function Projets() {
       {projet.map((proj) => {
         return (
           <div>
+            {user ? (
+              <Collapsible
+                trigger="Modifier la présentation d'instagram"
+                triggerClassName="collapse"
+                triggerOpenedClassName="collapse"
+              >
+                <div className="change-pres">
+                  <div>
+                    <textarea
+                      placeholder="Modification du texte sur instagram"
+                      onChange={(event) => {
+                        setNewProjet(event.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="div-btn">
+                    <button
+                      className="CRUD-btn"
+                      onClick={() => {
+                        updateProjet(proj.id, proj.instagram);
+                      }}
+                    >
+                      <FaPencilAlt />
+                    </button>
+                  </div>
+                </div>
+              </Collapsible>
+            ) : (
+              ""
+            )}
             <div className="article-row">
               <div className="article-two">
                 {proj.instagram}
                 <div className="margin">
-                  <img
-                    src={postinsta}
-                    className="petit-logo"
-                    alt="post-insta"
-                  ></img>
+                  <a
+                    href="https://www.instagram.com/p/Cb7ve6JKU-k/?utm_source=ig_web_button_share_sheet"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src={postinsta}
+                      className="petit-logo"
+                      alt="post-insta"
+                    ></img>
+                  </a>
                   <p>Clique pour voir mon dernier post insta !</p>
                 </div>
               </div>
               <div className="article-two">
-                <img
-                  src={postinsta}
-                  className="petit-logo"
-                  alt="post-insta"
-                ></img>
-                <img
-                  src={postinsta2}
-                  className="petit-logo"
-                  alt="post-insta2"
-                ></img>
-                <img
-                  src={postinsta3}
-                  className="petit-logo"
-                  alt="post-insta3"
-                ></img>
-              </div>
-            </div>
-            <div>
-              {user ? (
-                <Collapsible
-                  trigger="Modifier la présentation d'instagram"
-                  triggerClassName="collapse"
-                  triggerOpenedClassName="collapse"
+                <a
+                  href="https://www.instagram.com/p/CbiAv6LKxYf/?utm_source=ig_web_button_share_sheet"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <div className="change-pres">
-                    <div>
-                      <textarea
-                        placeholder="Modification du texte sur instagram"
-                        onChange={(event) => {
-                          setNewProjet(event.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="div-btn">
-                      <button
-                        className="CRUD-btn"
-                        onClick={() => {
-                          updateProjet(proj.id, proj.instagram);
-                        }}
-                      >
-                        <FaPencilAlt />
-                      </button>
-                    </div>
-                  </div>
-                </Collapsible>
-              ) : (
-                ""
-              )}
+                  <img
+                    src={postinsta2}
+                    className="petit-logo"
+                    alt="post-insta2"
+                  ></img>
+                </a>
+                <a
+                  href="https://www.instagram.com/p/CbKScigqo_4/?utm_source=ig_web_button_share_sheet"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={postinsta3}
+                    className="petit-logo"
+                    alt="post-insta3"
+                  ></img>
+                </a>
+              </div>
             </div>
           </div>
         );

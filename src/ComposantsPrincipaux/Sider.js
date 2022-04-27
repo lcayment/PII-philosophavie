@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 
 // icônes et img
 import { FaPencilAlt } from "react-icons/fa";
-import { BsCalendar3, BsBoxArrowRight } from "react-icons/bs";
 import { IoIosArrowDropright } from "react-icons/io";
 import logo from "../img/logo.jpeg";
 
@@ -57,8 +56,8 @@ function Sider() {
               {user ? (
                 <Collapsible
                   trigger="Modifier la partie Qui suis-je ?"
-                  triggerClassName="collapse-sider"
-                  triggerOpenedClassName="collapse-sider"
+                  triggerClassName="collapse"
+                  triggerOpenedClassName="collapse"
                 >
                   <div className="change-pres">
                     <div>

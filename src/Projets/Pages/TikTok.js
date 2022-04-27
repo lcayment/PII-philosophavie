@@ -64,47 +64,53 @@ export default function Projets() {
       {projet.map((proj) => {
         return (
           <div>
-            <div className="article-row">
-              <div className="article-two">{proj.tiktok}</div>
-              <div>
-                <div className="margin">
-                  <img src={tiktok} alt="post-tiktok"></img>
-                  <p>Clique pour voir mon dernier post tiktok !</p>
+            {user ? (
+              <Collapsible
+                trigger="Modifier la présentation de tiktok"
+                triggerClassName="collapse"
+                triggerOpenedClassName="collapse"
+              >
+                <div className="change-pres">
+                  <div>
+                    <textarea
+                      placeholder="Modification du texte sur tiktok"
+                      onChange={(event) => {
+                        setNewProjet(event.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="div-btn">
+                    <button
+                      className="CRUD-btn"
+                      onClick={() => {
+                        updateProjet(proj.id, proj.tiktok);
+                      }}
+                    >
+                      <FaPencilAlt />
+                    </button>
+                  </div>
+                </div>
+              </Collapsible>
+            ) : (
+              ""
+            )}
+            <div>
+              <div className="article-row">
+                <div className="article-two">{proj.tiktok}</div>
+                <div>
+                  <div className="margin">
+                    <a
+                      href="https://www.tiktok.com/@philosophavie/video/7081633902263078150?is_from_webapp=1&sender_device=pc&web_id=7051593860266608133"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img src={tiktok} alt="post-tiktok"></img>
+                    </a>
+
+                    <p>Clique pour voir mon dernier post tiktok !</p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div>
-              {user ? (
-                <Collapsible
-                  trigger="Modifier la présentation de tiktok"
-                  triggerClassName="collapse"
-                  triggerOpenedClassName="collapse"
-                >
-                  <div className="change-pres">
-                    <div>
-                      <textarea
-                        placeholder="Modification du texte sur tiktok"
-                        onChange={(event) => {
-                          setNewProjet(event.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="div-btn">
-                      <button
-                        className="CRUD-btn"
-                        onClick={() => {
-                          updateProjet(proj.id, proj.tiktok);
-                        }}
-                      >
-                        <FaPencilAlt />
-                      </button>
-                    </div>
-                  </div>
-                </Collapsible>
-              ) : (
-                ""
-              )}
             </div>
           </div>
         );

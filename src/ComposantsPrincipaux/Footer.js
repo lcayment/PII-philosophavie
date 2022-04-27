@@ -55,6 +55,9 @@ export default function Footer() {
           <FaTwitter />
         </a>
       </div>
+      <div className="Footer-Credits">
+        <span>Made by Lucie Cayment</span>
+      </div>
     </div>
   );
 }
