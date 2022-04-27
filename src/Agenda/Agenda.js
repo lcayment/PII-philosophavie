@@ -11,7 +11,6 @@ import { auth } from "../firebase/firebaseConfig";
 import { BsCalendar2Plus } from "react-icons/bs";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
 
 // components
 import Collapsible from "react-collapsible";
@@ -19,12 +18,12 @@ import Collapsible from "react-collapsible";
 // rbc
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
-import { Calendar, momentLocalizer } from "react-big-calendar";
+//import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 require("moment/locale/fr.js");
 
-const localizer = momentLocalizer(moment);
+//const localizer = momentLocalizer(moment);
 
 function Agenda() {
   const [newEvent, setNewEvent] = useState({
@@ -124,17 +123,30 @@ function Agenda() {
         ""
       )}
       {allEvents.map((ev) => {
-        //console.log(allEvents);
-
+        console.log(ev.dateFin);
+        let empty;
+        if (ev.dateFin === "") {
+          empty = true;
+        } else {
+          empty = false;
+        }
         return (
           <div className="agenda-day-by-day">
-            {/* date */}
-            <h2>
-              {" du  "}
-              {moment(ev.dateDebut.seconds * 1000).format("Do MMMM YYYY")}
-              {" au "}
-              {moment(ev.dateFin.seconds * 1000).format("Do MMMM YYYY")}
-            </h2>
+            {empty ? (
+              <h2>
+                {" le "}
+                {moment(ev.dateDebut.seconds * 1000).format(
+                  "Do MMMM YYYY"
+                )}{" "}
+              </h2>
+            ) : (
+              <h2>
+                {" du  "}{" "}
+                {moment(ev.dateDebut.seconds * 1000).format("Do MMMM YYYY")}{" "}
+                {" au "}{" "}
+                {moment(ev.dateFin.seconds * 1000).format("Do MMMM YYYY")}
+              </h2>
+            )}
             <p>{ev.event}</p>
             <p>{ev.description}</p>
             <div>
