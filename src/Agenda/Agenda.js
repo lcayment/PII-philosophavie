@@ -63,6 +63,18 @@ function Agenda() {
     await updateDoc(eventDoc, newFields);
   };
 
+  const updateEventStartDate = async (id, dateDebut) => {
+    const eventDoc = doc(db, "agenda", id);
+    const newFields = { dateDebut: newEvent.start }; // ajouter le field a modifier
+    await updateDoc(eventDoc, newFields);
+  };
+
+  const updateEventEndDate = async (id, dateFin) => {
+    const eventDoc = doc(db, "agenda", id);
+    const newFields = { dateFin : newEvent.end }; // ajouter le field a modifier
+    await updateDoc(eventDoc, newFields);
+  };
+
   // add event on firebase
   const createEvent = async () => {
     await addDoc(
@@ -215,6 +227,44 @@ function Agenda() {
                       >
                         <FaPencilAlt />
                       </button>
+                    </div>
+                    <div>
+                      <DatePicker
+                        placeholderText="Date de début de l'évènement"
+                        selected={newEvent.start}
+                        onChange={(start) =>
+                          setNewEvent({ ...newEvent, start })
+                        }
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          updateEventStartDate(ev.id, ev.start);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                    </div>
+                    <div>
+                      <DatePicker
+                        placeholderText="Date de fin de l'évènement"
+                        selected={newEvent.end}
+                        onChange={(end) => setNewEvent({ ...newEvent, end })}
+                      />
+                    </div>
+                    <div className="div-btn">
+                      <button
+                        className="CRUD-btn"
+                        onClick={() => {
+                          updateEventEndDate(ev.id, ev.end);
+                        }}
+                      >
+                        <FaPencilAlt />
+                      </button>
+                    </div>
+                    <div className="div-btn">
                       <button
                         className="CRUD-btn"
                         onClick={() => {
