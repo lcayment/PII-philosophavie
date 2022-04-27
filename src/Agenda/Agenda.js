@@ -160,25 +160,31 @@ function Agenda() {
             empty = false;
           }
           return (
-            <div className="agenda-day-by-day">
-              {empty ? (
-                <h2>
-                  {" le "}
-                  {moment(ev.dateDebut.seconds * 1000).format(
-                    "Do MMMM YYYY"
-                  )}{" "}
-                </h2>
-              ) : (
-                <h2>
-                  {" du  "}{" "}
-                  {moment(ev.dateDebut.seconds * 1000).format("Do MMMM YYYY")}{" "}
-                  {" au "}{" "}
-                  {moment(ev.dateFin.seconds * 1000).format("Do MMMM YYYY")}
-                </h2>
-              )}
-              <p>{ev.event}</p>
-              <p>{ev.description}</p>
-              <div>
+            <div>
+              <div className="agenda-day-by-day">
+                {empty ? (
+                  <h2 className="agenda-day-by-day">
+                    {" le "}
+                    {moment(ev.dateDebut.seconds * 1000).format(
+                      "Do MMMM YYYY"
+                    )}{" "}
+                  </h2>
+                ) : (
+                  <h2 className="agenda-day-by-day">
+                    {" du  "}{" "}
+                    {moment(ev.dateDebut.seconds * 1000).format("Do MMMM YYYY")}{" "}
+                    <br></br>
+                    {" au "}
+                    {moment(ev.dateFin.seconds * 1000).format("Do MMMM YYYY")}
+                  </h2>
+                )}
+                <div>
+                  <h3>{ev.event}</h3>
+                  <p>{ev.description}</p>
+                </div>
+              </div>
+
+              <div className="modify-agenda">
                 {user ? (
                   <Collapsible
                     trigger="Modifier l'évènement"

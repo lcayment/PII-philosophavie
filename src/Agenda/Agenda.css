@@ -39,4 +39,11 @@
 
 .agenda-day-by-day {
   padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+h2.agenda-day-by-day {
+  width: 25%;
+  font-size: 2rem;
 }
