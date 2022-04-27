@@ -9,6 +9,8 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  setDoc,
+  Timestamp,
 } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
@@ -71,22 +73,19 @@ function Agenda() {
 
   const updateEventEndDate = async (id, dateFin) => {
     const eventDoc = doc(db, "agenda", id);
-    const newFields = { dateFin : newEvent.end }; // ajouter le field a modifier
+    const newFields = { dateFin: newEvent.end }; // ajouter le field a modifier
     await updateDoc(eventDoc, newFields);
   };
 
   // add event on firebase
   const createEvent = async () => {
-    await addDoc(
-      eventCollectionRef,
-      {
-        event: newEvent.title,
-        description: newEvent.description,
-        dateDebut: newEvent.start,
-        dateFin: newEvent.end,
-      },
-      [eventCollectionRef]
-    );
+    let id = newEvent.start.getTime().toString();
+    await setDoc(doc(db, "agenda", id), {
+      event: newEvent.title,
+      description: newEvent.description,
+      dateDebut: newEvent.start,
+      dateFin: newEvent.end,
+    });
   };
 
   // render each time the page is called
@@ -152,137 +151,139 @@ function Agenda() {
       ) : (
         ""
       )}
-      {allEvents.map((ev) => {
-        let empty;
-        if (ev.dateFin === "") {
-          empty = true;
-        } else {
-          empty = false;
-        }
-        return (
-          <div className="agenda-day-by-day">
-            {empty ? (
-              <h2>
-                {" le "}
-                {moment(ev.dateDebut.seconds * 1000).format(
-                  "Do MMMM YYYY"
-                )}{" "}
-              </h2>
-            ) : (
-              <h2>
-                {" du  "}{" "}
-                {moment(ev.dateDebut.seconds * 1000).format("Do MMMM YYYY")}{" "}
-                {" au "}{" "}
-                {moment(ev.dateFin.seconds * 1000).format("Do MMMM YYYY")}
-              </h2>
-            )}
-            <p>{ev.event}</p>
-            <p>{ev.description}</p>
-            <div>
-              {user ? (
-                <Collapsible
-                  trigger="Modifier l'évènement"
-                  triggerClassName="collapse-actu"
-                  triggerOpenedClassName="collapse-actu"
-                >
-                  <div className="change-actu">
-                    <div>
-                      <input
-                        placeholder="Modification du titre de l'évènement"
-                        onChange={(event) => {
-                          setNewEvent({
-                            ...newEvent,
-                            title: event.target.value,
-                          });
-                        }}
-                      />
-                    </div>
-                    <div className="div-btn">
-                      <button
-                        className="CRUD-btn"
-                        onClick={() => {
-                          updateEventTitle(ev.id, ev.title);
-                        }}
-                      >
-                        <FaPencilAlt />
-                      </button>
-                    </div>
-                    <div>
-                      <textarea
-                        placeholder="Modification de la description de l'évènement"
-                        onChange={(event) => {
-                          setNewEvent({
-                            ...newEvent,
-                            description: event.target.value,
-                          });
-                        }}
-                      />
-                    </div>
-                    <div className="div-btn">
-                      <button
-                        className="CRUD-btn"
-                        onClick={() => {
-                          updateEventDescription(ev.id, ev.description);
-                        }}
-                      >
-                        <FaPencilAlt />
-                      </button>
-                    </div>
-                    <div>
-                      <DatePicker
-                        placeholderText="Date de début de l'évènement"
-                        selected={newEvent.start}
-                        onChange={(start) =>
-                          setNewEvent({ ...newEvent, start })
-                        }
-                      />
-                    </div>
-                    <div className="div-btn">
-                      <button
-                        className="CRUD-btn"
-                        onClick={() => {
-                          updateEventStartDate(ev.id, ev.start);
-                        }}
-                      >
-                        <FaPencilAlt />
-                      </button>
-                    </div>
-                    <div>
-                      <DatePicker
-                        placeholderText="Date de fin de l'évènement"
-                        selected={newEvent.end}
-                        onChange={(end) => setNewEvent({ ...newEvent, end })}
-                      />
-                    </div>
-                    <div className="div-btn">
-                      <button
-                        className="CRUD-btn"
-                        onClick={() => {
-                          updateEventEndDate(ev.id, ev.end);
-                        }}
-                      >
-                        <FaPencilAlt />
-                      </button>
-                    </div>
-                    <div className="div-btn">
-                      <button
-                        className="CRUD-btn"
-                        onClick={() => {
-                          deleteEvent(ev.id);
-                        }}
-                      >
-                        <FaRegTrashAlt />
-                      </button>
-                    </div>
-                  </div>
-                </Collapsible>
+      {allEvents
+        .sort((a, b) => parseFloat(b.id) - parseFloat(a.id))
+        .map((ev) => {
+          let empty;
+          if (ev.dateFin === "") {
+            empty = true;
+          } else {
+            empty = false;
+          }
+          return (
+            <div className="agenda-day-by-day">
+              {empty ? (
+                <h2>
+                  {" le "}
+                  {moment(ev.dateDebut.seconds * 1000).format(
+                    "Do MMMM YYYY"
+                  )}{" "}
+                </h2>
               ) : (
-                ""
+                <h2>
+                  {" du  "}{" "}
+                  {moment(ev.dateDebut.seconds * 1000).format("Do MMMM YYYY")}{" "}
+                  {" au "}{" "}
+                  {moment(ev.dateFin.seconds * 1000).format("Do MMMM YYYY")}
+                </h2>
               )}
+              <p>{ev.event}</p>
+              <p>{ev.description}</p>
+              <div>
+                {user ? (
+                  <Collapsible
+                    trigger="Modifier l'évènement"
+                    triggerClassName="collapse-actu"
+                    triggerOpenedClassName="collapse-actu"
+                  >
+                    <div className="change-actu">
+                      <div>
+                        <input
+                          placeholder="Modification du titre de l'évènement"
+                          onChange={(event) => {
+                            setNewEvent({
+                              ...newEvent,
+                              title: event.target.value,
+                            });
+                          }}
+                        />
+                      </div>
+                      <div className="div-btn">
+                        <button
+                          className="CRUD-btn"
+                          onClick={() => {
+                            updateEventTitle(ev.id, ev.title);
+                          }}
+                        >
+                          <FaPencilAlt />
+                        </button>
+                      </div>
+                      <div>
+                        <textarea
+                          placeholder="Modification de la description de l'évènement"
+                          onChange={(event) => {
+                            setNewEvent({
+                              ...newEvent,
+                              description: event.target.value,
+                            });
+                          }}
+                        />
+                      </div>
+                      <div className="div-btn">
+                        <button
+                          className="CRUD-btn"
+                          onClick={() => {
+                            updateEventDescription(ev.id, ev.description);
+                          }}
+                        >
+                          <FaPencilAlt />
+                        </button>
+                      </div>
+                      <div>
+                        <DatePicker
+                          placeholderText="Date de début de l'évènement"
+                          selected={newEvent.start}
+                          onChange={(start) =>
+                            setNewEvent({ ...newEvent, start })
+                          }
+                        />
+                      </div>
+                      <div className="div-btn">
+                        <button
+                          className="CRUD-btn"
+                          onClick={() => {
+                            updateEventStartDate(ev.id, ev.start);
+                          }}
+                        >
+                          <FaPencilAlt />
+                        </button>
+                      </div>
+                      <div>
+                        <DatePicker
+                          placeholderText="Date de fin de l'évènement"
+                          selected={newEvent.end}
+                          onChange={(end) => setNewEvent({ ...newEvent, end })}
+                        />
+                      </div>
+                      <div className="div-btn">
+                        <button
+                          className="CRUD-btn"
+                          onClick={() => {
+                            updateEventEndDate(ev.id, ev.end);
+                          }}
+                        >
+                          <FaPencilAlt />
+                        </button>
+                      </div>
+                      <div className="div-btn">
+                        <button
+                          className="CRUD-btn"
+                          onClick={() => {
+                            deleteEvent(ev.id);
+                          }}
+                        >
+                          <FaRegTrashAlt />
+                        </button>
+                      </div>
+                    </div>
+                  </Collapsible>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
       {/* <Calendar
         localizer={localizer}
         events={allEvents}
