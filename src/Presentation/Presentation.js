@@ -26,23 +26,30 @@ export default function Presentation() {
     useState("Vision Content");
   const [presentation, setPresentation] = useState([]);
 
+  /* UPDATE */
+
+  // update the "qui suis-je" part
   const updatePresentationQui = async (id, qui) => {
     const presentationDoc = doc(db, "presentation", id);
-    const newFields = { qui: newPresQuiContent }; // ajouter le field a modifier
+    const newFields = { qui: newPresQuiContent };
     await updateDoc(presentationDoc, newFields);
   };
 
+  // update the "parcours" part
   const updatePresentationParcours = async (id, parcours) => {
     const presentationDoc = doc(db, "presentation", id);
-    const newFields = { parcours: newPresParcoursContent }; // ajouter le field a modifier
+    const newFields = { parcours: newPresParcoursContent };
     await updateDoc(presentationDoc, newFields);
   };
 
+  // update the "vision" part
   const updatePresentationVision = async (id, vision) => {
     const presentationDoc = doc(db, "presentation", id);
-    const newFields = { vision: newPresVisionContent }; // ajouter le field a modifier
+    const newFields = { vision: newPresVisionContent };
     await updateDoc(presentationDoc, newFields);
   };
+
+
   // render each time the page is called
   useEffect(() => {
     const update = onSnapshot(collection(db, "presentation"), (document) => {
@@ -53,6 +60,8 @@ export default function Presentation() {
     return update;
   }, []);
 
+
+  // used for the authentification
   const user = auth.currentUser;
 
   return (
@@ -66,7 +75,7 @@ export default function Presentation() {
               <div className="photo-pres">
                 <img src={photo} className="photo" alt="Gabrielle" />
               </div>
-              {user ? (
+              {user ? (   // is the user connected ?
                 <Collapsible
                   trigger="Modifier la partie Qui suis-je ?"
                   triggerClassName="collapse"
@@ -97,7 +106,7 @@ export default function Presentation() {
                 ""
               )}
               <h1>Mon parcours</h1> <p>{pres.parcours}</p>
-              {user ? (
+              {user ? (   // is the user connected ?
                 <Collapsible
                   trigger="Modifier la partie Mon Parcours"
                   triggerClassName="collapse"
@@ -128,7 +137,7 @@ export default function Presentation() {
                 ""
               )}
               <h1>Ma vision</h1> <p>{pres.vision}</p>
-              {user ? (
+              {user ? (   // is the user connected ?
                 <Collapsible
                   trigger="Modifier la partie Ma vision"
                   triggerClassName="collapse"

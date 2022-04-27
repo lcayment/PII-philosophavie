@@ -26,9 +26,10 @@ export default function Projets() {
   const [newProjet, setNewProjet] = useState("Youtube");
   const [projet, setProjet] = useState([]);
 
+  /* UPDATE */ 
   const updateProjet = async (id, youtube) => {
     const projetDoc = doc(db, "projet", id);
-    const newFields = { youtube: newProjet }; // ajouter le field a modifier
+    const newFields = { youtube: newProjet };
     await updateDoc(projetDoc, newFields);
   };
 
@@ -40,6 +41,7 @@ export default function Projets() {
     return update;
   }, []);
 
+  // settings for the video
   const videoOptions = {
     playerVars: {
       autoplay: 0,
@@ -51,6 +53,7 @@ export default function Projets() {
     },
   };
 
+  // used for the authentification
   const user = auth.currentUser;
 
   return (
@@ -73,10 +76,11 @@ export default function Projets() {
           <HiOutlineSpeakerphone />
         </Link>
       </div>
+
       {projet.map((proj) => {
         return (
           <div>
-            {user ? (
+            {user ? (   // is the user connected ?
               <Collapsible
                 trigger="Modifier la présentation de youtube"
                 triggerClassName="collapse"

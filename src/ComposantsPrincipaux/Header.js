@@ -18,9 +18,11 @@ import { ReactDimmer } from "react-dimmer";
 export default function Header() {
   const [isMenuOpen, setMenu] = useState(false);
 
+  // if the menu is closed, it opens, if the menu is opened, it closes
   const handleMenu = () => {
     setMenu((prevState) => !prevState);
   };
+
   return (
     <>
       <div className="Header">

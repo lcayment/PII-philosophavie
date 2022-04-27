@@ -14,10 +14,12 @@ export default function Admin() {
   const [loginPassword, setLoginPassword] = useState("");
   const [user, setUser] = useState({});
 
+  // if the state of authentification change
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
   });
 
+  // a user is logging in
   const login = async () => {
     try {
       // eslint-disable-next-line
@@ -29,6 +31,7 @@ export default function Admin() {
     } catch (error) {}
   };
 
+  // a user is logging out
   const logout = async () => {
     await signOut(auth);
   };

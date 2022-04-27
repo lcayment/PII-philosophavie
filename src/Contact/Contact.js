@@ -20,9 +20,10 @@ export default function Contact() {
   const [newContact, setNewContact] = useState("Contact");
   const [contact, setContact] = useState([]);
 
+  /* UPDATE */
   const updateContact = async (id, contactpres) => {
     const contactDoc = doc(db, "contact", id);
-    const newFields = { contactpres: newContact }; // ajouter le field a modifier
+    const newFields = { contactpres: newContact };
     await updateDoc(contactDoc, newFields);
   };
 
@@ -34,6 +35,7 @@ export default function Contact() {
     return update;
   }, []);
 
+  // used for the authentification
   const user = auth.currentUser;
 
   return (
@@ -80,7 +82,7 @@ export default function Contact() {
               </div>
             </div>
             <div>
-              {user ? (
+              {user ? (   // is the user connected ?
                 <Collapsible
                   trigger="Modifier le texte de contact"
                   triggerClassName="collapse"

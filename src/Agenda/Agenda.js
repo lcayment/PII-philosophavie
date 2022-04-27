@@ -45,40 +45,50 @@ function Agenda() {
     createEvent();
   }
 
+  /* DELETE */
   const deleteEvent = async (id) => {
     const eventDoc = doc(db, "agenda", id);
     await deleteDoc(eventDoc);
   };
 
+  /* UPDATE */ 
+  // update an event title
   const updateEventTitle = async (id, event) => {
     const eventDoc = doc(db, "agenda", id);
-    const newFields = { event: newEvent.title }; // ajouter le field a modifier
+    const newFields = { event: newEvent.title };
     await updateDoc(eventDoc, newFields);
   };
 
+  // update an event description
   const updateEventDescription = async (id, description) => {
     const eventDoc = doc(db, "agenda", id);
-    const newFields = { description: newEvent.description }; // ajouter le field a modifier
+    const newFields = { description: newEvent.description };
     await updateDoc(eventDoc, newFields);
   };
 
+  // update an event start date
   const updateEventStartDate = async (id, dateDebut) => {
     const eventDoc = doc(db, "agenda", id);
-    const newFields = { dateDebut: newEvent.start }; // ajouter le field a modifier
+    const newFields = { dateDebut: newEvent.start };
     await updateDoc(eventDoc, newFields);
   };
 
+  // update an event en date
   const updateEventEndDate = async (id, dateFin) => {
     const eventDoc = doc(db, "agenda", id);
-    const newFields = { dateFin: newEvent.end }; // ajouter le field a modifier
+    const newFields = { dateFin: newEvent.end };
     await updateDoc(eventDoc, newFields);
   };
 
-  // add event on firebase
+  /* ADD */
   const createEvent = async () => {
+    // id = timestamp. Use to order the event by date
     let id = newEvent.start.getTime().toString();
-    let counter = allEvents.length;
+
+    // avoid to have same id if 2 or more events are the same day
+    let counter = allEvents.length;   
     id = id + counter;
+
     await setDoc(doc(db, "agenda", id), {
       event: newEvent.title,
       description: newEvent.description,
@@ -95,13 +105,14 @@ function Agenda() {
     return update;
   }, []);
 
+  // used for the authentification
   const user = auth.currentUser;
 
   return (
     <div className="Agenda">
       <h1>Agenda</h1>
 
-      {user ? (
+      {user ? ( // is the user connected ?
         <div className="add-event">
           <h2>Ajouter un nouvel évènement</h2>
           <div>
@@ -151,25 +162,28 @@ function Agenda() {
         ""
       )}
       {allEvents
-        .sort((a, b) => parseFloat(b.id) - parseFloat(a.id))
+        .sort((a, b) => parseFloat(b.id) - parseFloat(a.id))    // order the event by date
         .map((ev) => {
+          
+          // if there is no end date (event just on one day)
           let empty;
           if (ev.dateFin === "") {
             empty = true;
           } else {
             empty = false;
           }
+
           return (
             <div>
               <div className="agenda-day-by-day">
-                {empty ? (
+                {empty ? (  // event just for the day
                   <h2 className="agenda-day-by-day">
                     {" le "}
                     {moment(ev.dateDebut.seconds * 1000).format(
                       "Do MMMM YYYY"
                     )}{" "}
                   </h2>
-                ) : (
+                ) : ( // event during two or more days
                   <h2 className="agenda-day-by-day">
                     {" du  "}{" "}
                     {moment(ev.dateDebut.seconds * 1000).format("Do MMMM YYYY")}{" "}
@@ -185,7 +199,7 @@ function Agenda() {
               </div>
 
               <div className="modify-agenda">
-                {user ? (
+                {user ? (   // is user connected ?
                   <Collapsible
                     trigger="Modifier l'évènement"
                     triggerClassName="collapse"
@@ -289,7 +303,8 @@ function Agenda() {
             </div>
           );
         })}
-      {/* <Calendar
+      {/* NOT WORKING YET
+      <Calendar
         localizer={localizer}
         events={allEvents}
         startAccessor="start"

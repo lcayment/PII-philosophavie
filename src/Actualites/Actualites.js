@@ -29,23 +29,28 @@ export default function Actualites() {
   const [actualites, setActualites] = useState([]);
   const actualitesCollectionRef = collection(db, "actualites");
 
+  /* DELETE */
   const deleteActu = async (id) => {
     const actuDoc = doc(db, "actualites", id);
     await deleteDoc(actuDoc);
   };
 
+  /* UPDATE */
+  // update the title of the actualité
   const updateActuTitle = async (id, title) => {
     const actuDoc = doc(db, "actualites", id);
-    const newFields = { title: newActuTitle }; // ajouter le field a modifier
+    const newFields = { title: newActuTitle };
     await updateDoc(actuDoc, newFields);
   };
 
+  // update te content of the actualité
   const updateActuContent = async (id, content) => {
     const actuDoc = doc(db, "actualites", id);
-    const newFields = { content: newActuContent }; // ajouter le field a modifier
+    const newFields = { content: newActuContent };
     await updateDoc(actuDoc, newFields);
   };
 
+  /* CREATE */
   const createActu = async () => {
     await addDoc(
       actualitesCollectionRef,
@@ -57,7 +62,7 @@ export default function Actualites() {
     );
   };
 
-  // // render each time the page is called
+  // render each time the page is called
   useEffect(() => {
     const update = onSnapshot(collection(db, "actualites"), (document) => {
       setActualites(
@@ -67,12 +72,13 @@ export default function Actualites() {
     return update;
   }, []);
 
+  // used for the authentification
   const user = auth.currentUser;
 
   return (
     <div className="Actualites">
       <h1>Actualités</h1>
-      {user ? (
+      {user ? ( // is the user connected ?
         <div className="add-actu">
           <div>
             <input
@@ -101,12 +107,13 @@ export default function Actualites() {
       )}
 
       {actualites.map((actu) => {
+        // parse all actualités in the array actualites
         return (
           <div className="actualite-content">
             <h2> {actu.title} </h2>
             <p> {actu.content} </p>
             <div>
-              {user ? (
+              {user ? ( // is user connected ?
                 <Collapsible
                   trigger="Modifier l'actualité"
                   triggerClassName="collapse"

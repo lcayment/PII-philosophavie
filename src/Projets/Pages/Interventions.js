@@ -37,23 +37,29 @@ export default function Projets() {
   const [interventions, setInterventions] = useState([]);
   const interventionsCollectionRef = collection(db, "interventions");
 
+  /* DELETE */
   const deleteIntervention = async (id) => {
     const interDoc = doc(db, "interventions", id);
     await deleteDoc(interDoc);
   };
 
+  /* UPDATE */
+
+  // update the intervention's title
   const updateInterTitle = async (id, title) => {
     const interDoc = doc(db, "interventions", id);
-    const newFields = { title: newInterTitle }; // ajouter le field a modifier
+    const newFields = { title: newInterTitle };
     await updateDoc(interDoc, newFields);
   };
 
+  // update the intervention's content
   const updateInterContent = async (id, content) => {
     const interDoc = doc(db, "interventions", id);
-    const newFields = { content: newInterContent }; // ajouter le field a modifier
+    const newFields = { content: newInterContent };
     await updateDoc(interDoc, newFields);
   };
 
+  /* CREATE */
   const createInter = async () => {
     await addDoc(
       interventionsCollectionRef,
@@ -75,6 +81,7 @@ export default function Projets() {
     return update;
   }, []);
 
+  // used for the authentification
   const user = auth.currentUser;
 
   return (
@@ -98,7 +105,7 @@ export default function Projets() {
         </Link>
       </div>
 
-      {user ? (
+      {user ? ( // is the user connected ?
         <div className="add-actu">
           <div>
             <input
@@ -132,7 +139,7 @@ export default function Projets() {
             <div>
               <h3> {inter.title}</h3>
               <p>{inter.content}</p>
-              {user ? (
+              {user ? ( // is the user connected ?
                 <Collapsible
                   trigger="Modifier l'intervention"
                   triggerClassName="collapse"

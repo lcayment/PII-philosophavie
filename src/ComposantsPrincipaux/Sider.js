@@ -21,9 +21,10 @@ function Sider() {
   const [sider, setSider] = useState([]);
   const [newSider, setNewSider] = useState("Sider");
 
+  /* UPDATE */
   const updateSider = async (id, qui) => {
     const siderDoc = doc(db, "sider", id);
-    const newFields = { qui: newSider }; // ajouter le field a modifier
+    const newFields = { qui: newSider }; 
     await updateDoc(siderDoc, newFields);
   };
 
@@ -35,6 +36,7 @@ function Sider() {
     return update;
   }, []);
 
+  // used for the authentification
   const user = auth.currentUser;
 
   return (
@@ -53,11 +55,11 @@ function Sider() {
           return (
             <div>
               <h1>Qui suis-je ?</h1> <p> {side.qui}</p>
-              {user ? (
+              {user ? ( // is the user connected ?
                 <Collapsible
                   trigger="Modifier la partie Qui suis-je ?"
-                  triggerClassName="collapse"
-                  triggerOpenedClassName="collapse"
+                  triggerClassName="collapse-sider"
+                  triggerOpenedClassName="collapse-sider"
                 >
                   <div className="change-pres">
                     <div>

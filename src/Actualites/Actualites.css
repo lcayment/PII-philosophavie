@@ -1,4 +1,3 @@
-/*  src/Actualites.css  */
 .Actualites {
   box-sizing: border-box;
   width: 100%;
@@ -59,14 +58,6 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.collapse-actu {
-  color: #1f3e8b;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 10px;
-  background: white;
 }
 
 .change-actu {

@@ -38,23 +38,29 @@ export default function Projets() {
   const [livres, setLivres] = useState([]);
   const livresCollectionRef = collection(db, "livres");
 
+  /* DELETE */
   const deleteLivre = async (id) => {
     const livresDoc = doc(db, "livres", id);
     await deleteDoc(livresDoc);
   };
 
+  /* UPDATE */
+
+  // update the book's title
   const updateLivreTitle = async (id, title) => {
     const livresDoc = doc(db, "livres", id);
-    const newFields = { title: newLivreTitle }; // ajouter le field a modifier
+    const newFields = { title: newLivreTitle };
     await updateDoc(livresDoc, newFields);
   };
 
+  // update the book's content
   const updateLivreContent = async (id, content) => {
     const livresDoc = doc(db, "interventions", id);
-    const newFields = { content: newLivreContent }; // ajouter le field a modifier
+    const newFields = { content: newLivreContent };
     await updateDoc(livresDoc, newFields);
   };
 
+  /* CREATE */
   const createLivre = async () => {
     await addDoc(
       livresCollectionRef,
@@ -74,6 +80,7 @@ export default function Projets() {
     return update;
   }, []);
 
+  // used for the authentification
   const user = auth.currentUser;
 
   return (
@@ -97,7 +104,7 @@ export default function Projets() {
         </Link>
       </div>
 
-      {user ? (
+      {user ? ( // is the user connected ?
         <div className="add-actu">
           <div>
             <input
@@ -137,7 +144,7 @@ export default function Projets() {
               <div className="right">
                 <button className="btn">Lien vers la boutique</button>
               </div>
-              {user ? (
+              {user ? ( // is the user connected ?
                 <Collapsible
                   trigger="Modifier le livre"
                   triggerClassName="collapse"

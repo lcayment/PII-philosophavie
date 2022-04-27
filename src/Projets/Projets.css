@@ -1,4 +1,3 @@
-/*  src/Projets.css  */
 .Projets {
   box-sizing: border-box;
   width: 100%;
@@ -131,12 +130,4 @@
 .change-inter {
   background-color: white;
   padding: 10px;
-}
-
-.collapse-inter {
-  color: #1f3e8b;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 10px;
-  background: white;
 }

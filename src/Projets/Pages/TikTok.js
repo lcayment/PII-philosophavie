@@ -25,9 +25,10 @@ export default function Projets() {
   const [newProjet, setNewProjet] = useState("Youtube");
   const [projet, setProjet] = useState([]);
 
+  /* UPDATE */
   const updateProjet = async (id, tiktok) => {
     const projetDoc = doc(db, "projet", id);
-    const newFields = { tiktok: newProjet }; // ajouter le field a modifier
+    const newFields = { tiktok: newProjet };
     await updateDoc(projetDoc, newFields);
   };
 
@@ -39,6 +40,7 @@ export default function Projets() {
     return update;
   }, []);
 
+  // used for the authentification
   const user = auth.currentUser;
 
   return (
@@ -61,10 +63,11 @@ export default function Projets() {
           <HiOutlineSpeakerphone />
         </Link>
       </div>
+
       {projet.map((proj) => {
         return (
           <div>
-            {user ? (
+            {user ? (   // is the user connected ?
               <Collapsible
                 trigger="Modifier la présentation de tiktok"
                 triggerClassName="collapse"

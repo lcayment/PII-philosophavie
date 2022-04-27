@@ -3,7 +3,7 @@ import "./App.css";
 // navigation
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// componentns
+// components
 import Header from "./ComposantsPrincipaux/Header.js";
 import Footer from "./ComposantsPrincipaux/Footer.js";
 import Sider from "./ComposantsPrincipaux/Sider.js";
@@ -25,6 +25,7 @@ function App() {
     <Router>
       <Header />
       <div className="App-Main">
+        {/* Links to all pages */}
         <Switch>
           <Route path="/home">
             <Projets />
