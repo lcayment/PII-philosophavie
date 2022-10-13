@@ -77,9 +77,9 @@ export default function Header() {
               <FaBars />
             </button>
           </div>
-          <div className="Search">
+          {/* <div className="Search">
             <p>search</p>
-          </div>
+          </div> */}
         </div>
 
         <div className={`app-menu ${isMenuOpen ? "menu-open" : ""}`}>

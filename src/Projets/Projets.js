@@ -24,7 +24,7 @@ export default function Projets() {
   const [newProjet, setNewProjet] = useState("Projets");
   const [projet, setProjet] = useState([]);
 
-  /* UPDATE */ 
+  /* UPDATE */
   const updateProjet = async (id, projetpres) => {
     const projetDoc = doc(db, "projet", id);
     const newFields = { projetpres: newProjet };
@@ -39,7 +39,6 @@ export default function Projets() {
     return update;
   }, []);
 
-
   // used for the authentification
   const user = auth.currentUser;
 
@@ -50,7 +49,7 @@ export default function Projets() {
           <div>
             <h1 className="title">Projets</h1>
             <div className="article">{proj.projetpres}</div>
-            {user ? (   // is the user connected ?
+            {user ? ( // is the user connected ?
               <Collapsible
                 trigger="Modifier la présentation des projets"
                 triggerClassName="collapse"
