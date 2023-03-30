@@ -20,7 +20,7 @@ import postinsta from "../../img/post_insta.png";
 import postinsta2 from "../../img/post_insta2.png";
 import postinsta3 from "../../img/post_insta3.png";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -49,7 +49,9 @@ export default function Projets() {
 
   return (
     <div className="Projets">
-      <h1 className="title">Instagram</h1>
+      <Typography variant="h1" className="title">
+        Instagram
+      </Typography>
       <div className="logo-display-little">
         <Link className="logo" to="/youtube">
           <FaYoutube />

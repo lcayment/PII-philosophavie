@@ -18,7 +18,7 @@ import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { FaPencilAlt } from "react-icons/fa";
 import tiktok from "../../img/tiktok.png";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -47,7 +47,9 @@ export default function Projets() {
 
   return (
     <div className="Projets">
-      <h1 className="title">Tiktok</h1>
+      <Typography variant="h1" className="title">
+        Tiktok
+      </Typography>
       <div className="logo-display-little">
         <Link className="logo" to="/youtube">
           <FaYoutube />

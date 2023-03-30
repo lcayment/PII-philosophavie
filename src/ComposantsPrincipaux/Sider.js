@@ -14,7 +14,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { IoIosArrowDropright } from "react-icons/io";
 import logo from "../img/logo.jpeg";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -45,10 +45,10 @@ function Sider() {
     <div className="Sider">
       <div className="link-agenda">
         <Link to="/agenda" className="Link-sider">
-          {/* <h1 className="click-agenda">Agenda</h1>
-          <h1>
+          {/* <Typography variant="h1" className="click-agenda">Agenda</Typography>
+          <Typography variant="h1">
             <IoIosArrowDropright />
-          </h1>*/}
+          </Typography>*/}
         </Link>
       </div>
       <img src={logo} className="Big-Logo" alt="logo" />
@@ -56,7 +56,8 @@ function Sider() {
         {sider.map((side) => {
           return (
             <div>
-              <h1>Qui suis-je ?</h1> <p> {side.qui}</p>
+              <Typography variant="h1">Qui suis-je ?</Typography>{" "}
+              <p> {side.qui}</p>
               {user ? ( // is the user connected ?
                 <Collapsible
                   trigger="Modifier la partie Qui suis-je ?"

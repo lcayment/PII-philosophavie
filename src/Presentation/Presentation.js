@@ -10,7 +10,7 @@ import { auth } from "../firebase/firebaseConfig";
 import { FaPencilAlt } from "react-icons/fa";
 import photo from "../img/gabrielle.jpeg";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -65,7 +65,7 @@ export default function Presentation() {
         {presentation.map((pres) => {
           return (
             <div>
-              <h1>Qui suis-je ?</h1>
+              <Typography variant="h1">Qui suis-je ?</Typography>
               <p> {pres.qui}</p>
               <div className="photo-pres">
                 <img src={photo} className="photo" alt="Gabrielle" />
@@ -101,7 +101,8 @@ export default function Presentation() {
               ) : (
                 ""
               )}
-              <h1>Mon parcours</h1> <p>{pres.parcours}</p>
+              <Typography variant="h1">Mon parcours</Typography>{" "}
+              <p>{pres.parcours}</p>
               {user ? ( // is the user connected ?
                 <Collapsible
                   trigger="Modifier la partie Mon Parcours"
@@ -133,7 +134,8 @@ export default function Presentation() {
               ) : (
                 ""
               )}
-              <h1>Ma vision</h1> <p>{pres.vision}</p>
+              <Typography variant="h1">Ma vision</Typography>{" "}
+              <p>{pres.vision}</p>
               {user ? ( // is the user connected ?
                 <Collapsible
                   trigger="Modifier la partie Ma vision"

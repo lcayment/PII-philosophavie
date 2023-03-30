@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 export default function Admin() {
   const [loginEmail, setLoginEmail] = useState("");

@@ -18,7 +18,7 @@ import { BsCalendar2Plus } from "react-icons/bs";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -112,7 +112,7 @@ function Agenda() {
 
   return (
     <div className="Agenda">
-      <h1>Agenda</h1>
+      <Typography variant="h1">Agenda</Typography>
 
       {user ? ( // is the user connected ?
         <div className="add-event">

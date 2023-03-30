@@ -18,7 +18,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -79,7 +79,7 @@ export default function Actualites() {
 
   return (
     <div className="Actualites">
-      <h1>Actualités</h1>
+      <Typography variant="h1">Actualités</Typography>
       {user ? ( // is the user connected ?
         <div className="add-actu">
           <div>

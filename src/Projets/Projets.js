@@ -17,7 +17,7 @@ import { FaTiktok } from "react-icons/fa";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { FaPencilAlt } from "react-icons/fa";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -49,7 +49,9 @@ export default function Projets() {
       {projet.map((proj) => {
         return (
           <div>
-            <h1 className="title">Projets</h1>
+            <Typography variant="h1" className="title">
+              Projets
+            </Typography>
             <div className="article">{proj.projetpres}</div>
             {user ? ( // is the user connected ?
               <Collapsible

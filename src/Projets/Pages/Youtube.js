@@ -18,7 +18,7 @@ import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { FaPencilAlt } from "react-icons/fa";
 import qrcodeyt from "../../img/qrcode-youtube.svg";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -60,7 +60,9 @@ export default function Projets() {
 
   return (
     <div className="Projets">
-      <h1 className="title">Youtube</h1>
+      <Typography variant="h1" className="title">
+        Youtube
+      </Typography>
       <div className="logo-display-little">
         <Link className="logo" to="/youtube">
           <FaYoutube />

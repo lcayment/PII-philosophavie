@@ -12,7 +12,7 @@ import { FaTwitter } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
 import logo from "../img/logo.jpeg";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // menu
 import { ReactDimmer } from "react-dimmer";

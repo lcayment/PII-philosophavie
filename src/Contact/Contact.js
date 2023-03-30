@@ -13,7 +13,7 @@ import { FaTiktok } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -45,7 +45,9 @@ export default function Contact() {
       {contact.map((contact) => {
         return (
           <div>
-            <h1 className="title">Contact</h1>
+            <Typography variant="h1" className="title">
+              Contact
+            </Typography>
             <div className="article">
               {contact.contactpres}
               <div className="Contact-Links">

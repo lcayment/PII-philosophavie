@@ -26,8 +26,14 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 
-import { Button } from "@material-ui/core";
-
+import {
+  Button,
+  Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@material-ui/core";
+// import ExpandMoreIcon from "@material-ui";
 // components
 import Collapsible from "react-collapsible";
 
@@ -86,9 +92,17 @@ export default function Projets() {
   // used for the authentification
   const user = auth.currentUser;
 
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   return (
     <div className="Projets">
-      <h1 className="title">Interventions</h1>
+      <Typography variant="h1" className="title">
+        Interventions
+      </Typography>
       <div className="logo-display-little">
         <Link className="logo" to="/youtube">
           <FaYoutube />
@@ -142,69 +156,77 @@ export default function Projets() {
       {interventions.map((inter) => {
         return (
           <div className="article interventions">
-            <div>
-              <h3> {inter.title}</h3>
-              <p>{inter.content}</p>
-              {user ? ( // is the user connected ?
-                <Collapsible
-                  trigger="Modifier l'intervention"
-                  triggerClassName="collapse"
-                  triggerOpenedClassName="collapse"
+            <h3> {inter.title}</h3>
+            <p>{inter.content}</p>
+            {user ? ( // is the user connected ?
+              <div>
+                <Accordion
+                  expanded={expanded === "panel1"}
+                  onChange={handleChange("panel1")}
                 >
-                  <div className="change-inter">
-                    <div>
-                      <input
-                        placeholder="Modification du titre de l'intervention"
-                        onChange={(event) => {
-                          setNewInterTitle(event.target.value);
-                        }}
-                      />
+                  <AccordionSummary
+                    expandIcon={<FaPlus />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography>Modifier l'intervention</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <div className="change-inter">
+                      <div>
+                        <input
+                          placeholder="Modification du titre de l'intervention"
+                          onChange={(event) => {
+                            setNewInterTitle(event.target.value);
+                          }}
+                        />
+                      </div>
+                      <div className="div-btn">
+                        <Button
+                          variant="outlined"
+                          className="CRUD-btn"
+                          onClick={() => {
+                            updateInterTitle(inter.id, inter.title);
+                          }}
+                        >
+                          <FaPencilAlt />
+                        </Button>
+                      </div>
+                      <div>
+                        <textarea
+                          placeholder="Modification du contenu de l'intervention"
+                          onChange={(event) => {
+                            setNewInterContent(event.target.value);
+                          }}
+                        />
+                      </div>
+                      <div className="div-btn">
+                        <Button
+                          variant="outlined"
+                          className="CRUD-btn"
+                          onClick={() => {
+                            updateInterContent(inter.id, inter.content);
+                          }}
+                        >
+                          <FaPencilAlt />
+                        </Button>
+                        <Button
+                          variant="outlined"
+                          className="CRUD-btn"
+                          onClick={() => {
+                            deleteIntervention(inter.id);
+                          }}
+                        >
+                          <FaRegTrashAlt />
+                        </Button>
+                      </div>
                     </div>
-                    <div className="div-btn">
-                      <Button
-                        variant="outlined"
-                        className="CRUD-btn"
-                        onClick={() => {
-                          updateInterTitle(inter.id, inter.title);
-                        }}
-                      >
-                        <FaPencilAlt />
-                      </Button>
-                    </div>
-                    <div>
-                      <textarea
-                        placeholder="Modification du contenu de l'intervention"
-                        onChange={(event) => {
-                          setNewInterContent(event.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="div-btn">
-                      <Button
-                        variant="outlined"
-                        className="CRUD-btn"
-                        onClick={() => {
-                          updateInterContent(inter.id, inter.content);
-                        }}
-                      >
-                        <FaPencilAlt />
-                      </Button>
-                      <Button
-                        variant="outlined"
-                        className="CRUD-btn"
-                        onClick={() => {
-                          deleteIntervention(inter.id);
-                        }}
-                      >
-                        <FaRegTrashAlt />
-                      </Button>
-                    </div>
-                  </div>
-                </Collapsible>
-              ) : (
-                ""
-              )}
-            </div>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         );
       })}

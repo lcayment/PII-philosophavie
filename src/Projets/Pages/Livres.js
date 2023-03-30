@@ -27,7 +27,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import book from "../../img/book1.png";
 
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -87,7 +87,9 @@ export default function Projets() {
 
   return (
     <div className="Projets">
-      <h1 className="title">Livres</h1>
+      <Typography variant="h1" className="title">
+        Livres
+      </Typography>
       <div className="logo-display-little">
         <Link className="logo" to="/youtube">
           <FaYoutube />
