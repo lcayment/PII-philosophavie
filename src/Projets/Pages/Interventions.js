@@ -26,6 +26,8 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 
+import { Button } from "@material-ui/core";
+
 // components
 import Collapsible from "react-collapsible";
 
@@ -124,9 +126,13 @@ export default function Projets() {
             />
           </div>
           <div className="div-btn">
-            <button className="CRUD-btn" onClick={createInter}>
+            <Button
+              variant="outlined"
+              className="CRUD-btn"
+              onClick={createInter}
+            >
               <FaPlus />
-            </button>
+            </Button>
           </div>
         </div>
       ) : (
@@ -155,14 +161,15 @@ export default function Projets() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updateInterTitle(inter.id, inter.title);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
+                      </Button>
                     </div>
                     <div>
                       <textarea
@@ -173,22 +180,24 @@ export default function Projets() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updateInterContent(inter.id, inter.content);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
-                      <button
+                      </Button>
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           deleteIntervention(inter.id);
                         }}
                       >
                         <FaRegTrashAlt />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Collapsible>

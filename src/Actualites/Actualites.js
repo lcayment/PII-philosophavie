@@ -18,6 +18,8 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 
+import { Button } from "@material-ui/core";
+
 // components
 import Collapsible from "react-collapsible";
 
@@ -97,9 +99,13 @@ export default function Actualites() {
             />
           </div>
           <div className="div-btn">
-            <button className="CRUD-btn" onClick={createActu}>
+            <Button
+              variant="outlined"
+              className="CRUD-btn"
+              onClick={createActu}
+            >
               <FaPlus />
-            </button>
+            </Button>
           </div>
         </div>
       ) : (
@@ -129,14 +135,15 @@ export default function Actualites() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updateActuTitle(actu.id, actu.title);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
+                      </Button>
                     </div>
                     <div>
                       <textarea
@@ -147,22 +154,24 @@ export default function Actualites() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updateActuContent(actu.id, actu.content);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
-                      <button
+                      </Button>
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           deleteActu(actu.id);
                         }}
                       >
                         <FaRegTrashAlt />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Collapsible>

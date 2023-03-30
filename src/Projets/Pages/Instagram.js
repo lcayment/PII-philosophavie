@@ -20,6 +20,8 @@ import postinsta from "../../img/post_insta.png";
 import postinsta2 from "../../img/post_insta2.png";
 import postinsta3 from "../../img/post_insta3.png";
 
+import { Button } from "@material-ui/core";
+
 // components
 import Collapsible from "react-collapsible";
 
@@ -68,7 +70,7 @@ export default function Projets() {
       {projet.map((proj) => {
         return (
           <div>
-            {user ? (   // is the user connected ?
+            {user ? ( // is the user connected ?
               <Collapsible
                 trigger="Modifier la présentation d'instagram"
                 triggerClassName="collapse"
@@ -84,14 +86,15 @@ export default function Projets() {
                     />
                   </div>
                   <div className="div-btn">
-                    <button
+                    <Button
+                      variant="outlined"
                       className="CRUD-btn"
                       onClick={() => {
                         updateProjet(proj.id, proj.instagram);
                       }}
                     >
                       <FaPencilAlt />
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </Collapsible>

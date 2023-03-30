@@ -14,6 +14,8 @@ import { FaPencilAlt } from "react-icons/fa";
 import { IoIosArrowDropright } from "react-icons/io";
 import logo from "../img/logo.jpeg";
 
+import { Button } from "@material-ui/core";
+
 // components
 import Collapsible from "react-collapsible";
 
@@ -71,14 +73,15 @@ function Sider() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updateSider(side.id, side.qui);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Collapsible>

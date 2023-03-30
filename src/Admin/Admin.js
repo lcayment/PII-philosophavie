@@ -9,6 +9,8 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 
+import { Button } from "@material-ui/core";
+
 export default function Admin() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -56,16 +58,16 @@ export default function Admin() {
             setLoginPassword(event.target.value);
           }}
         />
-        <button className="btn" onClick={login}>
+        <Button variant="outlined" className="btn" onClick={login}>
           Se connecter
-        </button>
+        </Button>
       </div>
       <div className="form-auth-admin">
         <h4>Utilisateur connecté</h4>
         Email : {user?.email}
-        <button className="btn" onClick={logout}>
+        <Button variant="outlined" className="btn" onClick={logout}>
           Se déconnecter
-        </button>
+        </Button>
       </div>
     </div>
   );

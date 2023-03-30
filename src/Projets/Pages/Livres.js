@@ -27,6 +27,8 @@ import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import book from "../../img/book1.png";
 
+import { Button } from "@material-ui/core";
+
 // components
 import Collapsible from "react-collapsible";
 
@@ -123,9 +125,13 @@ export default function Projets() {
             />
           </div>
           <div className="div-btn">
-            <button className="CRUD-btn" onClick={createLivre}>
+            <Button
+              variant="outlined"
+              className="CRUD-btn"
+              onClick={createLivre}
+            >
               <FaPlus />
-            </button>
+            </Button>
           </div>
         </div>
       ) : (
@@ -142,7 +148,9 @@ export default function Projets() {
                 <img src={book} className="petit-livre" alt="book1"></img>
               </div>
               <div className="right">
-                <button className="btn">Lien vers la boutique</button>
+                <Button variant="outlined" className="btn">
+                  Lien vers la boutique
+                </Button>
               </div>
               {user ? ( // is the user connected ?
                 <Collapsible
@@ -160,14 +168,15 @@ export default function Projets() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updateLivreTitle(livre.id, livre.title);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
+                      </Button>
                     </div>
                     <div>
                       <textarea
@@ -178,22 +187,24 @@ export default function Projets() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updateLivreContent(livre.id, livre.content);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
-                      <button
+                      </Button>
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           deleteLivre(livre.id);
                         }}
                       >
                         <FaRegTrashAlt />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Collapsible>

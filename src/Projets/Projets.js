@@ -17,6 +17,8 @@ import { FaTiktok } from "react-icons/fa";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { FaPencilAlt } from "react-icons/fa";
 
+import { Button } from "@material-ui/core";
+
 // components
 import Collapsible from "react-collapsible";
 
@@ -65,14 +67,15 @@ export default function Projets() {
                     />
                   </div>
                   <div className="div-btn">
-                    <button
+                    <Button
+                      variant="outlined"
                       className="CRUD-btn"
                       onClick={() => {
                         updateProjet(proj.id, proj.projetpres);
                       }}
                     >
                       <FaPencilAlt />
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </Collapsible>

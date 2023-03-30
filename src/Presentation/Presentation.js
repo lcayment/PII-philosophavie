@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./Presentation.css";
 
 // firestore
-import {
-  collection,
-  updateDoc,
-  doc,
-  onSnapshot,
-} from "@firebase/firestore";
+import { collection, updateDoc, doc, onSnapshot } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
 // icônes et img
 import { FaPencilAlt } from "react-icons/fa";
 import photo from "../img/gabrielle.jpeg";
+
+import { Button } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -49,7 +46,6 @@ export default function Presentation() {
     await updateDoc(presentationDoc, newFields);
   };
 
-
   // render each time the page is called
   useEffect(() => {
     const update = onSnapshot(collection(db, "presentation"), (document) => {
@@ -59,7 +55,6 @@ export default function Presentation() {
     });
     return update;
   }, []);
-
 
   // used for the authentification
   const user = auth.currentUser;
@@ -75,7 +70,7 @@ export default function Presentation() {
               <div className="photo-pres">
                 <img src={photo} className="photo" alt="Gabrielle" />
               </div>
-              {user ? (   // is the user connected ?
+              {user ? ( // is the user connected ?
                 <Collapsible
                   trigger="Modifier la partie Qui suis-je ?"
                   triggerClassName="collapse"
@@ -91,14 +86,15 @@ export default function Presentation() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updatePresentationQui(pres.id, pres.qui);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Collapsible>
@@ -106,7 +102,7 @@ export default function Presentation() {
                 ""
               )}
               <h1>Mon parcours</h1> <p>{pres.parcours}</p>
-              {user ? (   // is the user connected ?
+              {user ? ( // is the user connected ?
                 <Collapsible
                   trigger="Modifier la partie Mon Parcours"
                   triggerClassName="collapse"
@@ -122,14 +118,15 @@ export default function Presentation() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updatePresentationParcours(pres.id, pres.parcours);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Collapsible>
@@ -137,7 +134,7 @@ export default function Presentation() {
                 ""
               )}
               <h1>Ma vision</h1> <p>{pres.vision}</p>
-              {user ? (   // is the user connected ?
+              {user ? ( // is the user connected ?
                 <Collapsible
                   trigger="Modifier la partie Ma vision"
                   triggerClassName="collapse"
@@ -153,14 +150,15 @@ export default function Presentation() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updatePresentationVision(pres.id, pres.vision);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Collapsible>

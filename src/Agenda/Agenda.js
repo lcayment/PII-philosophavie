@@ -18,6 +18,8 @@ import { BsCalendar2Plus } from "react-icons/bs";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 
+import { Button } from "@material-ui/core";
+
 // components
 import Collapsible from "react-collapsible";
 
@@ -51,7 +53,7 @@ function Agenda() {
     await deleteDoc(eventDoc);
   };
 
-  /* UPDATE */ 
+  /* UPDATE */
   // update an event title
   const updateEventTitle = async (id, event) => {
     const eventDoc = doc(db, "agenda", id);
@@ -86,7 +88,7 @@ function Agenda() {
     let id = newEvent.start.getTime().toString();
 
     // avoid to have same id if 2 or more events are the same day
-    let counter = allEvents.length;   
+    let counter = allEvents.length;
     id = id + counter;
 
     await setDoc(doc(db, "agenda", id), {
@@ -153,18 +155,21 @@ function Agenda() {
             />
           </div>
           <div className="div-btn">
-            <button className="CRUD-btn" onClick={handleAddEvent}>
+            <Button
+              variant="outlined"
+              className="CRUD-btn"
+              onClick={handleAddEvent}
+            >
               <BsCalendar2Plus />
-            </button>
+            </Button>
           </div>
         </div>
       ) : (
         ""
       )}
       {allEvents
-        .sort((a, b) => parseFloat(b.id) - parseFloat(a.id))    // order the event by date
+        .sort((a, b) => parseFloat(b.id) - parseFloat(a.id)) // order the event by date
         .map((ev) => {
-          
           // if there is no end date (event just on one day)
           let empty;
           if (ev.dateFin === "") {
@@ -176,14 +181,15 @@ function Agenda() {
           return (
             <div>
               <div className="agenda-day-by-day">
-                {empty ? (  // event just for the day
+                {empty ? ( // event just for the day
                   <h2 className="agenda-day-by-day">
                     {" le "}
                     {moment(ev.dateDebut.seconds * 1000).format(
                       "Do MMMM YYYY"
                     )}{" "}
                   </h2>
-                ) : ( // event during two or more days
+                ) : (
+                  // event during two or more days
                   <h2 className="agenda-day-by-day">
                     {" du  "}{" "}
                     {moment(ev.dateDebut.seconds * 1000).format("Do MMMM YYYY")}{" "}
@@ -199,7 +205,7 @@ function Agenda() {
               </div>
 
               <div className="modify-agenda">
-                {user ? (   // is user connected ?
+                {user ? ( // is user connected ?
                   <Collapsible
                     trigger="Modifier l'évènement"
                     triggerClassName="collapse"
@@ -218,14 +224,15 @@ function Agenda() {
                         />
                       </div>
                       <div className="div-btn">
-                        <button
+                        <Button
+                          variant="outlined"
                           className="CRUD-btn"
                           onClick={() => {
                             updateEventTitle(ev.id, ev.title);
                           }}
                         >
                           <FaPencilAlt />
-                        </button>
+                        </Button>
                       </div>
                       <div>
                         <textarea
@@ -239,14 +246,15 @@ function Agenda() {
                         />
                       </div>
                       <div className="div-btn">
-                        <button
+                        <Button
+                          variant="outlined"
                           className="CRUD-btn"
                           onClick={() => {
                             updateEventDescription(ev.id, ev.description);
                           }}
                         >
                           <FaPencilAlt />
-                        </button>
+                        </Button>
                       </div>
                       <div>
                         <DatePicker
@@ -258,14 +266,15 @@ function Agenda() {
                         />
                       </div>
                       <div className="div-btn">
-                        <button
+                        <Button
+                          variant="outlined"
                           className="CRUD-btn"
                           onClick={() => {
                             updateEventStartDate(ev.id, ev.start);
                           }}
                         >
                           <FaPencilAlt />
-                        </button>
+                        </Button>
                       </div>
                       <div>
                         <DatePicker
@@ -275,24 +284,26 @@ function Agenda() {
                         />
                       </div>
                       <div className="div-btn">
-                        <button
+                        <Button
+                          variant="outlined"
                           className="CRUD-btn"
                           onClick={() => {
                             updateEventEndDate(ev.id, ev.end);
                           }}
                         >
                           <FaPencilAlt />
-                        </button>
+                        </Button>
                       </div>
                       <div className="div-btn">
-                        <button
+                        <Button
+                          variant="outlined"
                           className="CRUD-btn"
                           onClick={() => {
                             deleteEvent(ev.id);
                           }}
                         >
                           <FaRegTrashAlt />
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </Collapsible>

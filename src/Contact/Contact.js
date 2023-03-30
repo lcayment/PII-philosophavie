@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Contact.css";
 
 // firestore
-import { collection, updateDoc, doc,onSnapshot } from "@firebase/firestore";
+import { collection, updateDoc, doc, onSnapshot } from "@firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -12,6 +12,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
+
+import { Button } from "@material-ui/core";
 
 // components
 import Collapsible from "react-collapsible";
@@ -82,7 +84,7 @@ export default function Contact() {
               </div>
             </div>
             <div>
-              {user ? (   // is the user connected ?
+              {user ? ( // is the user connected ?
                 <Collapsible
                   trigger="Modifier le texte de contact"
                   triggerClassName="collapse"
@@ -98,14 +100,15 @@ export default function Contact() {
                       />
                     </div>
                     <div className="div-btn">
-                      <button
+                      <Button
+                        variant="outlined"
                         className="CRUD-btn"
                         onClick={() => {
                           updateContact(contact.id, contact.contactpres);
                         }}
                       >
                         <FaPencilAlt />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Collapsible>

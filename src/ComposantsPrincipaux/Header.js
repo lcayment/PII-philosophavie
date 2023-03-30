@@ -12,6 +12,8 @@ import { FaTwitter } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
 import logo from "../img/logo.jpeg";
 
+import { Button } from "@material-ui/core";
+
 // menu
 import { ReactDimmer } from "react-dimmer";
 
@@ -73,9 +75,13 @@ export default function Header() {
         </div>
         <div className="Down-Header">
           <div className="Menu-Header">
-            <button className="menu-btn" onClick={handleMenu}>
+            <Button
+              variant="outlined"
+              className="menu-btn"
+              onClick={handleMenu}
+            >
               <FaBars />
-            </button>
+            </Button>
           </div>
           {/* <div className="Search">
             <p>search</p>

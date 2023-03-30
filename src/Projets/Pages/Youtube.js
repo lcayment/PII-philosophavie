@@ -18,6 +18,8 @@ import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { FaPencilAlt } from "react-icons/fa";
 import qrcodeyt from "../../img/qrcode-youtube.svg";
 
+import { Button } from "@material-ui/core";
+
 // components
 import Collapsible from "react-collapsible";
 import YouTube from "react-youtube";
@@ -26,7 +28,7 @@ export default function Projets() {
   const [newProjet, setNewProjet] = useState("Youtube");
   const [projet, setProjet] = useState([]);
 
-  /* UPDATE */ 
+  /* UPDATE */
   const updateProjet = async (id, youtube) => {
     const projetDoc = doc(db, "projet", id);
     const newFields = { youtube: newProjet };
@@ -80,7 +82,7 @@ export default function Projets() {
       {projet.map((proj) => {
         return (
           <div>
-            {user ? (   // is the user connected ?
+            {user ? ( // is the user connected ?
               <Collapsible
                 trigger="Modifier la présentation de youtube"
                 triggerClassName="collapse"
@@ -96,14 +98,15 @@ export default function Projets() {
                     />
                   </div>
                   <div className="div-btn">
-                    <button
+                    <Button
+                      variant="outlined"
                       className="CRUD-btn"
                       onClick={() => {
                         updateProjet(proj.id, proj.youtube);
                       }}
                     >
                       <FaPencilAlt />
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </Collapsible>
