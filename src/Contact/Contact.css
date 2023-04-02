@@ -1,7 +1,7 @@
 .Contact {
   box-sizing: border-box;
   width: 100%;
-  background-color: #e7eeff;
+  /* background-color: #e7eeff; */
   min-height: 5vh;
   font-size: calc(8px + 1.5vmin);
   color: black;

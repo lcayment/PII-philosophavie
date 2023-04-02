@@ -11,6 +11,7 @@
   position: relative;
   bottom: 0;
   flex-direction: column;
+  margin-top: 1%;
 }
 
 .Footer-Links {

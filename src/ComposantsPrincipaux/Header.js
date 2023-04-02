@@ -12,7 +12,8 @@ import { FaTwitter } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
 import logo from "../img/logo.jpeg";
 
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography, IconButton } from "@material-ui/core";
+import { Menu } from "@mui/icons-material";
 
 // menu
 import { ReactDimmer } from "react-dimmer";
@@ -23,6 +24,15 @@ export default function Header() {
   // if the menu is closed, it opens, if the menu is opened, it closes
   const handleMenu = () => {
     setMenu((prevState) => !prevState);
+  };
+
+  const styles = {
+    myTextStyle: {
+      textDecoration: "none",
+      "&:hover": {
+        color: "red !important",
+      },
+    },
   };
 
   return (
@@ -75,13 +85,15 @@ export default function Header() {
         </div>
         <div className="Down-Header">
           <div className="Menu-Header">
-            <Button
+            <IconButton
               variant="outlined"
-              className="menu-btn"
+              color="primary"
+              aria-label="open menu"
+              component="label"
               onClick={handleMenu}
             >
-              <FaBars />
-            </Button>
+              <Menu />
+            </IconButton>
           </div>
           {/* <div className="Search">
             <p>search</p>
@@ -90,31 +102,51 @@ export default function Header() {
 
         <div className={`app-menu ${isMenuOpen ? "menu-open" : ""}`}>
           <div className="Menu">
-            <h2>
-              <Link to="/presentation" className="Link" onClick={handleMenu}>
+            <Typography variant="h2">
+              <Link
+                to="/presentation"
+                className="Link Link-Menu"
+                onClick={handleMenu}
+              >
                 Présentation
               </Link>
-            </h2>
-            <h2>
-              <Link to="/projets" className="Link" onClick={handleMenu}>
+            </Typography>
+            <Typography variant="h2">
+              <Link
+                to="/projets"
+                className="Link Link-Menu"
+                onClick={handleMenu}
+              >
                 Projets
               </Link>
-            </h2>
-            <h2>
-              <Link to="/actualites" className="Link" onClick={handleMenu}>
+            </Typography>
+            <Typography variant="h2">
+              <Link
+                to="/actualites"
+                className="Link Link-Menu"
+                onClick={handleMenu}
+              >
                 Actualités
               </Link>
-            </h2>
-            <h2>
-              <Link to="/boutique" className="Link" onClick={handleMenu}>
+            </Typography>
+            <Typography variant="h2">
+              <Link
+                to="/boutique"
+                className="Link Link-Menu"
+                onClick={handleMenu}
+              >
                 Boutique
               </Link>
-            </h2>
-            <h2>
-              <Link to="/contact" className="Link" onClick={handleMenu}>
+            </Typography>
+            <Typography variant="h2">
+              <Link
+                to="/contact"
+                className="Link Link-Menu"
+                onClick={handleMenu}
+              >
                 Contact
               </Link>
-            </h2>
+            </Typography>
           </div>
         </div>
         <ReactDimmer

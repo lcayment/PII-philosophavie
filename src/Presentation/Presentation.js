@@ -59,6 +59,18 @@ export default function Presentation() {
   // used for the authentification
   const user = auth.currentUser;
 
+  const ColoredLine = ({ color }) => (
+    <hr
+      style={{
+        color: color,
+        backgroundColor: color,
+        height: 5,
+        width: "25%",
+        border: "none",
+      }}
+    />
+  );
+
   return (
     <div className="Presentation">
       <div className="presentation-content">
@@ -101,6 +113,7 @@ export default function Presentation() {
               ) : (
                 ""
               )}
+              <ColoredLine color="#1f3e8b78" />
               <Typography variant="h1">Mon parcours</Typography>{" "}
               <p>{pres.parcours}</p>
               {user ? ( // is the user connected ?
@@ -134,6 +147,7 @@ export default function Presentation() {
               ) : (
                 ""
               )}
+              <ColoredLine color="#1f3e8b78" />
               <Typography variant="h1">Ma vision</Typography>{" "}
               <p>{pres.vision}</p>
               {user ? ( // is the user connected ?

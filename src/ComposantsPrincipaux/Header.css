@@ -67,6 +67,10 @@
   justify-content: center;
 }
 
+.Link-Menu:hover {
+  font-weight: bold;
+}
+
 .Links {
   display: flex;
   color: white;
