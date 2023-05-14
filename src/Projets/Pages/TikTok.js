@@ -16,7 +16,7 @@ import { FaBook } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { FaPencilAlt } from "react-icons/fa";
-import tiktok from "../../img/tiktok.png";
+import tiktok from "../../assets/img/tiktok.png";
 
 import { Button, Typography } from "@material-ui/core";
 
@@ -112,7 +112,7 @@ export default function Projets() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img src={tiktok} alt="post-tiktok"></img>
+                      <img src={tiktok} alt="post-tiktok" />
                     </a>
 
                     <p>Clique pour voir mon dernier post tiktok !</p>

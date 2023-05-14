@@ -16,9 +16,9 @@ import { FaBook } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { FaPencilAlt } from "react-icons/fa";
-import postinsta from "../../img/post_insta.png";
-import postinsta2 from "../../img/post_insta2.png";
-import postinsta3 from "../../img/post_insta3.png";
+import postinsta from "../../assets/img/post_insta.png";
+import postinsta2 from "../../assets/img/post_insta2.png";
+import postinsta3 from "../../assets/img/post_insta3.png";
 
 import { Button, Typography } from "@material-ui/core";
 
@@ -116,7 +116,7 @@ export default function Projets() {
                       src={postinsta}
                       className="petit-logo"
                       alt="post-insta"
-                    ></img>
+                    />
                   </a>
                   <p>Clique pour voir mon dernier post insta !</p>
                 </div>
@@ -131,7 +131,7 @@ export default function Projets() {
                     src={postinsta2}
                     className="petit-logo"
                     alt="post-insta2"
-                  ></img>
+                    />
                 </a>
                 <a
                   href="https://www.instagram.com/p/CbKScigqo_4/?utm_source=ig_web_button_share_sheet"
@@ -142,7 +142,7 @@ export default function Projets() {
                     src={postinsta3}
                     className="petit-logo"
                     alt="post-insta3"
-                  ></img>
+                  />
                 </a>
               </div>
             </div>

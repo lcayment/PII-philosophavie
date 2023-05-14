@@ -41,8 +41,6 @@
 /****** Partie basse du header (bandeau blanc avec le menu) ******/
 .Down-Header {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   background-color: white;
 }
 
@@ -67,8 +65,15 @@
   justify-content: center;
 }
 
+.Link-Menu {
+  color: #1f3e8b !important;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
 .Link-Menu:hover {
-  font-weight: bold;
+  font-weight: bold !important;
+  color: red;
 }
 
 .Links {
@@ -103,8 +108,7 @@
 
 .Menu {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-direction: row;
   text-align: center;
   color: white;
 }

@@ -8,7 +8,7 @@ import { auth } from "../firebase/firebaseConfig";
 
 // icônes et img
 import { FaPencilAlt } from "react-icons/fa";
-import photo from "../img/gabrielle.jpeg";
+import photo from "../assets/img/gabrielle.jpeg";
 
 import { Button, Typography } from "@material-ui/core";
 

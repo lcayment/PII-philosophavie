@@ -25,7 +25,7 @@ import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
-import book from "../../img/book1.png";
+import book from "../../assets/img/book1.png";
 
 import { Button, Typography } from "@material-ui/core";
 
@@ -147,7 +147,7 @@ export default function Projets() {
               <h3> {livre.title}</h3>
               <div className="content-img-book">
                 <p className="content-book">{livre.content}</p>
-                <img src={book} className="petit-livre" alt="book1"></img>
+                <img src={book} className="petit-livre" alt="book1" />
               </div>
               <div className="right">
                 <Button variant="outlined" className="btn">

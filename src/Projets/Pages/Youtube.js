@@ -16,7 +16,7 @@ import { FaBook } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { FaPencilAlt } from "react-icons/fa";
-import qrcodeyt from "../../img/qrcode-youtube.svg";
+import qrcodeyt from "../../assets/img/qrcode-youtube.svg";
 
 import { Button, Typography } from "@material-ui/core";
 
@@ -123,7 +123,7 @@ export default function Projets() {
                       src={qrcodeyt}
                       className="petit-logo"
                       alt="qrcode-yt"
-                    ></img>
+                    />
                     <p>Flash moi pour te rendre sur la chaîne !</p>
                   </div>
                   <div className="video">

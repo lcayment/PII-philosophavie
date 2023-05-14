@@ -9,23 +9,9 @@ import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
-import { FaBars } from "react-icons/fa";
-import logo from "../img/logo.jpeg";
-
-import { Button, Typography, IconButton } from "@material-ui/core";
-import { Menu } from "@mui/icons-material";
-
-// menu
-import { ReactDimmer } from "react-dimmer";
+import logo from "../assets/img/logo.jpeg";
 
 export default function Header() {
-  const [isMenuOpen, setMenu] = useState(false);
-
-  // if the menu is closed, it opens, if the menu is opened, it closes
-  const handleMenu = () => {
-    setMenu((prevState) => !prevState);
-  };
-
   const styles = {
     myTextStyle: {
       textDecoration: "none",
@@ -84,78 +70,48 @@ export default function Header() {
           <img src={logo} className="Header-logo" alt="logo" />
         </div>
         <div className="Down-Header">
-          <div className="Menu-Header">
-            <IconButton
-              variant="outlined"
-              color="primary"
-              aria-label="open menu"
-              component="label"
-              onClick={handleMenu}
-            >
-              <Menu />
-            </IconButton>
-          </div>
-          {/* <div className="Search">
-            <p>search</p>
-          </div> */}
-        </div>
-
-        <div className={`app-menu ${isMenuOpen ? "menu-open" : ""}`}>
           <div className="Menu">
-            <Typography variant="h2">
-              <Link
-                to="/presentation"
-                className="Link Link-Menu"
-                onClick={handleMenu}
-              >
+            <h3>
+              <Link to="/presentation" className="Link Link-Menu">
                 Présentation
               </Link>
-            </Typography>
-            <Typography variant="h2">
-              <Link
-                to="/projets"
-                className="Link Link-Menu"
-                onClick={handleMenu}
-              >
+            </h3>
+            <h3>
+              <Link to="/projets" className="Link Link-Menu">
                 Projets
               </Link>
-            </Typography>
-            <Typography variant="h2">
-              <Link
-                to="/actualites"
-                className="Link Link-Menu"
-                onClick={handleMenu}
-              >
+            </h3>
+            <h3>
+              <Link to="/actualites" className="Link Link-Menu">
                 Actualités
               </Link>
-            </Typography>
-            <Typography variant="h2">
-              <Link
-                to="/boutique"
-                className="Link Link-Menu"
-                onClick={handleMenu}
-              >
+            </h3>
+            <h3>
+              <Link to="/boutique" className="Link Link-Menu">
                 Boutique
               </Link>
-            </Typography>
-            <Typography variant="h2">
-              <Link
-                to="/contact"
-                className="Link Link-Menu"
-                onClick={handleMenu}
-              >
+            </h3>
+            <h3>
+              <Link to="/contact" className="Link Link-Menu">
                 Contact
               </Link>
-            </Typography>
+            </h3>
           </div>
         </div>
+        {/* <div className="Search">
+            <p>search</p>
+          </div> */}
+      </div>
+
+      {/* <div className={`app-menu menu-open}`}>
+          
         <ReactDimmer
           isOpen={isMenuOpen}
           exitDimmer={setMenu}
           zIndex={100}
           blur={1.5}
         />
-      </div>
+      </div> */}
     </>
   );
 }

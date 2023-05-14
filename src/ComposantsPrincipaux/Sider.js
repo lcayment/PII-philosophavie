@@ -11,8 +11,7 @@ import { Link } from "react-router-dom";
 
 // icônes et img
 import { FaPencilAlt } from "react-icons/fa";
-import { IoIosArrowDropright } from "react-icons/io";
-import logo from "../img/logo.jpeg";
+import logo from "../assets/img/logo.jpeg";
 
 import { Button, Typography } from "@material-ui/core";
 
