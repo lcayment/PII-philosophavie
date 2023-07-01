@@ -12,6 +12,7 @@ import Projets from "./Projets/Projets.js";
 import Actualites from "./Actualites/Actualites.js";
 import Boutique from "./Boutique/Boutique.js";
 import Contact from "./Contact/Contact.js";
+import Presse from "./Presse/Presse.js";
 import Youtube from "./Projets/Pages/Youtube";
 import Instagram from "./Projets/Pages/Instagram";
 import Livres from "./Projets/Pages/Livres";
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route path="/boutique">
             <Boutique />
+          </Route>
+          <Route path="/presse">
+            <Presse />
           </Route>
           <Route path="/contact">
             <Contact />

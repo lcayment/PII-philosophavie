@@ -127,7 +127,7 @@ export default function Projets() {
                     <p>Flash moi pour te rendre sur la chaîne !</p>
                   </div>
                   <div className="video">
-                    <YouTube videoId="8vpXdiAI8E0" opts={videoOptions} />
+                    <YouTube videoId="YXffov594lw" opts={videoOptions} />
                   </div>
                 </div>
                 <div className="article-one">{proj.youtube}</div>

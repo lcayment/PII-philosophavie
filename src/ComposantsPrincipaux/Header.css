@@ -15,27 +15,33 @@
 
 .Header-Title {
   font-family: "Satisfy", cursive;
-  font-size: 4em;
+  display: flex;
+  font-size: 3em;
+  margin-right: 20px;
 }
 
 .Header-Subtitle {
-  font-size: 1.4em;
+  font-size: 1em;
+}
+
+.Title-flex {
+  display: flex;
+  align-items: center;
 }
 
 .Header-logo {
-  height: 10em;
+  height: 4em;
   pointer-events: none;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2em;
+  padding: 0.5em;
 }
 
 .Header-Links {
   width: 45%;
   display: flex;
-  justify-content: space-between;
 }
 
 /****** Partie basse du header (bandeau blanc avec le menu) ******/
@@ -66,14 +72,23 @@
 }
 
 .Link-Menu {
+  color: #ffffff !important;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.Link-Menu-Contact {
+  background-color: white;
   color: #1f3e8b !important;
+  padding: 10px;
   margin-right: 30px;
   margin-left: 30px;
 }
 
 .Link-Menu:hover {
   font-weight: bold !important;
-  color: red;
+  color: #ffffff !important;
+  text-decoration: underline;
 }
 
 .Links {
@@ -111,6 +126,7 @@
   flex-direction: row;
   text-align: center;
   color: white;
+  align-items: center;
 }
 
 /* Partie de la recherche */

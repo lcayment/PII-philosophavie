@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 // icônes et img
 import { FaPencilAlt } from "react-icons/fa";
 import logo from "../assets/img/logo.jpeg";
+import photo from "../assets/img/gabrielle.jpeg";
 
 import { Button, Typography } from "@material-ui/core";
 
@@ -50,7 +51,7 @@ function Sider() {
           </Typography>*/}
         </Link>
       </div>
-      <img src={logo} className="Big-Logo" alt="logo" />
+      <img src={photo} className="Big-Logo" alt="logo" />
       <div className="Sider-Presentation">
         {sider.map((side) => {
           return (
