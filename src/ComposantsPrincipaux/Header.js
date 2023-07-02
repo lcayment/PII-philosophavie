@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Header.css";
 
 // navigation
 import { Link } from "react-router-dom";
 
 // icônes et img
-import { FaYoutube } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaTiktok } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
+// import { FaYoutube } from "react-icons/fa";
+// import { FaInstagram } from "react-icons/fa";
+// import { FaTiktok } from "react-icons/fa";
+// import { FaTwitter } from "react-icons/fa";
 import logo from "../assets/img/logo.jpeg";
 
 export default function Header() {
